@@ -17,6 +17,10 @@ nav {
       color: $red;
       font-size: 3rem;
     }
+    
+    .active{
+      color: $red;
+    }
 
     > a {
       margin: 0 2rem;
