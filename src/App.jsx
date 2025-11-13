@@ -1,11 +1,15 @@
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router";
+import { ToastContainer } from "react-toastify";
+
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-
-import { ToastContainer } from "react-toastify";
+import Home from "./components/home/Home";
 
 import "./styles/header.scss";
 import "./styles/footer.scss";
+import "./styles/hero.scss";
+import "./styles/menu.scss";
+import "./styles/founder.scss";
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -18,7 +22,7 @@ function App() {
       <Header />
       <ToastContainer />
       <Routes>
-        <Route path="/" exact element={ <>main</> } />
+        <Route path="/" exact element={ <Home/> } />
         <Route path="/about" element={ <>about</> } />
 
         <Route path="/cart" element={ <><Outlet/></> }>
