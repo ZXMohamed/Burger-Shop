@@ -11,7 +11,7 @@ const Header = () => {
     const cartItems = useCart((state) => state.cart);
 
     return (
-        <nav>
+        <nav data-testid="headerTest">
             <motion.div {...rightIn(0)}>
                 <IoFastFoodOutline />
             </motion.div>
@@ -22,7 +22,7 @@ const Header = () => {
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/cart">
                     <FiShoppingCart />
-                    <div className="cartItemsCount">
+                    <div className="cartItemsCount" data-testid="cartIconTest">
                         {Object.keys(cartItems).length}
                     </div>
                 </NavLink>

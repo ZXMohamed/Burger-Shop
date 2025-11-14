@@ -7,9 +7,9 @@ import { rightIn } from "../../animation/rightIn";
 const Founder = () => {
 
   return (
-    <section className="founder">
+    <section data-testid="founderTest" className="founder">
       <article>
-        <motion.img src={ owner } alt="Founder" height={ 200 } width={ 200 }  {...rightIn(0.4)}/>
+        <motion.img src={ owner } alt="Nelson" height={ 200 } width={ 200 }  {...rightIn(0.4)}/>
         <motion.h3  {...upIn(0.2)}>Nelson</motion.h3>
 
         <motion.p  {...upIn(0.6)}>

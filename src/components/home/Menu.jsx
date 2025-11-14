@@ -11,7 +11,7 @@ const Menu = () => {
     const addItemToCart = useCart((state) => state.add);
 
     const add = useCallback((item) => {
-        addItemToCart(item)
+        addItemToCart(item);
     }, []);
     
     useEffect(
@@ -21,11 +21,11 @@ const Menu = () => {
             } else if (addCartItemSuccess.state === false) {
                 toast.info(`" ${addCartItemSuccess.item?.name} " is already in cart!"`);
             }
-        }, [addCartItemSuccess.state,addCartItemSuccess?.item]
+        }
     );
 
     return (
-        <section id="menu">
+        <section id="menu" data-testid="menuTest">
             <h1>MENU</h1>
             <div>
                 { menu.map((item, inx) => (
