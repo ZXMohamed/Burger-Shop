@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { burger2 } from "../../assets/images/images";
 
 const Contact = () => {
-
+   
     const form = useFormik({
         initialValues: {
             name:"",
@@ -17,7 +17,6 @@ const Contact = () => {
         },
         validationSchema: ContactSchema,
         onSubmit: (data, { resetForm }) => {
-            toast("Thank you for contacting us! We will get back to you shortly.");
             alert(Object.values(data).join(" / "));
             resetForm();
         }
