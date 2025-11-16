@@ -22,7 +22,7 @@ export const useCart = create((set) => ({
                 success: { state: true, item: payload },
                 cart: {
                     ...state.cart,
-                    [payload.id]: payload
+                    [payload.id]: { quantity: 1 }
                 }
             })
         }

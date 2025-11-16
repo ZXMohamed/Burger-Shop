@@ -10,8 +10,8 @@ const Menu = () => {
     const addCartItemSuccess = useCart((state) => state.success);
     const addItemToCart = useCart((state) => state.add);
 
-    const add = useCallback((item) => {
-        addItemToCart(item);
+    const add = useCallback((id) => {
+        addItemToCart({ id });
     }, []);
     
     useEffect(
@@ -19,7 +19,8 @@ const Menu = () => {
             if (addCartItemSuccess.state === true) {
                 toast.success("added to cart successfully!");
             } else if (addCartItemSuccess.state === false) {
-                toast.info(`" ${addCartItemSuccess.item?.name} " is already in cart!"`);
+                const item = menu[addCartItemSuccess.item.id];
+                toast.info(`" ${item.name} " is already in cart!"`);
             }
         }
     );
@@ -28,7 +29,7 @@ const Menu = () => {
         <section id="menu" data-testid="menuTest">
             <h1>MENU</h1>
             <div>
-                { menu.map((item, inx) => (
+                { Object.values(menu).map((item, inx) => (
                     <MenuCard
                         key={ inx }
                         id={ item.id }
