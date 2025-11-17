@@ -54,7 +54,7 @@ const Cart = () => {
     } else if (Object.keys(cartItems).length <= 0) {
       toast.error("no items in cart!");
     } else if (calculSubtotal <= 0) {
-      toast.error("quantity is zero please add at less 1!");
+      toast.error("quantity is zero please add at lest 1!");
     } else {
       toast.error("wrong proccess!");
     }
@@ -63,7 +63,7 @@ const Cart = () => {
   return (
     <section className="cart">
       <motion.article {...upIn(0)}>
-        <h1>checkout</h1>
+        <h1>Checkout</h1>
         <section>
           { !Object.keys(cartItems).length && <h4 className="noItemsMsg"><b>No items added yet!</b></h4> }
           
@@ -75,21 +75,21 @@ const Cart = () => {
           <article>
             <div>
               <h4>Sub Total</h4>
-              <p>{ calculSubtotal }<MdCurrencyRupee /></p>
+              <p data-testid="subTotalTest">{ calculSubtotal }<MdCurrencyRupee /></p>
             </div>
             <div>
               <h4>Tax</h4>
-              <p>{ calculTax() }<MdCurrencyRupee /></p>
+              <p data-testid="taxTest">{ calculTax() }<MdCurrencyRupee /></p>
             </div>
             <div>
               <h4>Shipping Charges</h4>
-              <p>{ calculShipping() }<MdCurrencyRupee /></p>
+              <p data-testid="shippingTest">{ calculShipping() }<MdCurrencyRupee /></p>
             </div>
             <div>
               <h4>Total</h4>
-              <p>{ calculTotal() }<MdCurrencyRupee /></p>
+              <p data-testid="TotalTest">{ calculTotal() }<MdCurrencyRupee /></p>
             </div>
-            <button onClick={ checkout }>Checkout</button>
+            <button onClick={ checkout } data-testid={"checkoutTest"}>Checkout</button>
           </article>
         </section>
       </motion.article>
