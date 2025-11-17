@@ -3,37 +3,48 @@
   background-color: $pink;
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   > article {
-    height: 100%;
     background-color: white;
-    max-width: 900px;
+    width:clamp(300px, 900px, 900px);
     margin: auto;
-    padding: 2rem;
-
-    >.noItemsMsg{
+    
+    >h1{
+      background-color: $dark;
       color: $red;
+      padding: 30px 40px;
     }
-
-    > article {
+    
+    >section{
       padding: 2rem;
-      > div {
-        display: flex;
-        justify-content: space-between;
-        margin: 1rem 0;
-      }
 
-      > button {
-        background-color: $red;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        text-align: center;
-        margin-top: 2rem;
-        border:none;
-        outLine:none;
-        display:block;
-        margin:auto;
+      >.noItemsMsg{
+        color: $red;
+      }
+  
+      > article {
+        padding: 2rem;
+        > div {
+          display: flex;
+          justify-content: space-between;
+          margin: 1rem 0;
+        }
+  
+        > button {
+          background-color: $red;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          text-align: center;
+          margin-top: 2rem;
+          border:none;
+          outLine:none;
+          display:block;
+          margin:auto;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 
-const CartItem = memo(({ id, title, price, quantity, photo, inx, increment, decrement }) => {
+const CartItem = memo(({ id, title, price, quantity, photo, increment, decrement }) => {
 
   return (
     <div className="cartItem">
@@ -11,9 +11,9 @@ const CartItem = memo(({ id, title, price, quantity, photo, inx, increment, decr
       </div>
       <div>
         <h5>{ price }<MdCurrencyRupee /></h5>
-        <button onClick={ () => { decrement(inx) } }>-</button>
+        <button onClick={ () => { decrement(id) } }>-</button>
         <input type="number" readOnly value={ quantity } />
-        <button onClick={ () => { increment(inx) } }>+</button>
+        <button onClick={ () => { increment(id) } }>+</button>
       </div>
     </div>)
 });
