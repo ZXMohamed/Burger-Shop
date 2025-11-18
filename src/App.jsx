@@ -11,6 +11,7 @@ import "./styles/cart.scss";
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import CartWrapper from "./components/templates/cartWrapper";
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" exact element={ <>main</> } />
         <Route path="/about" element={ <>about</> } />
 
-        <Route path="/cart" element={ <><Outlet/></> }>
+        <Route path="/cart" element={ <CartWrapper /> }>
           <Route index element={ <Cart/> } />
           <Route path="shipping" element={ <>shipping</> } />
         </Route>

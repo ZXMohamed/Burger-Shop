@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 export const useCart = create((set) => ({
 
-    cart: { },
+    cart: { 1: { quantity: 1 }, 2: { quantity: 1 } },
     success: { state: null, item: {} },
 
     add: (payload) => set((state) => {
