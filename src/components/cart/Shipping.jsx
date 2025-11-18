@@ -1,24 +1,25 @@
 import React, { useEffect, useId, useMemo, useState } from "react";
 import { Country, State } from "country-state-city";
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 import { useFormik } from "formik";
 import ShippingSchema from "../../forms/utils/shippingSchema";
 import { useOrder } from "../../state/order";
 import { useCart } from "../../state/cart";
 import { v4 } from "uuid";
-
+import { motion } from "framer-motion";
+import { upIn } from "../../animation/upIn";
 
 const Shipping = () => {
 
   const goto = useNavigate();
 
-  const cart = useCart((state) => state.cart);
+  const { cart } = useOutletContext();
   const emptyCart = useCart((state) => state.empty);
 
   const addOrder = useOrder((state) => state.add);
 
   const orderId = useMemo(() => v4(), []);
-  
+
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
 
@@ -29,7 +30,8 @@ const Shipping = () => {
   const pinCodeId = useId();
   const phoneNumberId = useId();
 
-  useEffect(() => { 
+  useEffect(() => {
+
     Country && setCountries(Country.getAllCountries().map((i, inx) => (
       <option value={ i.isoCode } key={ inx }>
         { i.name }
@@ -42,7 +44,7 @@ const Shipping = () => {
       </option>
     )))
   
-  }, [])
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -74,12 +76,11 @@ const Shipping = () => {
       resetForm();
     }
   });
-  
-  
+
 
   return (
     <section className="shipping">
-      <section>
+      <motion.section {...upIn(0)}>
         <h1>Shipping Details</h1>
         <form onSubmit={formik.handleSubmit}>
           <div>
@@ -130,7 +131,7 @@ const Shipping = () => {
           </button>
            
         </form>
-      </section>
+      </motion.section>
     </section>
   );
 }
