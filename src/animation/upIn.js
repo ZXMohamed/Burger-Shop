@@ -1,10 +1,10 @@
-export const rightIn = (delay = 0) => ({
+export const upIn = (delay = 0) => ({
     initial: {
-        x: "-100%",
+        y: "100%",
         opacity: 0
     },
     whileInView: {
-        x: 0,
+        y: 0,
         opacity: 1
     },
     transition: {
