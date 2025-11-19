@@ -2,7 +2,7 @@ import React from "react";
 import { AiFillInstagram, AiFillYoutube, AiFillGithub } from "react-icons/ai";
 const Footer = () => {
     return (
-        <footer>
+        <footer data-testid="footerTest">
             <div>
                 <h2>Burger Shop</h2>
                 <p>We are trying to give you the best taste possible.</p>

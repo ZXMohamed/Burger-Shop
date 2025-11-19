@@ -4,12 +4,15 @@ import { NavLink } from "react-router";
 import { FiShoppingCart } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { rightIn } from "../../animation/rightIn";
+import { useCart } from "../../state/cart";
 
 const Header = () => {
 
+    const cartItems = useCart((state) => state.cart);
+
     return (
-        <nav>
-            <motion.div {...rightIn}>
+        <nav data-testid="headerTest">
+            <motion.div {...rightIn(0)}>
                 <IoFastFoodOutline />
             </motion.div>
             <div>
@@ -19,7 +22,9 @@ const Header = () => {
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/cart">
                     <FiShoppingCart />
-                    <div style={ { marginLeft: "5px", display: "inline-flex", justifyContent: "center", alignItems: "center", width: "25px", height: "25px", backgroundColor: "#f7f7f7", color: "maroon", borderRadius: "50%" } }></div>
+                    <div className="cartItemsCount" data-testid="cartIconTest">
+                        {Object.keys(cartItems).length}
+                    </div>
                 </NavLink>
             </div>
         </nav>

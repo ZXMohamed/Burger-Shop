@@ -30,6 +30,8 @@ const Shipping = () => {
   const pinCodeId = useId();
   const phoneNumberId = useId();
 
+  let onUnmount = () => { };
+
   useEffect(() => {
 
     Country && setCountries(Country.getAllCountries().map((i, inx) => (
@@ -43,8 +45,10 @@ const Shipping = () => {
         { i.name }
       </option>
     )))
-  
+
   }, []);
+
+  useEffect(() => onUnmount(), []);
 
   const formik = useFormik({
     initialValues: {
@@ -71,8 +75,8 @@ const Shipping = () => {
           paymentMethod: "COD"
         }
       });
-      emptyCart();
-      goto("/myorders");
+      onUnmount = () => emptyCart();
+      goto("/myorders", { replace: true });
       resetForm();
     }
   });
@@ -85,19 +89,19 @@ const Shipping = () => {
         <form onSubmit={formik.handleSubmit}>
           <div>
             <label htmlFor={homeNumberId}>H.No.</label>
-            <input type="text" id={homeNumberId} name={"homeNumber"} placeholder="Enter House No." onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} />
+            <input type="text" id={homeNumberId} name={"homeNumber"} placeholder="Enter House No." onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="homeNumberTest" />
           </div>
           <span>{ formik.errors.homeNumber }</span>
           
           <div>
             <label htmlFor={cityId}>City</label>
-            <input type="text" id={cityId} name={"city"} placeholder="Enter City" onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} />
+            <input type="text" id={cityId} name={"city"} placeholder="Enter City" onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="cityTest" />
           </div>
           <span>{ formik.errors.city }</span>
           
           <div>
             <label htmlFor={countryId}>Country</label>
-            <select id={countryId} name={"country"} onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset}>
+            <select id={countryId} name={"country"} onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="countryTest">
               <option value="">Country</option>
               { countries}
             </select>
@@ -106,7 +110,7 @@ const Shipping = () => {
           
           <div>
             <label htmlFor={stateId}>State</label>
-            <select id={stateId} name={"state"} onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset}>
+            <select id={stateId} name={"state"} onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="stateTest">
               <option value="">State</option>
               { states }
             </select>
@@ -115,18 +119,18 @@ const Shipping = () => {
           
           <div>
             <label htmlFor={pinCodeId}>Pin Code</label>
-            <input type="number" id={pinCodeId} name={"pinCode"} placeholder="Enter Pin code" onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset}/>
+            <input type="number" id={pinCodeId} name={"pinCode"} placeholder="Enter Pin code" onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="pinCodeTest"/>
           </div>
           <span>{ formik.errors.pinCode }</span>
           
           <div>
             <label htmlFor={phoneNumberId}>Phone No.</label>
-            <input type="number" id={phoneNumberId} name={"phoneNumber"} placeholder="Enter Phone No." onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset}/>
+            <input type="number" id={phoneNumberId} name={"phoneNumber"} placeholder="Enter Phone No." onChange={formik.handleChange} onBlur={formik.handleBlur} onReset={formik.handleReset} data-testid="phoneNumberTest"/>
           </div>
           <span>{ formik.errors.phoneNumber }</span>
           
 
-          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } }>
+          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest">
             {formik.isSubmitting?"Confirming Order":"Confirm Order"}
           </button>
            
