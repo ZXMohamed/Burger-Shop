@@ -8,6 +8,7 @@ import { useCart } from "../../state/cart";
 import { v4 } from "uuid";
 import { motion } from "framer-motion";
 import { upIn } from "../../animation/upIn";
+import Turnstile, { useTurnstile } from "react-turnstile";
 
 const Shipping = () => {
 
@@ -50,6 +51,8 @@ const Shipping = () => {
 
   useEffect(() => onUnmount(), []);
 
+  const turnstile = useTurnstile();
+
   const formik = useFormik({
     initialValues: {
       homeNumber: '',
@@ -58,6 +61,7 @@ const Shipping = () => {
       state: '',
       pinCode: '',
       phoneNumber: '',
+      "cf-turnstile-response": ""
     },
     validationSchema: ShippingSchema,
     onSubmit: (value, { resetForm }) => {
@@ -78,9 +82,16 @@ const Shipping = () => {
       onUnmount = () => emptyCart();
       goto("/myorders", { replace: true });
       resetForm();
+      turnstile.reset();
     }
   });
 
+    const handleOnVerify = (token) => {
+      formik.setFieldValue("cf-turnstile-response", token);
+      if (formik.errors["cf-turnstile-response"]) {
+          formik.setFieldError("cf-turnstile-response", '');
+      }
+    }
 
   return (
     <section className="shipping">
@@ -129,7 +140,10 @@ const Shipping = () => {
           </div>
           <span>{ formik.errors.phoneNumber }</span>
           
-
+          <br />
+          <Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme="dark" language="en" onVerify={handleOnVerify} style={{justifyContent:"center"}}/>
+          <span>{ formik.errors["cf-turnstile-response"] }</span>
+          
           <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest">
             {formik.isSubmitting?"Confirming Order":"Confirm Order"}
           </button>

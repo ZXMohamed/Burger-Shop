@@ -23,6 +23,9 @@ const ShippingSchema = Yup.object().shape({
         .matches(phoneNumber.pattern, 'Phone Number must be only digits')
         .min(phoneNumber.min, 'Phone Number must be at least 10 digits')
         .required('Phone Number is required'),
+    
+    "cf-turnstile-response": Yup.string()
+        .required('Complete the security check')
 });
 
 export default ShippingSchema;
