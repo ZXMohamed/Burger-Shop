@@ -14,6 +14,9 @@ const ContactSchema = Yup.object().shape({
     message: Yup.string()
         .min(message.min, 'Message is too short (min 10 characters)')
         .required('Message is required'),
+    
+    "cf-turnstile-response": Yup.string()
+        .required('Complete the security check')
 });
 
 export default ContactSchema;
