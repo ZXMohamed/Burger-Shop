@@ -3,8 +3,12 @@ import MenuCard from "./MenuCard";
 import useMenu from "../../hook/useMenu";
 import { toast } from "react-toastify";
 import { useCart } from "../../state/cart";
+import { useTranslation } from "react-i18next";
 
 const Menu = () => {
+
+    const { t } = useTranslation();
+
     const menu = useMenu();
     
     const addCartItemSuccess = useCart((state) => state.success);
@@ -15,21 +19,21 @@ const Menu = () => {
     }, []);
     
     useEffect(
-        () => {
+        () => {//! on mount this toast fired
             if (addCartItemSuccess.state === true) {
-                toast.success("added to cart successfully!");
+                toast.success(t(`msgs.cart.add`));
             } else if (addCartItemSuccess.state === false) {
                 const item = menu[addCartItemSuccess.item.id];
-                toast.info(`" ${item.name} " is already in cart!"`);
+                toast.info(`" ${item.name} " ${t(`msgs.cart.exist`)}`);
             }
         }
     );
 
     return (
         <section id="menu" data-testid="menuTest">
-            <h1>MENU</h1>
+            <h1>{ t(`home.menu.title`) }</h1>
             <div>
-                { Object.values(menu).map((item, inx) => (
+                { Object.values(menu()).map((item, inx) => (
                     <MenuCard
                         key={ inx }
                         id={ item.id }

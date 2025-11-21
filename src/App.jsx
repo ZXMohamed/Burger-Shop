@@ -14,9 +14,12 @@ import "./styles/founder.scss";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+import './language/i18n.js';
+
 
 function App() {
-  
+
+
   return (
     <Router>
       <Header />
