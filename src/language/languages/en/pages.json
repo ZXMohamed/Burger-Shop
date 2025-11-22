@@ -1,0 +1,30 @@
+{
+    "home":{
+        "hero":{
+            "title":"Burger Shop",
+            "description":"Give yourself a tasty burger.",
+            "exploreMenu":"Explore Menu"
+        },
+        "menu":{
+            "title":"MENU",
+            "buyNow":"Buy Now"
+        },
+        "founder":{
+            "name":"Nelson",
+            "about":"Hey, Everyone I am Nelson, the founder of Burger Shop. Our aim is to create the most tasty burger on planet."
+        }
+    },
+    "about":{
+        "title":"About Us",
+        "shop":{
+            "title":"Burger Shop",
+            "description":"This is Burger Shop. The place for most tasty burgers on the enitre earth.",
+            "menuLinkDescription":"Explore the various type of food and burgers. Click below to see the menu"
+        },
+        "founder":{
+            "title":"Founder",
+            "name":"Nelson",
+            "about":"I am Nelson, the founder of Burger Shop. Affiliated to God Taste..."
+        }
+    }
+}
