@@ -1,0 +1,36 @@
+{
+    "home":{
+        "hero":{
+            "title":"Burger Shop",
+            "description":"Give yourself a tasty burger.",
+            "exploreMenu":"Explore Menu"
+        },
+        "menu":{
+            "title":"MENU",
+            "buyNow":"Buy Now"
+        },
+        "founder":{
+            "name":"Nelson",
+            "about":"Hey, Everyone I am Nelson, the founder of Burger Shop. Our aim is to create the most tasty burger on planet."
+        }
+    },
+    "contact":{
+        "title":"Contact Us",
+        "form":{
+            "inputs":{
+                "name":{
+                    "placeholder":"name"
+                },
+                "email":{
+                    "placeholder":"email"
+                },
+                "message":{
+                    "placeholder":"message"
+                }
+            },
+            "submit":{
+                "title":"send"
+            }
+        }
+    }
+}

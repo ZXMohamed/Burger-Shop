@@ -1,17 +1,21 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { AiFillInstagram, AiFillYoutube, AiFillGithub } from "react-icons/ai";
 const Footer = () => {
+
+    const { t } = useTranslation();
+
     return (
-        <footer>
+        <footer data-testid="footerTest">
             <div>
-                <h2>Burger Shop</h2>
-                <p>We are trying to give you the best taste possible.</p>
+                <h2>{ t(`footer.logo.title`) }</h2>
+                <p>{ t(`footer.logo.description`) }</p>
                 <br />
-                <em>We give attention to genuine feedback.</em>
-                <strong>All right received @burgershop</strong>
+                <em>{ t(`footer.logo.feedback`) }</em>
+                <strong>{ t(`footer.logo.rights`) }</strong>
             </div>
             <aside>
-                <h4>Follow Us</h4>
+                <h4>{ t(`footer.social.title`) }</h4>
                 <a href="https://youtube.com">
                     <AiFillYoutube />
                 </a>
