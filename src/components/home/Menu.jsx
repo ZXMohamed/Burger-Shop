@@ -33,7 +33,7 @@ const Menu = () => {
         <section id="menu" data-testid="menuTest">
             <h1>{ t(`home.menu.title`) }</h1>
             <div>
-                { Object.values(menu()).map((item, inx) => (
+                { Object.values(menu(t)).map((item, inx) => (
                     <MenuCard
                         key={ inx }
                         id={ item.id }
