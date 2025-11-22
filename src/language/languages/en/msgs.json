@@ -1,0 +1,10 @@
+{
+    "msgs":{
+        "cart":{
+            "add":"added to cart successfully!",
+            "exist":"is already in cart!",
+            "empty":"cart is empty!",
+            "zeroQuantity":"quantity is zero please add at lest 1!"
+        }
+    }
+}

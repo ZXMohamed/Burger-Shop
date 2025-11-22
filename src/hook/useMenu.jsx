@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { menu } from '../menu/menuContext';
+import { Menu } from '../menu/menuContext';
 
 function useMenu() {
     
-    const menuData = useContext(menu);
+    const menuData = useContext(Menu);
 
     return menuData;
 }

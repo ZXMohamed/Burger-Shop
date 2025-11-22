@@ -1,8 +1,10 @@
+import i18n from "../language/i18n";
+
 export function checkout(menu, cart) {
 
     let subtotal = 0;
     for (const id in cart) {
-        const menuItem = menu[id];
+        const menuItem = menu(i18n.t)[id];
         subtotal += (parseFloat(menuItem.price) * parseInt(cart[id].quantity));
     }
 

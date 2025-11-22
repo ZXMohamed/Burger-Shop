@@ -1,0 +1,29 @@
+{
+    "home":{
+        "hero":{
+            "title":"متجر برجر",
+            "description":"أعطي نفسك برجر لذيذ.",
+            "exploreMenu":"استكشاف القائمة"
+        },
+        "menu":{
+            "title":"القائمة",
+            "buyNow":"شراء"
+        },
+        "founder":{
+            "name":"نيلسون",
+            "about":"أهلاً بالجميع، أنا نيلسون، مؤسس برجر شوب. هدفنا هو تقديم ألذ برجر في العالم."
+        }
+    },
+    "cart":{
+        "title":"الدفع",
+        "calculation":{
+            "subTotal":"الحساب",
+            "tax":"ضريبة",
+            "shippingCharges":"رسوم الشحن",
+            "total":"المجموع"
+        },
+        "checkoutButton":{
+            "title":"الدفع"
+        }
+    }
+}

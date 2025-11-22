@@ -1,15 +1,13 @@
 import React from 'react'
-import { createContext } from 'react';
 import { data } from '../data/menu';
-
-export const menu = createContext(data);
+import { Menu } from './menuContext';
 
 function MenuProvider({children}) {
 
     return (
-        <menu.Provider value={ data }>
+        <Menu.Provider value={ data }>
             { children }
-        </menu.Provider>
+        </Menu.Provider>
     );
 }
 
