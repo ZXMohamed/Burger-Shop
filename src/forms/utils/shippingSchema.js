@@ -1,31 +1,32 @@
 import * as Yup from 'yup';
 import { phoneNumber, pinCode } from './rules';
+import { createMsg } from './createMsg';
 
-const ShippingSchema = Yup.object().shape({
+const ShippingSchema = (t) => Yup.object({
     homeNumber: Yup.string()
-        .required('Home No. is required'),
+        .required(createMsg(t, "required", "shipping","homeNumber")),
 
     city: Yup.string()
-        .required('City is required'),
+        .required(createMsg(t, "required", "shipping", "city")),
 
     country: Yup.string()
-        .required('Country is required'),
+        .required(createMsg(t, "required", "shipping", "country")),
 
     state: Yup.string()
-        .required('State is required'),
+        .required(createMsg(t, "required", "shipping", "state")),
 
     pinCode: Yup.string()
-        .matches(pinCode.pattern, 'Pin Code must be only digits')
-        .min(pinCode.min, 'Pin Code must be at least 5 digits')
-        .required('Pin Code is required'),
+        .matches(pinCode.pattern, createMsg(t, "validation", "shipping", "pinCode"))
+        .min(pinCode.min, createMsg(t, "min", "shipping", "pinCode", pinCode.min))
+        .required(createMsg(t, "required", "shipping", "pinCode")),
 
     phoneNumber: Yup.string()
-        .matches(phoneNumber.pattern, 'Phone Number must be only digits')
-        .min(phoneNumber.min, 'Phone Number must be at least 10 digits')
-        .required('Phone Number is required'),
+        .matches(phoneNumber.pattern, createMsg(t, "validation", "shipping", "phoneNumber"))
+        .min(phoneNumber.min, createMsg(t, "min", "shipping", "phoneNumber", phoneNumber.min))
+        .required(createMsg(t, "required", "shipping", "phoneNumber")),
     
     "cf-turnstile-response": Yup.string()
-        .required('Complete the security check')
+        .required(createMsg(t, "securityCheck", "shipping"))
 });
 
 export default ShippingSchema;

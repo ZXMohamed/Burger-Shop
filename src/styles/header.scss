@@ -2,7 +2,7 @@
 
 nav {
   height: 5rem;
-  padding: 2rem;
+  padding: 0px 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +23,7 @@ nav {
     }
 
     > a {
+      text-transform: capitalize;
       margin: 0 2rem;
       color: $dark;
       transition: color 0.3s;
@@ -53,6 +54,13 @@ nav {
       border-radius: 50%;
     }
 
+    > select{
+      border: none;
+      outline: none;
+      text-transform: uppercase;
+      padding: 5px;
+      border-radius: 5px;
+    }
   }
 }
 

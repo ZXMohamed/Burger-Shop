@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useMatch, useNavigate } from "react-router";
 import { useCart } from "../../state/cart";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 
 function CartWrapper() {
@@ -9,6 +10,8 @@ function CartWrapper() {
     const goto = useNavigate();
     const cartPage = useMatch("/cart");
     const shippingPage = useMatch("/cart/shipping");
+
+    const { t } = useTranslation();
 
     const cart = useCart((state) => state.cart);
 
@@ -20,12 +23,12 @@ function CartWrapper() {
         //*prevent open shipping page unless quantity > 0
 
         if (Object.keys(cart).length == 0) {
-            toast.error("cart is empty!");
+            toast.error(t(`msgs.cart.empty`));
             goto("/", { replace: true });
         } else {            
             if (shippingPage) {            
                 if (!Object.values(cart).some((item) => item.quantity > 0)) {
-                    toast.error("quantity is zero please add at lest 1!");
+                    toast.error(t(`msgs.cart.zeroQuantity`));
                     goto("/cart", { replace: true });
                 } else {
                     setOpen(true);
@@ -35,7 +38,7 @@ function CartWrapper() {
             }
         }
 
-    }, [cartPage, shippingPage, cart, goto]);
+    }, [t, cartPage, shippingPage, cart, goto]);
     
     return (
         open && <Outlet context={ { cart } }/>

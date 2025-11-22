@@ -1,0 +1,15 @@
+{
+    "msgs":{
+        "cart":{
+            "add":"تمت الإضافة",
+            "exist":"موجود بالفعل"
+        },
+        "forms":{
+            "min":"%input% قصير جدًا (الحد الأدنى %length% حرف)",
+            "max":"%input% طويل جدًا (الحد الأقصى %length% حرفًا)",
+            "required":"%input% مطلوب",
+            "validation":"%input% غير صالح",
+            "securityCheck":"إكمال فحص الأمان"
+        }
+    }
+}
