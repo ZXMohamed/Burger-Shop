@@ -1,0 +1,22 @@
+{
+    "nav":{
+        "tabs":{
+            "home":"home",
+            "contact":"contact",
+            "orders":"orders",
+            "about":"about"
+        }
+    },
+    "footer":{
+        "logo":{
+            "title":"Burger Shop",
+            "description":"We are trying to give you the best taste possible.",
+            "feedback":"We give attention to genuine feedback.",
+            "rights":"All right received @burgershop"
+        },
+        "social":{
+            "title":"follow us"
+        }
+
+    }
+}

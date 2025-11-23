@@ -1,0 +1,58 @@
+{
+    "home":{
+        "hero":{
+            "title":"Burger Shop",
+            "description":"Give yourself a tasty burger.",
+            "exploreMenu":"Explore Menu"
+        },
+        "menu":{
+            "title":"MENU",
+            "buyNow":"Buy Now"
+        },
+        "founder":{
+            "name":"Nelson",
+            "about":"Hey, Everyone I am Nelson, the founder of Burger Shop. Our aim is to create the most tasty burger on planet."
+        }
+    },
+    "orderDetails":{
+        "title":"Order Details",
+        "details":{
+            "shipping":{
+                "title":"Shipping",
+                "items":{
+                    "address":"Address"
+                }
+            },
+            "contact":{
+                "title":"Contact",
+                "items":{
+                    "phone":"Phone"
+                }
+            },
+            "status":{
+                "title":"status",
+                "items":{
+                    "orderStatus":"Order Status"
+                }
+            },
+            "payment":{
+                "title":"Payment",
+                "items":{
+                    "paymentMethod":"Payment Method"
+                }
+            },
+            "amount":{
+                "title":"amount",
+                "items":{
+                    "itemsTotal":"Items Total",
+                    "shippingCharges":"Shipping Charges",
+                    "tax":"Tax",
+                    "total":"Total"
+                }
+            },
+            "orderedItems":{
+                "title":"Ordered Items"
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "menu":{
+        "1":{"name":"Cheese Burger"},
+        "2":{"name":"Veg Cheese Burger"},
+        "3":{"name":"Cheese Burger with French Fries"}
+    }
+}

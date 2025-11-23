@@ -2,7 +2,7 @@
 
 nav {
   height: 5rem;
-  padding: 2rem;
+  padding: 0px 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,12 +23,13 @@ nav {
     }
 
     > a {
+      text-transform: capitalize;
       margin: 0 2rem;
       color: $dark;
       transition: color 0.3s;
 
       &:hover {
-        color: $lightdark;
+        color: $lightDark;
       }
 
       > svg {
@@ -36,9 +37,29 @@ nav {
         transition: inherit;
         font-size: 1.5rem;
         &:hover {
-          color: $lightdark;
+          color: $lightDark;
         }
       }
+    }
+
+    .cartItemsCount {
+      margin-left: 5px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      background-color: #f7f7f7;
+      color: maroon;
+      border-radius: 50%;
+    }
+
+    > select{
+      border: none;
+      outline: none;
+      text-transform: uppercase;
+      padding: 5px;
+      border-radius: 5px;
     }
   }
 }

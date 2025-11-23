@@ -4,11 +4,14 @@ import { useOrder } from "../../state/order";
 import useMenu from "../../hook/useMenu";
 import { checkout } from "../../utils/checkout";
 import { MdCurrencyRupee } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 
 const OrderDetails = () => {
 
     const { id: orderId } = useParams();
+
+    const { t } = useTranslation();
 
     const order = useOrder((state) => state.order[orderId]);
     const menu = useMenu();
@@ -18,65 +21,67 @@ const OrderDetails = () => {
     return (
         <section className="orderDetails">
             <section>
-                <h1>Order Details</h1>
+                <h1>{ t(`orderDetails.title`) }</h1>
                 <div>
-                    <h2>Shipping</h2>
+                    <h2>{ t(`orderDetails.details.shipping.title`) }</h2>
                     <p>
-                        <b>Address : </b>
+                        <b>{ t(`orderDetails.details.shipping.items.address`) } : </b>
                         <i>{ order.orderInfo.country + " " + order.orderInfo.state + " " + order.orderInfo.city + " " + order.orderInfo.HNo }</i>
                     </p>
                 </div>
                 <div>
-                    <h2>Contact</h2>
+                    <h2>{ t(`orderDetails.details.contact.title`) }</h2>
                     <p>
-                        <b>Phone : </b>
+                        <b>{ t(`orderDetails.details.contact.items.phone`) } : </b>
                         <i>{ order.orderInfo.PhoneNo }</i>
                     </p>
                 </div>
                 <div>
-                    <h2>Status</h2>
+                    <h2>{ t(`orderDetails.details.status.title`) }</h2>
                     <p>
-                        <b>Order Status : </b>
-                        <i>{ order.orderInfo.status }</i>
+                        <b>{ t(`orderDetails.details.status.items.orderStatus`) } : </b>
+                        <i>{ t(`myOrders.status.${order.orderInfo.status}`) }</i>
                     </p>
                 </div>
                 <div>
-                    <h2>Payment</h2>
+                    <h2>{ t(`orderDetails.details.payment.title`) }</h2>
                     <p>
-                        <b>Payment Method : </b>
-                        <i>{ order.orderInfo.paymentMethod }</i>
+                        <b>{ t(`orderDetails.details.payment.items.paymentMethod`) } : </b>
+                        <i>{ t(`myOrders.paymentMethod.${order.orderInfo.paymentMethod}`) }</i>
                     </p>
                 </div>
                 <div>
-                    <h2>Amount</h2>
+                    <h2>{ t(`orderDetails.details.amount.title`) }</h2>
                     <p>
-                        <b>Items Total : </b><i>{ calculateCheckout.subtotal }</i><MdCurrencyRupee />
+                        <bdi><b>{ t(`orderDetails.details.amount.items.itemsTotal`) } : </b><i>{ calculateCheckout.subtotal }</i><MdCurrencyRupee /></bdi>
                     </p>
                     <p>
-                        <b>Shipping Charges : </b><i>{ calculateCheckout.shipping }</i><MdCurrencyRupee />
+                        <bdi><b>{ t(`orderDetails.details.amount.items.shippingCharges`) } : </b><i>{ calculateCheckout.shipping }</i><MdCurrencyRupee /></bdi>
                     </p>
                     <p>
-                        <b>Tax : </b><i>{ calculateCheckout.tax }</i><MdCurrencyRupee />
+                        <bdi><b>{ t(`orderDetails.details.amount.items.tax`) } : </b><i>{ calculateCheckout.tax }</i><MdCurrencyRupee /></bdi>
                     </p>
                 </div>
                 <div className="total">
-                    <h3>Total</h3>
+                    <h3>{ t(`orderDetails.details.amount.items.total`) }</h3>
                     <div>
-                        { calculateCheckout.total }<MdCurrencyRupee />
+                        <bdi>{ calculateCheckout.total }<MdCurrencyRupee /></bdi>
                     </div>
                 </div>
                 <br />
                 <br />
                 <article>
-                    <h2>Ordered Items</h2>
-                    { Object.keys(order.order).map((id,inx) =>
-                        <div key={inx}>
-                            <h4>{ menu[id].name }</h4>
-                            <div>
-                                <span>{ order.order[id].quantity }</span> x <span>{ menu[id].price }<MdCurrencyRupee /></span>
+                    <h2>{ t(`orderDetails.details.orderedItems.title`) }</h2>
+                    { Object.keys(order.order).map((id, inx) => {
+                        const menuItem = menu(t)[id];
+                        
+                        return (
+                            <div key={ inx }>
+                                <h4>{ menuItem.name }</h4>
+                                <div><bdi><span>{ order.order[id].quantity }</span> x <span>{ menuItem.price }<MdCurrencyRupee /></span></bdi></div>
                             </div>
-                        </div>
-                    ) }
+                        );
+                    }) }
                 </article>
             </section>
         </section>

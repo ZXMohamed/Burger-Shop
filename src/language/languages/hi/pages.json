@@ -1,0 +1,58 @@
+{
+    "home":{
+        "hero":{
+            "title":"बर्गर की दुकान",
+            "description":"अपने आप को एक स्वादिष्ट बर्गर दीजिए।",
+            "exploreMenu":"मेनू एक्सप्लोर करें"
+        },
+        "menu":{
+            "title":"मेनू",
+            "buyNow":"अभी खरीदें"
+        },
+        "founder":{
+            "name":"नेल्सन",
+            "about":"हेलो दोस्तों, मैं नेल्सन हूँ, बर्गर शॉप का फाउंडर। हमारा मकसद दुनिया का सबसे टेस्टी बर्गर बनाना है।"
+        }
+    },
+    "orderDetails":{
+        "title":"ऑर्डर का विवरण",
+        "details":{
+            "shipping":{
+                "title":"शिपिंग",
+                "items":{
+                    "address":"पता"
+                }
+            },
+            "contact":{
+                "title":"संपर्क",
+                "items":{
+                    "phone":"फ़ोन"
+                }
+            },
+            "status":{
+                "title":"स्थिति",
+                "items":{
+                    "orderStatus":"आदेश की स्थिति"
+                }
+            },
+            "payment":{
+                "title":"भुगतान",
+                "items":{
+                    "paymentMethod":"भुगतान विधि"
+                }
+            },
+            "amount":{
+                "title":"मात्रा",
+                "items":{
+                    "itemsTotal":"कुल आइटम",
+                    "shippingCharges":"शिपिंग शुल्क",
+                    "tax":"कर",
+                    "total":"कुल"
+                }
+            },
+            "orderedItems":{
+                "title":"ऑर्डर किए गए आइटम"
+            }
+        }
+    }
+}
