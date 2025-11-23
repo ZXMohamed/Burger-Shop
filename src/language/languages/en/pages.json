@@ -1,0 +1,34 @@
+{
+    "home":{
+        "hero":{
+            "title":"Burger Shop",
+            "description":"Give yourself a tasty burger.",
+            "exploreMenu":"Explore Menu"
+        },
+        "menu":{
+            "title":"MENU",
+            "buyNow":"Buy Now"
+        },
+        "founder":{
+            "name":"Nelson",
+            "about":"Hey, Everyone I am Nelson, the founder of Burger Shop. Our aim is to create the most tasty burger on planet."
+        }
+    },
+    "myOrders":{
+        "ordersTable":{
+            "header":{
+                "orderId":"Order Id",
+                "status":"Status",
+                "totalPrice":"Total Price",
+                "paymentMethod":"Payment Method",
+                "action":"Action"
+            }
+        },
+        "status":{
+            "processing":"Processing"
+        },
+        "paymentMethods":{
+            "COD":"COD"
+        }
+    }
+}

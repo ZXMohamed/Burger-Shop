@@ -1,0 +1,12 @@
+{
+    "msgs":{
+        "cart":{
+            "add":"added to cart successfully!",
+            "exist":"is already in cart!"
+        },
+        "orders":{
+            "empty":"orders is empty!",
+            "unKnownId":"unknown order id!"
+        }
+    }
+}

@@ -7,8 +7,11 @@ import { checkout } from "../../utils/checkout";
 import useMenu from "../../hook/useMenu";
 import { motion } from "framer-motion";
 import { upIn } from "../../animation/upIn";
+import { useTranslation } from "react-i18next";
 
 const MyOrders = () => {
+
+  const { t } = useTranslation();
 
   const order = useOrder((state) => state.order);
   const menu = useMenu();
@@ -19,20 +22,20 @@ const MyOrders = () => {
         <table>
           <thead>
             <tr>
-              <th>Order Id</th>
-              <th>Status</th>
-              <th>Total Price</th>
-              <th>Payment Method</th>
-              <th>Action</th>
+              <th>{ t(`myOrders.ordersTable.header.orderId`) }</th>
+              <th>{ t(`myOrders.ordersTable.header.status`) }</th>
+              <th>{ t(`myOrders.ordersTable.header.totalPrice`) }</th>
+              <th>{ t(`myOrders.ordersTable.header.paymentMethod`) }</th>
+              <th>{ t(`myOrders.ordersTable.header.action`) }</th>
             </tr>
           </thead>
           <tbody>
             { Object.values(order).map((item, inx) => (
               <tr key={ inx }>
                 <td>{ item.orderCode }</td>
-                <td>{ item.orderInfo.status }</td>
+                <td>{ t(`myOrders.status.${item.orderInfo.status}`) }</td>
                 <td><MdCurrencyRupee />{ checkout(menu, item.order).total }</td>
-                <td>{ item.orderInfo.paymentMethod }</td>
+                <td>{ t(`myOrders.paymentMethods.${item.orderInfo.paymentMethod}`) }</td>
                 <td>
                   <Link to={ `/myorders/${item.orderCode}` }>
                     <AiOutlineEye />

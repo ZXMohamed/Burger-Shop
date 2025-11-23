@@ -8,7 +8,6 @@
   section {
     max-width: 900px;
     margin: auto;
-    // height: 100%;
     overflow-x: auto;
     padding: 2rem;
     
@@ -29,8 +28,7 @@
         }
       }
 
-      td,
-      th {
+      td,th {
         padding: 1rem;
       }
 
@@ -38,15 +36,25 @@
         background-color: $dark;
         color: white;
         &:first-child {
-          border-radius: 10px 0 0 0;
+          &:dir(ltr){
+            border-radius: 10px 0 0 0;
+          }
+          &:dir(rtl){
+            border-radius: 0 10px 0 0;
+          }
         }
         &:last-child {
-          border-radius: 0 10px 0 0;
+          &:dir(ltr){
+            border-radius: 0 10px 0 0;
+          }
+          &:dir(rtl){
+            border-radius: 10px 0 0 0;
+          }
         }
       }
 
       td {
-        color: $lightdark;
+        color: $lightDark;
 
         > img {
           width: 30px;
