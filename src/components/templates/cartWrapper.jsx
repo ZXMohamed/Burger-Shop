@@ -41,7 +41,7 @@ function CartWrapper() {
     }, [t, cartPage, shippingPage, cart, goto]);
     
     return (
-        open && <Outlet context={ { cart } }/>
+        open && <Outlet context={ { cart } }/>//!open even if has error
     )
     
 }
