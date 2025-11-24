@@ -8,6 +8,8 @@ footer {
   grid-template-columns: 2fr 1fr;
   color: white;
   align-items: center;
+  border-radius: 20px 20px 0 0;
+  margin-top: -20px;
 
   h2 {
     color: $red;

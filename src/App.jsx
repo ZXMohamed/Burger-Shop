@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 
@@ -15,10 +16,16 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import './language/i18n.js';
+import { useCurrentCurrency } from "./state/currentCurrency.js";
 
 
 function App() {
 
+  //*detect user currency from The Browser or IP
+  const detectCurrentCurrency = useCurrentCurrency((state) => state.detect);
+  useEffect(() => {
+    detectCurrentCurrency();
+  }, []);
 
   return (
     <Router>
