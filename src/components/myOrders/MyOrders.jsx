@@ -8,10 +8,16 @@ import useMenu from "../../hook/useMenu";
 import { motion } from "framer-motion";
 import { upIn } from "../../animation/upIn";
 import { useTranslation } from "react-i18next";
+import CurrencyIcon from "../currencyIcon/currencyIcon";
+import { useCurrentCurrency } from "../../state/currentCurrency";
+import { useCurrency } from "../../state/currency";
 
 const MyOrders = () => {
 
   const { t } = useTranslation();
+
+  const { data : currency, isSuccess: currencyIsSuccess } = useCurrency();
+  const currentCurrency = useCurrentCurrency((state)=>state.current);
 
   const order = useOrder((state) => state.order);
   const menu = useMenu();
@@ -34,7 +40,7 @@ const MyOrders = () => {
               <tr key={ inx }>
                 <td>{ item.orderCode }</td>
                 <td>{ t(`myOrders.status.${item.orderInfo.status}`) }</td>
-                <td><MdCurrencyRupee />{ checkout(menu, item.order).total }</td>
+                <td>{ currencyIsSuccess && <bdi>{ checkout(menu, item.order, currency.rates[currentCurrency]).total } <CurrencyIcon currency={ currentCurrency } /></bdi> }</td>
                 <td>{ t(`myOrders.paymentMethods.${item.orderInfo.paymentMethod}`) }</td>
                 <td>
                   <Link to={ `/myorders/${item.orderCode}` }>

@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router";
+
+import { useCurrentCurrency } from "./state/currentCurrency";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import MyOrders from "./components/myOrders/MyOrders";
+
+import OrderWrapper from "./components/templates/orderWrapper";
 
 import { ToastContainer } from "react-toastify";
 
@@ -12,11 +17,16 @@ import "./styles/myorders.scss";
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import OrderWrapper from "./components/templates/orderWrapper";
 
 
 function App() {
   
+  const detectCurrentCurrency = useCurrentCurrency((state) => state.detect);
+
+  useEffect(() => { 
+    detectCurrentCurrency();
+  },[]);
+
   return (
     <Router>
       <Header />
