@@ -20,7 +20,8 @@
             "shipping":{
                 "title":"Shipping",
                 "items":{
-                    "address":"Address"
+                    "address":"Address",
+                    "pinCode":"Pin Code"
                 }
             },
             "contact":{
@@ -30,7 +31,7 @@
                 }
             },
             "status":{
-                "title":"status",
+                "title":"Status",
                 "items":{
                     "orderStatus":"Order Status"
                 }
@@ -42,7 +43,7 @@
                 }
             },
             "amount":{
-                "title":"amount",
+                "title":"Amount",
                 "items":{
                     "itemsTotal":"Items Total",
                     "shippingCharges":"Shipping Charges",

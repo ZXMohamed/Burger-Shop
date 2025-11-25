@@ -20,7 +20,8 @@
             "shipping":{
                 "title":"شحن",
                 "items":{
-                    "address":"عنوان"
+                    "address":"عنوان",
+                    "pinCode":"رقم بريدي"
                 }
             },
             "contact":{
@@ -51,7 +52,7 @@
                 }
             },
             "orderedItems":{
-                "title":"العناصر المطلوبة"
+                "title":"الطلب"
             }
         }
     }

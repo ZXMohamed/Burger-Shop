@@ -20,7 +20,8 @@
             "shipping":{
                 "title":"शिपिंग",
                 "items":{
-                    "address":"पता"
+                    "address":"पता",
+                    "pinCode":"पिन कोड"
                 }
             },
             "contact":{

@@ -12,10 +12,12 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "@tanstack/react-query": "^5.90.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "country-state-city": "^3.1.2",
+    "currency-icons": "^1.0.14",
     "framer-motion": "^7.2.1",
     "i18next": "^25.6.3",
     "mdb-react-ui-kit": "^6.0.0",

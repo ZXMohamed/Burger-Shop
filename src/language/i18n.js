@@ -18,7 +18,7 @@ import menu_HI from "./languages/hi/menu.json";
 import msgs_HI from "./languages/hi/msgs.json";
 
 
-const resources = {
+export const resources = {
   en: { alias: "en", translation: { ...layout_EN, ...pages_EN, ...menu_EN, ...msgs_EN } },
   ar: { alias: "ع", translation: { ...layout_AR, ...pages_AR, ...menu_AR, ...msgs_AR } },
   hi: { alias: "ह", translation: { ...layout_HI, ...pages_HI, ...menu_HI, ...msgs_HI } }
