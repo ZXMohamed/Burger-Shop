@@ -10,6 +10,9 @@
             "required":"%input% is required",
             "validation":"Invalid %input%",
             "securityCheck":"Complete the security check"
+        },
+        "payment":{
+            "failed":"payment error!"
         }
     }
 }

@@ -23,16 +23,16 @@
                     "placeholder":"رقم المنزل"
                 },
                 "city":{
-                    "label":"مدينة",
+                    "label":"المدينة",
                     "placeholder":" المدينة"
                 },
                 "country":{
-                    "label":"دولة",
-                    "placeholder":"دولة"
+                    "label":"الدولة",
+                    "placeholder":"الدولة"
                 },
                 "state":{
-                    "label":"ولاية",
-                    "placeholder":"ولاية"
+                    "label":"الولاية",
+                    "placeholder":"الولاية"
                 },
                 "pinCode":{
                     "label":"الرمز البريدي",

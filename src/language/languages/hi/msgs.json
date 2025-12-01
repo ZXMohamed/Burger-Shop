@@ -10,6 +10,9 @@
             "required":"%input% आवश्यक है",
             "validation":"अमान्य %input%",
             "securityCheck":"सिक्योरिटी चेक पूरा करें"
+        },
+        "payment":{
+            "failed":"पेमेंट में गलती!"
         }
     }
 }

@@ -10,6 +10,9 @@
             "required":"%input% مطلوب",
             "validation":"%input% غير صالح",
             "securityCheck":"إكمال فحص الأمان"
+        },
+        "payment":{
+            "failed":"خطأ في عملية الدفع"
         }
     }
 }

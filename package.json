@@ -13,6 +13,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@reduxjs/toolkit": "^1.8.5",
+    "@tanstack/react-query": "^5.90.11",
+    "axios": "^1.13.2",
     "country-state-city": "^3.1.2",
     "formik": "^2.4.9",
     "framer-motion": "^7.2.1",
