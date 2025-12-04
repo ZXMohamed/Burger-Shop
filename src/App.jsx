@@ -6,6 +6,8 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components/home/Home";
 
+import "./styles/page.scss";
+import "./styles/scrollFollow.scss";
 import "./styles/header.scss";
 import "./styles/footer.scss";
 import "./styles/hero.scss";
@@ -17,6 +19,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import './language/i18n.js';
 import { useCurrentCurrency } from "./state/currentCurrency.js";
+import ScrollFollow from "./components/scrollFollow/scrollFollow.jsx";
 
 
 function App() {
@@ -31,23 +34,25 @@ function App() {
     <Router>
       <Header />
       <ToastContainer />
-      <Routes>
-        <Route path="/" exact element={ <Home/> } />
-        <Route path="/about" element={ <>about</> } />
+      <ScrollFollow>
+        <Routes>
+          <Route path="/" exact element={ <Home/> } />
+          <Route path="/about" element={ <>about</> } />
 
-        <Route path="/cart" element={ <><Outlet/></> }>
-          <Route index element={ <>cart</> } />
-          <Route path="shipping" element={ <>shipping</> } />
-        </Route>
-        
-        <Route path="/myorders" element={ <><Outlet /></> }>
-          <Route index element={ <>myorders</> } />
-          <Route path="order/:id" element={<>order</>} />
-        </Route>
-        
-        <Route path="/contact" element={ <>contact</> } />
-        <Route path="*" element={<>notFound</>} />
-      </Routes>
+          <Route path="/cart" element={ <><Outlet/></> }>
+            <Route index element={ <>cart</> } />
+            <Route path="shipping" element={ <>shipping</> } />
+          </Route>
+          
+          <Route path="/myorders" element={ <><Outlet /></> }>
+            <Route index element={ <>myorders</> } />
+            <Route path="order/:id" element={<>order</>} />
+          </Route>
+          
+          <Route path="/contact" element={ <>contact</> } />
+          <Route path="*" element={<>notFound</>} />
+        </Routes>
+      </ScrollFollow>
       <Footer />
     </Router>
   );

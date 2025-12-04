@@ -7,6 +7,7 @@ export const upIn = (delay = 0) => ({
         y: 0,
         opacity: 1
     },
+    viewport: { once: true, amount: 0 },
     transition: {
         delay: delay,
     }

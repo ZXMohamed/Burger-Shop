@@ -1,8 +1,13 @@
-@import "colors";
+@use "colors";
 
 .home {
-  height: 100vh;
+  height: 1080px;
   overflow-x: hidden;
+  background-image: url("../assets/images/homeBackground.jpg");
+  // background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  transition: 1s;
 
   > article {
     padding-left: 8rem;
@@ -14,7 +19,7 @@
       font-size: 4rem;
       text-transform: uppercase;
     }
-
+    
     > p {
       font-size: 1.2rem;
     }
@@ -24,7 +29,7 @@
     display: block;
     margin: 2rem 8rem;
     width: 10rem;
-    background-color: $red;
+    background-color: colors.$red;
     color: white;
     text-align: center;
     border: none;
@@ -33,32 +38,39 @@
     padding: 1rem;
     cursor: pointer;
     &:hover {
-      background-color: $redDark;
+      background-color: colors.$redDark;
     }
-  }
-
-  &::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-image: url("../assets/images/homeBackground.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    left: 0%;
-    z-index: -1;
   }
 }
 
 @media screen and (max-width: 700px) {
   .home {
-    > div {
-      text-align: center;
-      padding-left: 0rem;
+    height: 75vh;
+    background-position: -200px top;
+    > article {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 30vh;
+      > h1 {
+        text-align: center;
+      }
+
+      > p {
+        text-align: center;
+      }
     }
 
     > a {
-      margin: 2rem auto;
+      margin: auto;
+    }
+  }
+}
+
+@media screen and (max-height: 640px) {
+  .home {
+
+    > a {
+      display: none;
     }
   }
 }

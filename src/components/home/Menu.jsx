@@ -6,12 +6,13 @@ import { useCart } from "../../state/cart";
 import { useTranslation } from "react-i18next";
 import { useCurrentCurrency } from "../../state/currentCurrency";
 import { useCurrency } from "../../state/currency";
+import useUpdateEffect from "../../hook/useUpdateEffect";
 
 const Menu = () => {
 
     const { t } = useTranslation();
 
-    const { data: currency, isSuccess: currencyIsSuccess, isError: currencyIsError, isLoading: currencyIsLoading } = useCurrency();
+    const { data: currency, isSuccess: currencyIsSuccess, isError: currencyIsError } = useCurrency();
     const currentCurrency = useCurrentCurrency((state) => state.current);
 
     const menu = useMenu();
@@ -23,22 +24,20 @@ const Menu = () => {
         addItemToCart({ id });
     }, []);
     
-    useEffect(
-        () => {//! on mount this toast fired
-            if (addCartItemSuccess.state === true) {
-                toast.success(t(`msgs.cart.add`));
-            } else if (addCartItemSuccess.state === false) {
-                const item = menu(t)[addCartItemSuccess.item.id];
-                toast.info(`" ${item.name} " ${t(`msgs.cart.exist`)}`);
-            }
+    useUpdateEffect(() => {
+        if (addCartItemSuccess.state === true) {
+            toast.success(t(`msgs.cart.add`));
+        } else if (addCartItemSuccess.state === false) {
+            const item = menu(t)[addCartItemSuccess.item.id];
+            toast.info(`" ${item.name} " ${t(`msgs.cart.exist`)}`);
         }
-    );
+    });
 
     return (
-        <section id="menu" data-testid="menuTest">
+        <section id="menu" className="menuContainer" data-testid="menuTest">
             <h1>{ t(`home.menu.title`) }</h1>
             <div>
-                { Object.values(menu(t, currency?.rates[currentCurrency])).map((item, inx) => (
+                { currencyIsSuccess && Object.values(menu(t, currency?.rates[currentCurrency])).map((item, inx) => (
                     <MenuCard
                         key={ inx }
                         id={ item.id }
@@ -51,7 +50,9 @@ const Menu = () => {
                     />
                 )) }
             </div>
+            {currencyIsError && <span>{t(`msgs.currency.convertError`)}</span>}//!
         </section>
     );
 };
 export default Menu;
+

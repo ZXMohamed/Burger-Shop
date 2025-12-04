@@ -1,4 +1,4 @@
-@import "colors";
+@use "colors";
 
 nav {
   height: 5rem;
@@ -10,39 +10,43 @@ nav {
   background-color: white;
   border-radius: 0 0 20px 20px;
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 1000;
-  
+  overflow: hidden;
+
+  >.navTabs{
+    column-gap: 40px;
+  }
   > div {
     display: flex;
     align-items: center;
 
     > svg {
-      color: $red;
+      color: colors.$red;
       font-size: 3rem;
     }
     
     .active{
-      color: $red;
+      color: colors.$red;
     }
 
     > a {
       text-transform: capitalize;
-      margin: 0 2rem;
-      color: $dark;
+      color: colors.$dark;
       transition: color 0.3s;
 
       &:hover {
-        color: $lightDark;
+        color: colors.$lightDark;
       }
 
       > svg {
-        color: $red;
+        color: colors.$red;
         transition: inherit;
         font-size: 1.5rem;
       
         &:hover {
-          color: $lightDark;
+          color: colors.$lightDark;
         }
       }
     }
@@ -63,17 +67,12 @@ nav {
       border: none;
       outline: none;
       text-transform: uppercase;
-      padding: 5px;
       border-radius: 5px;
     }
   }
-}
 
-@media screen and (max-width: 600px) {
-  nav {
-    padding: 1rem;
-    > div > a {
-      margin: 0 0.5rem;
-    }
+  .navMenuButton{
+    font-size: 25px;
+    cursor: pointer;
   }
 }

@@ -7,6 +7,7 @@ export const rightIn = (delay = 0) => ({
         x: 0,
         opacity: 1
     },
+    viewport:{ once:true, amount: 0 },
     transition: {
         delay: delay,
     }
