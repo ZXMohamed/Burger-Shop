@@ -7,23 +7,24 @@ import contactSchema from "../../forms/utils/contactSchema";
 import { burger2 } from "../../assets/images/images";
 import Turnstile, { useTurnstile } from "react-turnstile";
 import { useTranslation } from "react-i18next";
+import useEmail from "../../hook/useEmail";
+import { toast } from "react-toastify";
 
 const Contact = () => {
 
     const { t, i18n } = useTranslation();
 
     const turnstile = useTurnstile();
+
+    const email = useEmail();
     
     const formik = useFormik({
-        initialValues: {
-            name: "",
-            email: "",
-            message: "",
-            "cf-turnstile-response": ""
-        },
+        initialValues: initialValues,
         validationSchema: contactSchema(t),
         onSubmit: (data, { resetForm }) => {
-            alert(Object.values(data).join(" / "));
+            data.subject = "burger shop";
+            delete data["cf-turnstile-response"];
+            email(data, () => toast.success(t(`msgs.contact.success`)), () => toast.error(t(`msgs.contact.failed`)));
             resetForm();
         },
         onReset: () => {
@@ -43,9 +44,9 @@ const Contact = () => {
     }
 
     return (
-        <section className="contact">
+        <main className="contact">
             <motion.form onSubmit={formik.handleSubmit} {...rightIn(0)} data-testid="contactFormTest">
-                <h2>{ t(`contact.title`) }</h2>
+                <h1>{ t(`contact.title`) }</h1>
                 <input type="text" name="name" placeholder={t(`contact.form.inputs.name.placeholder`)} onChange={ formik.handleChange } onBlur={ formik.handleBlur } value={ formik.values.name } data-testid="contactFormNameTest"/>
                 <span>{ formik.errors.name }</span>
                 <input type="email" name="email" placeholder={t(`contact.form.inputs.email.placeholder`)} onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} data-testid="contactFormEmailTest"/>
@@ -56,10 +57,17 @@ const Contact = () => {
                 <span>{ formik.errors["cf-turnstile-response"] }</span>
                 <button type="submit" disabled={ formik.isSubmitting } data-testid="contactFormSubmitTest">{formik.isSubmitting ? 'Sending...' : 'Send'}</button>
             </motion.form>
-            <motion.div className="formBorder" {...downIn(0)} viewport={{ once: true }}>
+            <motion.div className="side" {...downIn(0)} viewport={{ once: true }}>
                 <img src={ burger2 } alt="Burger" />
             </motion.div>
-        </section>
+        </main>
     );
 };
 export default Contact;
+
+const initialValues = {
+    name: "",
+    email: "",
+    message: "",
+    "cf-turnstile-response": ""
+};

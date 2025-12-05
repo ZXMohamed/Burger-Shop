@@ -10,6 +10,10 @@
             "required":"%input% is required",
             "validation":"Invalid %input%",
             "securityCheck":"Complete the security check"
+        },
+        "contact":{
+            "success":"message sent successfully!",
+            "failed":"can't send message, please try again!"
         }
     }
 }

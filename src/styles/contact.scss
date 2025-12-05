@@ -1,6 +1,6 @@
-@import "colors";
+@use "colors";
 
-.contact {
+main.contact {
   padding-top: 100px;
   padding-bottom: 100px;
   width: 100%;
@@ -23,15 +23,15 @@
     width: 500px;
     min-height: 500px;
 
-    > h2 {
+    > h1 {
       padding-left: 10px;
       padding-right: 10px;
-      text-shadow: 2px 1px $pink, -3px 1px $red;
+      text-shadow: 2px 1px colors.$pink, -3px 1px colors.$red;
       font-size: 2.2rem;
       text-transform: uppercase;
       font-family: "Roboto";
       margin: 2rem 0;
-      color:$pink;
+      color:colors.$pink;
     }
 
     > input,
@@ -46,19 +46,19 @@
     }
 
     > button {
-      background-color: $red;
+      background-color: colors.$red;
       border: none;
       cursor: pointer;
       color: white;
       font-size: 1rem;
 
       &:hover {
-        background-color: $redDark;
+        background-color: colors.$redDark;
       }
     }
   }
 
-  .formBorder {
+  .side {
     width: 200px;
     height: 80%;
     border-radius: 0 200px 200px 0;

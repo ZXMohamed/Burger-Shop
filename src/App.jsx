@@ -4,6 +4,7 @@ import Footer from "./components/layout/Footer";
 import Contact from "./components/contact/Contact";
 
 import { ToastContainer } from "react-toastify";
+import emailjs from "@emailjs/browser";
 
 import "./styles/header.scss";
 import "./styles/footer.scss";
@@ -12,6 +13,8 @@ import "./styles/contact.scss";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+
+emailjs.init(import.meta.env.VITE_email_public_key);
 
 function App() {
   

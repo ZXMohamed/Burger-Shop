@@ -10,6 +10,10 @@
             "required":"%input% مطلوب",
             "validation":"%input% غير صالح",
             "securityCheck":"إكمال فحص الأمان"
+        },
+        "contact":{
+            "success":"تم الإرسال بنجاح",
+            "failed":"لايمكن الإرسال حاول مرة أخري"
         }
     }
 }
