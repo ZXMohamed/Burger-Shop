@@ -1,6 +1,4 @@
 import React from 'react'
-import { useCurrentCurrency } from '../state/currentCurrency';
-import { useCurrency } from '../state/currency';
 import useMenu from './useMenu';
 import { useOutletContext } from 'react-router';
 import { usePayment } from '../state/payment';
@@ -16,12 +14,9 @@ function useRequestPayment() {
 
     const { t } = useTranslation();
 
-    const currentCurrency = useCurrentCurrency((state) => state.current);
-    const  { data: currency, isSuccess: currencyIsSuccess, isError: currencyIsError }  = useCurrency();
-
     const menu = useMenu();
     
-    const { cart } = useOutletContext();
+    const { cart, currentCurrency, currency: { data: currency, isSuccess: currencyIsSuccess, isError: currencyIsError } } = useOutletContext();
 
     const { data: paymentData, mutate: paymentMutate, isSuccess: paymentIsSuccess, isError: paymentIsError } = usePayment();
     
@@ -46,12 +41,10 @@ function useRequestPayment() {
                 payment_methods: paymentMethods,
                 items: items
             });
-        } else if(currencyIsError) {
-            throw "can't do currency convert operations, check internet connection!"
         }
     }
 
-    return { paymentData, status : {paymentIsSuccess, paymentIsError}, requestPayment };
+    return { paymentData, status: { paymentIsSuccess, paymentIsError, currencyIsSuccess, currencyIsError }, requestPayment, currentCurrency, currency };
 }
 
 export default useRequestPayment

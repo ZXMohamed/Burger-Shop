@@ -1,8 +1,8 @@
-@import "colors";
+@use "colors";
 
 footer {
   min-height: 300px;
-  background-color: $dark;
+  background-color: colors.$dark;
   padding: 4rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -10,7 +10,7 @@ footer {
   align-items: center;
 
   h2 {
-    color: $red;
+    color: colors.$red;
     font-family: fantasy;
     font-weight: 400;
     font-size: 2rem;
@@ -36,7 +36,7 @@ footer {
       font-size: 2rem;
       color: white;
       &:hover {
-        color: $red;
+        color: colors.$red;
       }
     }
   }

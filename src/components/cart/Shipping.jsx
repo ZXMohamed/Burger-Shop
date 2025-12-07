@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useMemo, useRef, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { Country, State } from "country-state-city";
 import { useNavigate, useOutletContext } from "react-router";
 import { useFormik } from "formik";
@@ -30,9 +30,7 @@ const Shipping = () => {
 
   const orderInfoTemp = useRef({});
 
-  const { paymentData, status, requestPayment } = useRequestPayment();
-
-
+  const { paymentData, status, requestPayment, currency,currentCurrency } = useRequestPayment();
 
   const homeNumberId = useId();
   const cityId = useId();
@@ -84,9 +82,9 @@ const Shipping = () => {
       const order = createOrder(cart, paymentData?.intention_order_id, orderInfoTemp.current);
       addOrder(order);
       onUnmount.current = () => emptyCart();
-      window.open(import.meta.env.VITE_PAYMENT_PAGE_URL + paymentData?.client_secret, '_blank', "width=1200,height=1000,resizable=yes,scrollbars=yes,status=yes");
+      window.open(import.meta.env.VITE_PAYMENT_PAGE_URL + paymentData?.client_secret, '_blank', "width=1200,height=800,resizable=yes,scrollbars=yes,status=yes");
       //*user should go to orders page after pay (successful payment)
-      //*but this site is frontend and focus on frontend only (no backend)
+      //*but this site is frontend, focus on frontend only (no backend)
       //*and no data base, all data saved on zustand (clint state)
       //*so can't perform real payment process 
       //*(just simulation for a menu + cart + payment + orders)
@@ -95,6 +93,11 @@ const Shipping = () => {
     else if (status.paymentIsError) {
       toast.error(t(`msgs.payment.failed`));
     }
+
+    if (status.currencyIsError) {
+      toast.error(t(`msgs.currency.convertError`));
+    }
+
   }, [paymentData, status]);
 
   const handleOnVerify = (token) => {
@@ -155,10 +158,19 @@ const Shipping = () => {
           <Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme="dark" language={i18n.language} onVerify={handleOnVerify} style={{justifyContent:"center"}}/>
           <span>{ formik.errors["cf-turnstile-response"] }</span>
         
-          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest"> { formik.isSubmitting ? t(`shipping.form.submit.loadingTitle`) : t(`shipping.form.submit.title`) } </button>
+          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest"> { formik.isSubmitting ? t(`shipping.form.submit.loadingTitle`) : t(`shipping.form.submit.title`) + currentCurrency } </button>
            
         </form>
       </motion.section>
+
+      { /* FOR DEVELOPER ONLY */}
+        <div style={{position:"fixed",bottom:0,right:0}}>
+          <bdi>استخدم العملة المصرية EGP عند الدفع لان بوابة الدفع في وضع اللإختبار لا تقبل إلا العملة المصرية</bdi>
+          <br />
+          <bdi>use egypt currency because payment get way apply EGP only in test mode</bdi>
+        </div>
+      { /* FOR DEVELOPER ONLY */}
+
     </section>
   );
 }
