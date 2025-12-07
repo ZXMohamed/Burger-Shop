@@ -25,5 +25,8 @@
         "checkoutButton":{
             "title":"चेक आउट"
         }
+    },
+    "loading":{
+        "title":"लोड हो रहा है..."
     }
 }

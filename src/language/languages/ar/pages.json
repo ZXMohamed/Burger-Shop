@@ -25,5 +25,8 @@
         "checkoutButton":{
             "title":"الدفع"
         }
+    },
+    "loading":{
+        "title":"تحميل الصفحة ..."
     }
 }

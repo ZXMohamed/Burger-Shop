@@ -25,5 +25,8 @@
         "checkoutButton":{
             "title":"Checkout"
         }
+    },
+    "loading":{
+        "title":"Loading..."
     }
 }

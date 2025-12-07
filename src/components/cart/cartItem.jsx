@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import CurrencyIcon from "../currencyIcon/currencyIcon";
+import Counter from "../counter/counter";
 
 const CartItem = memo(({ id, title, price, currency, quantity, photo, increment, decrement }) => {
 
@@ -11,7 +12,9 @@ const CartItem = memo(({ id, title, price, currency, quantity, photo, increment,
         <img src={ photo } alt={ title } data-testId={ `cardItemPhotoTest${id}` } />
       </div>
       <div>
-        <h5 data-testId={ `cardItemPriceTest${id}` }>{ price } <CurrencyIcon currency={ currency } /></h5>
+        <h5 data-testId={ `cardItemPriceTest${id}` }><bdi>
+          <Counter to={ price }><span></span></Counter> <CurrencyIcon currency={ currency } />
+        </bdi></h5>
         <button onClick={ () => { decrement(id) } } data-testid={ `cardItemDECTest${id}` }>-</button>
         <input type="number" readOnly value={ quantity } data-testid={ `cardItemQuantityTest${id}` } />
         <button onClick={ () => { increment(id) } } data-testid={`cardItemINCTest${id}`}>+</button>
