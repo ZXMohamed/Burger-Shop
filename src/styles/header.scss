@@ -1,4 +1,4 @@
-@import "colors";
+@use "colors";
 
 nav {
   height: 5rem;
@@ -14,30 +14,30 @@ nav {
     align-items: center;
 
     > svg {
-      color: $red;
+      color: colors.$red;
       font-size: 3rem;
     }
     
     .active{
-      color: $red;
+      color: colors.$red;
     }
 
     > a {
       text-transform: capitalize;
       margin: 0 2rem;
-      color: $dark;
+      color: colors.$dark;
       transition: color 0.3s;
 
       &:hover {
-        color: $lightDark;
+        color: colors.$lightDark;
       }
 
       > svg {
-        color: $red;
+        color: colors.$red;
         transition: inherit;
         font-size: 1.5rem;
         &:hover {
-          color: $lightDark;
+          color: colors.$lightDark;
         }
       }
     }

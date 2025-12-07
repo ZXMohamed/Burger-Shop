@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 
 import "./styles/header.scss";
 import "./styles/footer.scss";
+import "./styles/loading.scss";
 import "./styles/myorders.scss";
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';

@@ -1,25 +1,21 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useOutletContext } from "react-router";
 import { AiOutlineEye } from "react-icons/ai";
-import { MdCurrencyRupee } from "react-icons/md";
-import { useOrder } from "../../state/order";
 import { checkout } from "../../utils/checkout";
 import useMenu from "../../hook/useMenu";
 import { motion } from "framer-motion";
 import { upIn } from "../../animation/upIn";
 import { useTranslation } from "react-i18next";
 import CurrencyIcon from "../currencyIcon/currencyIcon";
-import { useCurrentCurrency } from "../../state/currentCurrency";
-import { useCurrency } from "../../state/currency";
 
 const MyOrders = () => {
 
+  const location = useLocation();
+
   const { t } = useTranslation();
 
-  const { data : currency, isSuccess: currencyIsSuccess } = useCurrency();
-  const currentCurrency = useCurrentCurrency((state)=>state.current);
-
-  const order = useOrder((state) => state.order);
+  const { order, currentCurrency, currency: { data : currency, isSuccess: currencyIsSuccess } } = useOutletContext();
+  
   const menu = useMenu();
 
   return (
@@ -43,7 +39,7 @@ const MyOrders = () => {
                 <td>{ currencyIsSuccess && <bdi>{ checkout(menu, item.order, currency.rates[currentCurrency]).total } <CurrencyIcon currency={ currentCurrency } /></bdi> }</td>
                 <td>{ t(`myOrders.paymentMethods.${item.orderInfo.paymentMethod}`) }</td>
                 <td>
-                  <Link to={ `/myorders/${item.orderCode}` }>
+                  <Link to={ `/myorders/${item.orderCode}` } state={{ from: location.pathname }} >
                     <AiOutlineEye />
                   </Link>
                 </td> 

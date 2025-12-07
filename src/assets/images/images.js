@@ -7,6 +7,8 @@ import burger3 from "./burger3.png";
 
 import owner from "./owner.jpg";
 
+import loading from "./loading.gif";
+
 
 export {
     homeBackground,
@@ -14,5 +16,6 @@ export {
     burger1,
     burger2,
     burger3,
-    owner
+    owner,
+    loading
 };
