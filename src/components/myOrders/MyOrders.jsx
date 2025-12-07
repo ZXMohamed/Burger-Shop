@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useOutletContext } from "react-router";
 import { AiOutlineEye } from "react-icons/ai";
 import { checkout } from "../../utils/checkout";
