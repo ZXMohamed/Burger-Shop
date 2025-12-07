@@ -1,7 +1,7 @@
-@import "colors";
+@use "colors";
 
 .orderDetails {
-  background-color: $pink;
+  background-color: colors.$pink;
   width: 100%;
 
   > section {
@@ -21,8 +21,8 @@
     > div {
       margin: 2rem 0;
       text-align: center;
-      > h1 {
-        font-size: 1.8rem;
+      > h2 {
+        font-size: 1.4rem;
         text-transform: uppercase;
         letter-spacing: 5px;
       }
@@ -53,8 +53,8 @@
     }
 
     > article {
-      > h1 {
-        font-size: 1.8rem;
+      > h2 {
+        font-size: 1.4rem;
         text-transform: uppercase;
         letter-spacing: 5px;
         margin: 2rem 0;
@@ -77,15 +77,20 @@
   }
 }
 
-@media screen and (max-width: 600px) {
-  .orderDetails > main > div {
+@media screen and (max-width: 700px) {
+  .orderDetails > section {
     > h1 {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
+      margin: 1rem 0rem 2rem 0rem;
     }
-    > p {
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      margin: 2rem 0;
+    > div {
+      margin: 1rem 0;
+      text-align: center;
+      > h2 {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
     }
   }
 }

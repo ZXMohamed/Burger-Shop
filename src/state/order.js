@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useOrder = create((set) => ({
-    order: {},
+    order: { o: { orderInfo: {},order:{} } },
     add: (payload) => set((state) => ({
         ...state,
         order: {

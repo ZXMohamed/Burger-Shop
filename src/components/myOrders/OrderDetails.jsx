@@ -1,13 +1,10 @@
 import React, { useMemo } from "react";
-import { useParams } from "react-router";
-import { useOrder } from "../../state/order";
+import { useOutletContext, useParams } from "react-router";
 import useMenu from "../../hook/useMenu";
 import { checkout } from "../../utils/checkout";
-import { MdCurrencyRupee } from "react-icons/md";
 import { useTranslation } from "react-i18next";
-import { useCurrency } from "../../state/currency";
-import { useCurrentCurrency } from "../../state/currentCurrency";
 import CurrencyIcon from "../currencyIcon/currencyIcon";
+import Counter from "../counter/counter";
 
 
 const OrderDetails = () => {
@@ -16,10 +13,10 @@ const OrderDetails = () => {
 
     const { t } = useTranslation();
 
-    const { data: currency, isSuccess: currencyIsSuccess } = useCurrency();
-    const currentCurrency = useCurrentCurrency((state)=>state.current);
+    const { order: Orders, currentCurrency, currency: { data: currency, isSuccess: currencyIsSuccess } } = useOutletContext();
 
-    const order = useOrder((state) => state.order[orderId]);
+    const order = Orders[orderId];
+
     const menu = useMenu();
     
     const calculateCheckout = useMemo(() => currencyIsSuccess ? checkout(menu, order.order, currency.rates[currentCurrency]) : {}, [currentCurrency, currency, menu, currencyIsSuccess, order.order]);
@@ -63,19 +60,19 @@ const OrderDetails = () => {
                 <div>
                     <h2>{ t(`orderDetails.details.amount.title`) }</h2>
                     <p>
-                        <bdi><b>{ t(`orderDetails.details.amount.items.itemsTotal`) } : </b><i>{ calculateCheckout?.subtotal }</i> <CurrencyIcon currency={currentCurrency} /></bdi>
+                        <bdi><b>{ t(`orderDetails.details.amount.items.itemsTotal`) } : </b><i><Counter to={ calculateCheckout?.subtotal }><span></span></Counter></i> <CurrencyIcon currency={currentCurrency} /></bdi>
                     </p>
                     <p>
-                        <bdi><b>{ t(`orderDetails.details.amount.items.shippingCharges`) } : </b><i>{ calculateCheckout?.shipping }</i> <CurrencyIcon currency={currentCurrency} /></bdi>
+                        <bdi><b>{ t(`orderDetails.details.amount.items.shippingCharges`) } : </b><i><Counter to={ calculateCheckout?.shipping }><span></span></Counter></i> <CurrencyIcon currency={currentCurrency} /></bdi>
                     </p>
                     <p>
-                        <bdi><b>{ t(`orderDetails.details.amount.items.tax`) } : </b><i>{ calculateCheckout?.tax }</i> <CurrencyIcon currency={currentCurrency} /></bdi>
+                        <bdi><b>{ t(`orderDetails.details.amount.items.tax`) } : </b><i><Counter to={ calculateCheckout?.tax }><span></span></Counter></i> <CurrencyIcon currency={currentCurrency} /></bdi>
                     </p>
                 </div>
                 <div className="total">
                     <h3>{ t(`orderDetails.details.amount.items.total`) }</h3>
                     <div>
-                        <bdi>{ calculateCheckout?.total } <CurrencyIcon currency={currentCurrency} /></bdi>
+                        <bdi><Counter to={ calculateCheckout?.total }><span></span></Counter> <CurrencyIcon currency={currentCurrency} /></bdi>
                     </div>
                 </div>
                 <br />
