@@ -3,6 +3,9 @@
         "cart":{
             "add":"added to cart successfully!",
             "exist":"is already in cart!"
+        },
+        "currency":{
+            "convertError":"can't do currency convert operations"
         }
     }
 }

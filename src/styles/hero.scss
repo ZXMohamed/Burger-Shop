@@ -2,75 +2,140 @@
 
 .home {
   height: 1080px;
-  overflow-x: hidden;
   background-image: url("../assets/images/homeBackground.jpg");
-  // background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   transition: 1s;
+  
+  >div{
+    position: relative;
+    margin-left: 8rem;
+    margin-right: 8rem;
+    height: 2170px;
+    width: fit-content;
+    padding: 20px 50px 40px 50px;
+    
+    >div.blurCard{
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      border-radius: 20px;
+      width: 100%;
+      height: 400px;
+      // background-color: colors.$redDark-500;
+      backdrop-filter: blur(5px) contrast(120%);
+      box-shadow: 1px 1px 1px 1px colors.$white-500;
+    }
 
-  > article {
-    padding-left: 8rem;
-    padding-right: 8rem;
-    padding-top: 20rem;
-    color : #ffffff;
-    
-    > h1 {
-      font-size: 4rem;
-      text-transform: uppercase;
+    > article {
+      position: sticky;
+      top: 300px;
+      color : #ffffff;
+      transition: 1s;
+      
+      > h1 {
+        font-size: 4rem;
+        text-transform: uppercase;
+      }
+      
+      > p {
+        font-size: 1.2rem;
+      }
+      > a {
+        display: block;
+        width: 10rem;
+        background-color: colors.$red;
+        color: white;
+        text-align: center;
+        border: none;
+        font-size: 1rem;
+        border-radius: 10px;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover {
+          background-color: colors.$redDark;
+        }
+      }
     }
     
-    > p {
-      font-size: 1.2rem;
-    }
   }
 
-  > a {
-    display: block;
-    margin: 2rem 8rem;
-    width: 10rem;
-    background-color: colors.$red;
-    color: white;
-    text-align: center;
-    border: none;
-    font-size: 1rem;
-    border-radius: 10px;
-    padding: 1rem;
-    cursor: pointer;
-    &:hover {
-      background-color: colors.$redDark;
-    }
-  }
 }
 
+@media screen and (max-width: 1200px) {
+  .home {
+    >div{
+      margin-left: 4rem;
+      margin-right: 4rem;
+      padding: 0px;
+
+      >article{
+        top: 500px;
+      }
+    }
+
+  }
+}
 @media screen and (max-width: 700px) {
   .home {
     height: 75vh;
     background-position: -200px top;
-    > article {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 30vh;
-      > h1 {
-        text-align: center;
-      }
-
-      > p {
-        text-align: center;
-      }
-    }
-
-    > a {
+    >div{
+      height: 100%;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      padding: 0px;
       margin: auto;
+
+      >div.blurCard{
+        display: none;
+      }
+      > article {
+        z-index: 100;
+        top: 30%;
+        > h1 {
+          text-align: center;
+        }
+  
+        > p {
+          text-align: center;
+        }
+        > a {
+          margin: auto;
+        }
+      }
+
     }
+
   }
 }
 
 @media screen and (max-height: 640px) {
   .home {
+    >div{
+      height: 100%;
 
-    > a {
-      display: none;
+      >div.blurCard{
+        display: none;
+      }
+      >article{
+        > a {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-height: 555px) {
+  .home {
+    height: 100vh;
+    >div{
+      >article{
+        top: 100px;
+        > a {
+          display: none;
+        }
+      }
     }
   }
 }

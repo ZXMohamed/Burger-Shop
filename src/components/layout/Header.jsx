@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoFastFoodOutline } from "react-icons/io5";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { FiShoppingCart } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { rightIn } from "../../animation/rightIn";
@@ -16,6 +16,8 @@ import { menuTabs, navMenu } from "../../animation/navMenuExpand";
 import { useMediaQuery } from "react-responsive";
 
 const Header = () => {
+
+    const location = useLocation();
 
     const { t, i18n } = useTranslation();
     
@@ -37,9 +39,9 @@ const Header = () => {
             <motion.div variants={ menuTabs } initial="visible" animate={ isMd ? (openMenu ? "menuExpanded" : "menuCollapsed") : "visible" } className="navTabs">
                 <NavLink to="/">{ t(`nav.tabs.home`) }</NavLink>
                 <NavLink to="/contact">{ t(`nav.tabs.contact`) }</NavLink>
-                <NavLink to="/myorders">{ t(`nav.tabs.orders`) }</NavLink>
+                <NavLink to="/myorders" state={{ from: location.pathname }}>{ t(`nav.tabs.orders`) }</NavLink>
                 <NavLink to="/about">{ t(`nav.tabs.about`) }</NavLink>
-                <NavLink to="/cart">
+                <NavLink to="/cart" state={{ from: location.pathname }}>
                     <FiShoppingCart />
                     <div className="cartItemsCount" data-testid="cartIconTest">
                         { Object.keys(cartItems).length }

@@ -10,6 +10,8 @@ import "./styles/page.scss";
 import "./styles/scrollFollow.scss";
 import "./styles/header.scss";
 import "./styles/footer.scss";
+import "./styles/loading.scss";
+import "./styles/alertError.scss";
 import "./styles/hero.scss";
 import "./styles/menu.scss";
 import "./styles/founder.scss";

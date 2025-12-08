@@ -1,6 +1,7 @@
 @use "colors";
 
 .founder {
+  overflow-x: hidden;
   width: 100%;
   padding: 15rem 0 15rem 0;
   background: linear-gradient(180deg,colors.$white-500 0%, colors.$red-500 100%), url('../assets/images/founderBackground.webp');

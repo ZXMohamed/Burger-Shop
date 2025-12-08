@@ -8,11 +8,14 @@ function Hero() {
     const { t } = useTranslation();
     return (
         <section data-testid="heroTest" className="home">
-            <article>
-                <motion.h1 { ...rightIn(0) }>{ t(`home.hero.title`) }</motion.h1>
-                <motion.p { ...rightIn(0.5) } >{ t(`home.hero.description`) }</motion.p>
-            </article>
-            <motion.a href="#menu" {...downIn(0.5)}>{ t(`home.hero.exploreMenu`) }</motion.a>
+            <div>
+                <div className="blurCard"></div>
+                <article>
+                    <motion.h1 { ...rightIn(0) }>{ t(`home.hero.title`) }</motion.h1>
+                    <motion.p { ...rightIn(0.5) } >{ t(`home.hero.description`) }</motion.p>
+                <motion.a href="#menu" {...downIn(0.5)}>{ t(`home.hero.exploreMenu`) }</motion.a>
+                </article>
+            </div>
         </section> 
     );
 }

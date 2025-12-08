@@ -7,12 +7,15 @@ import { useTranslation } from "react-i18next";
 import { useCurrentCurrency } from "../../state/currentCurrency";
 import { useCurrency } from "../../state/currency";
 import useUpdateEffect from "../../hook/useUpdateEffect";
+import Loading from "../loading/loading";
+import AlertError from "../alertError/alertError";
+
 
 const Menu = () => {
 
     const { t } = useTranslation();
 
-    const { data: currency, isSuccess: currencyIsSuccess, isError: currencyIsError } = useCurrency();
+    const { data: currency, isFetching: currencyIsFetching, isSuccess: currencyIsSuccess, isError: currencyIsError } = useCurrency();
     const currentCurrency = useCurrentCurrency((state) => state.current);
 
     const menu = useMenu();
@@ -36,7 +39,7 @@ const Menu = () => {
     return (
         <section id="menu" className="menuContainer" data-testid="menuTest">
             <h1>{ t(`home.menu.title`) }</h1>
-            <div>
+            <div className="menuItems">
                 { currencyIsSuccess && Object.values(menu(t, currency?.rates[currentCurrency])).map((item, inx) => (
                     <MenuCard
                         key={ inx }
@@ -50,7 +53,8 @@ const Menu = () => {
                     />
                 )) }
             </div>
-            {currencyIsError && <span>{t(`msgs.currency.convertError`)}</span>}//!
+            { currencyIsFetching && <Loading/> }
+            { currencyIsError && <AlertError title={ t(`msgs.currency.convertError`) } /> }
         </section>
     );
 };
