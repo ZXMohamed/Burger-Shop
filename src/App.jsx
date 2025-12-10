@@ -1,15 +1,17 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router";
+import { BrowserRouter } from "react-router";
 import { ToastContainer } from "react-toastify";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import Home from "./components/home/Home";
+import Routes from "./routes/routes";
 
+import "./styles/theme.css";
 import "./styles/page.scss";
 import "./styles/scrollFollow.scss";
 import "./styles/header.scss";
 import "./styles/footer.scss";
+import "./styles/themeToggler.scss";
 import "./styles/loading.scss";
 import "./styles/alertError.scss";
 import "./styles/hero.scss";
@@ -33,30 +35,14 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <ToastContainer />
       <ScrollFollow>
-        <Routes>
-          <Route path="/" exact element={ <Home/> } />
-          <Route path="/about" element={ <>about</> } />
-
-          <Route path="/cart" element={ <><Outlet/></> }>
-            <Route index element={ <>cart</> } />
-            <Route path="shipping" element={ <>shipping</> } />
-          </Route>
-          
-          <Route path="/myorders" element={ <><Outlet /></> }>
-            <Route index element={ <>myorders</> } />
-            <Route path="order/:id" element={<>order</>} />
-          </Route>
-          
-          <Route path="/contact" element={ <>contact</> } />
-          <Route path="*" element={<>notFound</>} />
-        </Routes>
+        <Routes/>
       </ScrollFollow>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 

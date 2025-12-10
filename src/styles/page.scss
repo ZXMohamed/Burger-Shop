@@ -1,3 +1,9 @@
+@use "colors";
+
 body{
     padding-top: 60px;
+}
+body::selection{
+    background-color: colors.$redDark;
+    color: colors.$white-500;
 }

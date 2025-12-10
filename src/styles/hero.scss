@@ -22,7 +22,6 @@
       border-radius: 20px;
       width: 100%;
       height: 400px;
-      // background-color: colors.$redDark-500;
       backdrop-filter: blur(5px) contrast(120%);
       box-shadow: 1px 1px 1px 1px colors.$white-500;
     }
@@ -45,7 +44,7 @@
         display: block;
         width: 10rem;
         background-color: colors.$red;
-        color: white;
+        color: colors.$pink;
         text-align: center;
         border: none;
         font-size: 1rem;
@@ -130,7 +129,7 @@
   }
 }
 
-@media screen and (max-height: 640px) {
+@media screen and (max-height: 600px) {
   .home {
     >div{
       height: 100%;

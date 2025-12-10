@@ -4,7 +4,7 @@ export const navMenu = {
         transition: {duration: 0}
     },
     expanded: {
-        height: 380,
+        height: 420,
         paddingTop: 20,
         alignItems: "flex-start",
         transition: {duration: 0.3}

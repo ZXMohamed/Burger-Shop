@@ -14,6 +14,7 @@ import { MdMenu } from "react-icons/md";
 import { CgCloseR } from "react-icons/cg";
 import { menuTabs, navMenu } from "../../animation/navMenuExpand";
 import { useMediaQuery } from "react-responsive";
+import ThemeToggler from "../themeToggler/themeToggler";
 
 const Header = () => {
 
@@ -47,6 +48,7 @@ const Header = () => {
                         { Object.keys(cartItems).length }
                     </div>
                 </NavLink>
+                <ThemeToggler/>
                 <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } defaultValue={ i18n.language }>
                     { Object.keys(i18n.services.resourceStore.data).map((language, inx) => {
                         return <option key={ inx } value={ language }>{ i18n.services.resourceStore.data[language].alias }</option>
