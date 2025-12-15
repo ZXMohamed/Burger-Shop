@@ -1,5 +1,5 @@
 export const changeTheme = (theme) => {
 
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem("theme", theme);
+    typeof document !== "undefined" && document.documentElement.setAttribute('data-theme', theme);
+    typeof window !== "undefined" && localStorage.setItem("theme", theme);//*SSR
 };

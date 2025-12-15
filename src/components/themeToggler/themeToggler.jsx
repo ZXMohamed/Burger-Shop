@@ -8,11 +8,11 @@ function ThemeToggler() {
     const { changeTheme, currentTheme } = useTheme();
 
     function toggleTheme() {
-        if (currentTheme == themes.dark.value) {
-            changeTheme(themes.light.value)
-        } else {
-            changeTheme(themes.dark.value)
-        }
+      if (currentTheme == themes.dark.value) {
+        changeTheme(themes.light.value)
+      } else {
+        changeTheme(themes.dark.value)
+      }
     }
   return (
     <CgDarkMode className='themeToggler' onClick={()=>toggleTheme()}/>

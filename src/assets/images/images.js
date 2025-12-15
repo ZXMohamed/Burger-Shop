@@ -10,6 +10,8 @@ import owner from "./owner.jpg";
 
 import loading from "./loading.gif";
 
+import logo from "./logo.svg";
+
 export {
     homeBackground,
     gradientBackground,
@@ -18,5 +20,6 @@ export {
     burger2,
     burger3,
     owner,
-    loading
+    loading,
+    logo
 };

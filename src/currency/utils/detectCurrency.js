@@ -5,7 +5,7 @@ import { Country } from "country-state-city";
 
 export const detectCurrency = async() => {
 
-    const savedCurrency = localStorage.getItem("currency");
+    const savedCurrency = typeof window !== "undefined" ? localStorage.getItem("currency") : import.meta.env.VITE_DEFAULT_CURRENCY;//*SSR
 
     if (savedCurrency) {
 
@@ -26,8 +26,10 @@ export const detectCurrency = async() => {
         } else {
             countryCode = Country;
         }
+        
         const { currency } = Country.getCountryByCode(countryCode);
-        localStorage.setItem("currency", currency);
+        typeof window !== "undefined" && localStorage.setItem("currency", currency);//*SSR
+
         return currency;
 
     }

@@ -1,6 +1,7 @@
 :root{
-    --primary: rgb(236, 236, 236);
-    --secondary: rgba(212, 212, 212, 0.711);
+    --primary: rgb(33, 33, 33);
+    --secondary: rgb(56, 56, 56);
+    --invert : rgb(255, 255, 255);
 }
 
 :root[data-theme="dark"]{

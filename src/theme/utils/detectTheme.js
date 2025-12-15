@@ -7,11 +7,11 @@ import themes from "../themes/themes.json";
 
 export const detectTheme = () => {
 
-    const savedTheme = localStorage.getItem("theme");
+    const savedTheme = typeof window !== "undefined" ? localStorage.getItem("theme") : import.meta.env.VITE_DEFAULT_THEME; //*SSR
 
     if (savedTheme) {
 
-        document.documentElement.setAttribute('data-theme', savedTheme);
+        typeof document !== "undefined" && document.documentElement.setAttribute('data-theme', savedTheme);
         
         return savedTheme;
     

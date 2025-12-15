@@ -49,8 +49,8 @@ const Header = () => {
                     </div>
                 </NavLink>
                 <ThemeToggler/>
-                <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } defaultValue={ i18n.language }>
-                    { Object.keys(i18n.services.resourceStore.data).map((language, inx) => {
+                <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language }>
+                    { i18n?.services?.resourceStore?.data && Object.keys(i18n.services.resourceStore.data).map((language, inx) => {
                         return <option key={ inx } value={ language }>{ i18n.services.resourceStore.data[language].alias }</option>
                     }) }
                 </select>

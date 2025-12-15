@@ -2,10 +2,10 @@ import Home from "../components/home/Home"
 import { Outlet, useRoutes } from "react-router";
 
 const routesArray = [
-    { path: '/', element: <Home /> },
-    { path: 'about', element: <>about</> },
+    { path: '/:language?', element: <Home /> },
+    { path: ':language?/about', element: <>about</> },
     {
-        path: 'cart',
+        path: ':language?/cart',
         element: <Outlet />,
         children: [
             { index: true, element: <>cart</> },
@@ -13,14 +13,14 @@ const routesArray = [
         ]
     },
     {
-        path: 'myorders',
+        path: ':language?/myorders',
         element: <Outlet />,
         children: [
             { index: true, element: <>my orders</> },
             { path: 'order/:id', element: <>order</> }
         ]
     },
-    { path: 'contact', element: <>contact</> },
+    { path: ':language?/contact', element: <>contact</> },
     { path: '*', element: <>notFound</> }
 ];
 

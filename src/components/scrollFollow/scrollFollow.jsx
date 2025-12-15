@@ -6,7 +6,7 @@ export default function ScrollFollow({children}) {
 
     return (
         <>
-            <a href="/#menu" title="back to menu">
+            <a href="#menu" title="back to menu">
                 <div className={ "scrollFollow" }>
                     <BiSolidFoodMenu className={ "scrollFollowIcon" } />
                     <svg viewBox="0 0 100 100" className={ "scrollFollowProgress" }>
