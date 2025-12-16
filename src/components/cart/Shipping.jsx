@@ -164,7 +164,7 @@ const Shipping = () => {
       </motion.section>
 
       { /* FOR DEVELOPER ONLY */}
-        <div style={{position:"fixed",bottom:0,right:0}}>
+        <div style={{position:"fixed",bottom:0,right:0,color:"#000000"}}>
           <bdi>استخدم العملة المصرية EGP عند الدفع لان بوابة الدفع في وضع اللإختبار لا تقبل إلا العملة المصرية</bdi>
           <br />
           <bdi>use egypt currency because payment get way apply EGP only in test mode</bdi>
