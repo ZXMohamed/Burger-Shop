@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    <url>
+        <loc>/</loc>
+        <priority>1.0</priority>
+    </url>  
+    <url>
+        <loc>/#menu</loc>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>/about</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>/contact</loc>
+        <priority>0.8</priority>
+    </url>
+
+
+    <url>
+        <loc>/en</loc>
+        <priority>1.0</priority>
+    </url>  
+    <url>
+        <loc>/en#menu</loc>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>/en/about</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>/en/contact</loc>
+        <priority>0.8</priority>
+    </url>
+
+
+    <url>
+        <loc>/ar</loc>
+        <priority>1.0</priority>
+    </url>  
+    <url>
+        <loc>/ar#menu</loc>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>/ar/about</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>/ar/contact</loc>
+        <priority>0.8</priority>
+    </url>
+
+
+    <url>
+        <loc>/hi</loc>
+        <priority>1.0</priority>
+    </url>  
+    <url>
+        <loc>/hi#menu</loc>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>/hi/about</loc>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>/hi/contact</loc>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

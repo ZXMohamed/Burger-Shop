@@ -1,0 +1,44 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+Allow: /#menu
+Allow: /about
+Allow: /contact
+
+Disallow: /cart
+Disallow: /cart/shipping
+Disallow: /myorders
+Disallow: /myorders/order
+
+Allow: /en
+Allow: /en#menu
+Allow: /en/about
+Allow: /en/contact
+
+Disallow: /en/cart
+Disallow: /en/cart/shipping
+Disallow: /en/myorders
+Disallow: /en/myorders/order
+
+Allow: /ar
+Allow: /ar#menu
+Allow: /ar/about
+Allow: /ar/contact
+
+Disallow: /ar/cart
+Disallow: /ar/cart/shipping
+Disallow: /ar/myorders
+Disallow: /ar/myorders/order
+
+Allow: /hi
+Allow: /hi#menu
+Allow: /hi/about
+Allow: /hi/contact
+
+Disallow: /hi/cart
+Disallow: /hi/cart/shipping
+Disallow: /hi/myorders
+Disallow: /hi/myorders/order
+
+# Sitemap location
+Sitemap: /sitemap.xml

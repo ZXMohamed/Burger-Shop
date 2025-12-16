@@ -1,18 +1,28 @@
+import { matchPath } from "react-router";
 import { resources as i18n } from "../i18n";
+import { changeBrowserLanguage } from "./changeLanguage";
 
 
 //*get saved Language form localStorage (but if it not exist use default browser language)
 
-export const detectLanguage = () => {
+export const detectLanguage = (url) => {
 
-    const savedLanguage = localStorage.getItem("language");
+    // //*for seo only (in ssr / search engine)
+    // if (url) {        
+    //     const match = matchPath({ path: "/:language/*" }, url);
+    //     if (match?.params?.language) {
+    //         return match?.params?.language;
+    //     } else {
+    //         return import.meta.env.VITE_DEFAULT_LANGUAGE;
+    //     }
+    // }
+
+    const savedLanguage = typeof window !== "undefined" ? localStorage.getItem("language") : import.meta.env.VITE_DEFAULT_LANGUAGE;//*SSR
 
     if (savedLanguage) {
 
-        const locale = new Intl.Locale(savedLanguage);
-        const direction = locale.getTextInfo().direction;
-        document.documentElement.lang = savedLanguage;
-        document.documentElement.dir = direction;
+        changeBrowserLanguage(savedLanguage);
+
         return savedLanguage;
 
     } else {
@@ -24,11 +34,9 @@ export const detectLanguage = () => {
         } else {
             browserLanguage = import.meta.env.VITE_DEFAULT_LANGUAGE;
         }
-        const locale = new Intl.Locale(browserLanguage);
-        const direction = locale.getTextInfo().direction;
-        document.documentElement.lang = browserLanguage;
-        document.documentElement.dir = direction;
-        localStorage.setItem("language", browserLanguage);
+        
+        changeBrowserLanguage(browserLanguage);
+
         return browserLanguage;
 
     }

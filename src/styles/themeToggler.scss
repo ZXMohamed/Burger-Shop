@@ -1,0 +1,12 @@
+@use "colors";
+
+.themeToggler{
+    font-size: 30px;
+    color:var(--invert);
+    backdrop-filter:drop-shadow( 0px 0px 10px #000000e5);
+    border-radius: 20px;
+    
+    &:hover{
+        filter: invert(1);
+    }
+}
