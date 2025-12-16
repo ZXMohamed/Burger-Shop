@@ -34,8 +34,10 @@ function App() {
   const detectCurrentCurrency = useCurrentCurrency((state) => state.detect);
   
   useEffect(() => {
-    //*detect user preferred language after hydration (finish)
-    i18n.changeLanguage(detectLanguage());
+    //*prevent change language after hydration in SEO (only) so crawlers not confuse
+    const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandex/i.test(navigator.userAgent);
+    //*detect user preferred language after hydration (finish) (at client)
+    !isBot && i18n.changeLanguage(detectLanguage());
 
     //*detect user currency from The Browser or client IP
     detectCurrentCurrency();

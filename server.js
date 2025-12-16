@@ -51,6 +51,7 @@ app.use('*all', async (req, res) => {
     const passServerData = `<script id="serverDataJson" type="application/json" > {"language" : "${language}"}</script >`;
 
     const finalHtml = template
+      .replace(`%--HTMLLanguage--%`, language)
       .replace(`<!--app-html-->`, html)
       .replace(`<!--app-css-->`, cssTags)
       .replace(`<!--helmet-title-->`, helmet.title.toString())

@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { rightIn } from "../../animation/rightIn";
 import { downIn } from "../../animation/downIn";
 import { useTranslation } from "react-i18next";
+import { homeBackground, loadMainImage } from "../../assets/images/images";
 
 function Hero() {
+
+    const heroBackground = useRef();
+
     const { t } = useTranslation();
 
     const { scrollYProgress } = useScroll();
 
     const backdropBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(20px)"]);
+
+    useEffect(() => {
+        loadMainImage(homeBackground, heroBackground, { type: "background" });
+    }, []);
     
     return (
-        <section data-testid="heroTest" className="home">
+        <section ref={heroBackground} data-testid="heroTest" className="home">
             <motion.div style={ { backdropFilter: backdropBlur, WebkitBackdropFilter: backdropBlur } }>
                 <div>
                     <article>
