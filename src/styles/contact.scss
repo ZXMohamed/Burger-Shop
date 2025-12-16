@@ -4,7 +4,7 @@ main.contact {
   padding-top: 100px;
   padding-bottom: 100px;
   width: 100%;
-  background-image: url("../assets/images/gradientBackground.png");
+  background-image: url("../assets/images/gradientBackground.TEMP.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -13,6 +13,7 @@ main.contact {
   flex-wrap: wrap;
   overflow-x: hidden;
   column-gap: 100px;
+  transition: 1s all;
 
   > form {
     display: flex;
@@ -37,9 +38,11 @@ main.contact {
     > input,
     > textarea,
     > button {
+      background-color: var(--primary);
+      color: var(--invert);
       padding: 1rem;
       outline: none;
-      border: 1px solid rgb(202, 202, 202);
+      border: 1px solid var(--secondary);
       margin: 0.5rem 0px;
       width: 100%;
       border-radius: 20px;
@@ -49,7 +52,7 @@ main.contact {
       background-color: colors.$red;
       border: none;
       cursor: pointer;
-      color: white;
+      color: colors.$pink;
       font-size: 1rem;
 
       &:hover {

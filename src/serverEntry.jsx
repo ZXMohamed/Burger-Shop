@@ -1,0 +1,40 @@
+import React, { StrictMode } from "react";
+import { renderToString } from "react-dom/server";
+import { LanguageProvider } from "./language/languageProvider";
+import App from "./App";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ThemeProvider from "./theme/themeProvider";
+import { isAllInteger } from "./utils/isAllInteger";
+import { StaticRouter } from "react-router";
+import { HelmetProvider } from "react-helmet-async";
+import i18n from "./language/i18n";
+
+
+function renderInServer(url, language) {
+
+    i18n.changeLanguage(language);
+
+    isAllInteger()
+
+    const client = new QueryClient();
+    
+    const helmetContext = {};
+
+    const html = renderToString(
+        <LanguageProvider>
+            <HelmetProvider context={ helmetContext }>
+                <ThemeProvider>
+                    <QueryClientProvider client={ client }>
+                        <StaticRouter location={ url }>
+                            <App />
+                        </StaticRouter>
+                    </QueryClientProvider>
+                </ThemeProvider>
+            </HelmetProvider>
+        </LanguageProvider>
+    );
+
+    return { html, helmet: helmetContext.helmet };
+}
+
+export default renderInServer;
