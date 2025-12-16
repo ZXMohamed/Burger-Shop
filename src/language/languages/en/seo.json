@@ -1,0 +1,10 @@
+{
+    "SEO":{
+        "title": "Burger Shop",
+        "description": "This is Burger Shop. The place for most tasty burgers on the entire earth. Explore the various type of food and burgers",
+        "keywords": "Burger Shop, tasty burgers, food, Menu, Cheese Burger, Veg Cheese Burger, Cheese Burger with French Fries, delivery, contact, about, order",
+        "LD_Json": { 
+            "servesCuisine": ["Egyptian", "English", "Indian"]
+        }
+    }
+}

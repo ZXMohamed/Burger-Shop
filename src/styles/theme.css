@@ -1,0 +1,17 @@
+:root{
+    --primary: rgb(33, 33, 33);
+    --secondary: rgb(56, 56, 56);
+    --invert : rgb(255, 255, 255);
+}
+
+:root[data-theme="dark"]{
+    --primary: rgb(33, 33, 33);
+    --secondary: rgb(56, 56, 56);
+    --invert : rgb(255, 255, 255);
+}
+
+:root[data-theme="light"]{
+    --primary: rgb(236, 236, 236);
+    --secondary: rgb(212, 212, 212);
+    --invert : rgb(65, 65, 65);
+}

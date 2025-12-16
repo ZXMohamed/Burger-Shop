@@ -1,13 +1,13 @@
-@import "colors";
+@use "colors";
 
 .about {
-  padding: 20px;
+  padding: 40px;
   width: 100%;
-  background-color: $pink;
-  background-image: url("../assets/images/founderBackground.webp");
+  background-image: url("../assets/images/founderBackground.TEMP.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  transition: 1s all;
 
   > article {
     backdrop-filter: blur(3px);
@@ -18,15 +18,16 @@
 
     > h1 {
       font: 500 3rem "Roboto";
-      color: $red;
+      color: colors.$red;
       padding: 1rem 2rem;
       text-transform: uppercase;
-      background-color: $dark;
+      background-color: var(--primary);
     }
 
     > article {
       margin: 2rem 0;
-      color: white;
+      color: colors.$pink;
+      
       > h4 {
         font: 100 2rem "Roboto";
         text-transform: uppercase;
@@ -44,28 +45,31 @@
       }
 
       > a {
-        background-color: $dark;
+        background-color: var(--primary);
         border-radius: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         width: 2.5rem;
         height: 2.5rem;
-        color: white;
+        color: var(--invert);
         font-size: 1.5rem;
         transition: all 0.3s;
         margin: auto;
         &:hover {
-          color: $red;
+          color: colors.$red;
           transform: scale(1.1);
         }
       }
     }
 
     > div {
-      background-color: $dark;
+      background-color: var(--primary);
       padding: 2rem;
-      color: white;
+      color: var(--invert);
+      position: relative;
+      z-index: 1100;
+
       > h2 {
         text-align: center;
         text-transform: uppercase;

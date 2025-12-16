@@ -1,43 +1,55 @@
-@import "colors";
+@use "colors";
 
 nav {
+  overflow-x: hidden;
   height: 5rem;
   padding: 0px 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.229);
-  background-color: white;
+  background-color: var(--primary);
+  border-radius: 0 0 20px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  overflow: hidden;
 
+  >.navTabs{
+    column-gap: 40px;
+  }
   > div {
     display: flex;
     align-items: center;
 
     > svg {
-      color: $red;
+      color: colors.$red;
       font-size: 3rem;
     }
     
     .active{
-      color: $red;
+      color: colors.$red;
     }
 
     > a {
+      display: flex;
+      align-items: center;
       text-transform: capitalize;
-      margin: 0 2rem;
-      color: $dark;
+      color: var(--invert);
       transition: color 0.3s;
 
       &:hover {
-        color: $lightDark;
+        color: var(--secondary);
       }
 
       > svg {
-        color: $red;
+        color: colors.$red;
         transition: inherit;
         font-size: 1.5rem;
+      
         &:hover {
-          color: $lightDark;
+          color: var(--secondary);
         }
       }
     }
@@ -49,7 +61,6 @@ nav {
       align-items: center;
       width: 25px;
       height: 25px;
-      background-color: #f7f7f7;
       color: maroon;
       border-radius: 50%;
     }
@@ -58,17 +69,15 @@ nav {
       border: none;
       outline: none;
       text-transform: uppercase;
-      padding: 5px;
       border-radius: 5px;
+      background-color: var(--primary);
+      color: var(--invert);
+      font-size: 1rem;
     }
   }
-}
 
-@media screen and (max-width: 600px) {
-  nav {
-    padding: 1rem;
-    > div > a {
-      margin: 0 0.5rem;
-    }
+  .navMenuButton{
+    font-size: 25px;
+    cursor: pointer;
   }
 }

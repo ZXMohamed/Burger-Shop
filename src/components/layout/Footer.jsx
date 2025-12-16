@@ -7,15 +7,15 @@ const Footer = () => {
 
     return (
         <footer data-testid="footerTest">
-            <div>
-                <h2>{ t(`footer.logo.title`) }</h2>
+            <aside className="side1">
+                <h5>{ t(`footer.logo.title`) }</h5>
                 <p>{ t(`footer.logo.description`) }</p>
                 <br />
                 <em>{ t(`footer.logo.feedback`) }</em>
                 <strong>{ t(`footer.logo.rights`) }</strong>
-            </div>
-            <aside>
-                <h4>{ t(`footer.social.title`) }</h4>
+            </aside>
+            <aside className="side2">
+                <h5>{ t(`footer.social.title`) }</h5>
                 <a href="https://youtube.com">
                     <AiFillYoutube />
                 </a>
