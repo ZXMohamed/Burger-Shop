@@ -1,21 +1,48 @@
-import homeBackground from "./homeBackground.jpg";
-import gradientBackground from "./gradientBackground.png";
+//*images load in small size low quality at first time for best performance
+//*then loadImage() function load the main image in full size and best quality
 
-import burger1 from "./burger1.png";
-import burger2 from "./burger2.png";
-import burger3 from "./burger3.png";
+import homeBackground from "./homeBackground.TEMP.jpg";
+import gradientBackground from "./gradientBackground.TEMP.png";
+import founderBackground from "./founderBackground.TEMP.webp";
 
-import owner from "./owner.jpg";
+import burger1 from "./burger1.TEMP.png";
+import burger2 from "./burger2.TEMP.png";
+import burger3 from "./burger3.TEMP.png";
+
+import owner from "./owner.TEMP.jpg";
 
 import loading from "./loading.gif";
 
+import logo from "./logo.svg";
 
 export {
     homeBackground,
     gradientBackground,
+    founderBackground,
     burger1,
     burger2,
     burger3,
     owner,
-    loading
+    loading,
+    logo
 };
+
+//*this function 
+//*{ type:"img | background" }
+export async function loadMainImage(image, ref, options, onError = () => { }) {
+    const mainImage = image.replace(".TEMP", "");
+    const response = await fetch(mainImage);
+
+    if (!response.ok) {
+        onError();
+    }
+
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    
+    if (options.type == "img") {
+        ref.current.src = blobUrl;
+    } else if (options.type == "background") {
+        ref.current.style.backgroundImage = `url(${blobUrl})`;
+    }
+}

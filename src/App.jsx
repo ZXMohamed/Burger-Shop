@@ -1,56 +1,60 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router";
-
-import { useCurrentCurrency } from "./state/currentCurrency";
-
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import Cart from "./components/cart/Cart";
-import CartWrapper from "./components/templates/cartWrapper";
-
 import { ToastContainer } from "react-toastify";
 
+import SEO from "./components/SEO/SEO.jsx";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import ScrollFollow from "./components/scrollFollow/scrollFollow.jsx";
+import Routes from "./routes/routes";
+
+import "./styles/theme.css";
+import "./styles/page.scss";
+import "./styles/scrollFollow.scss";
 import "./styles/header.scss";
 import "./styles/footer.scss";
 import "./styles/loading.scss";
 import "./styles/cart.scss";
+import "./styles/themeToggler.scss";
 
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
+
+
+import i18n from "./language/i18n.js";
+import { detectLanguage } from "./language/utils/detectLanguage.js";
+import { useCurrentCurrency } from "./state/currentCurrency.js";
+
+//*them will run when call useTheme() in theme toggler component
 
 
 function App() {
 
-  const detectCurrentCurrency = useCurrentCurrency((state) => state.detect );
+  //*prepare currency and language
+
+  const detectCurrentCurrency = useCurrentCurrency((state) => state.detect);
   
   useEffect(() => {
+    //*prevent change language after hydration in SEO (only) so crawlers not confuse
+    const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandex/i.test(navigator.userAgent);
+    //*detect user preferred language after hydration (finish) (at client)
+    !isBot && i18n.changeLanguage(detectLanguage());
+
+    //*detect user currency from The Browser or client IP
     detectCurrentCurrency();
   }, []);
 
   return (
-    <Router>
+    <>
+      <SEO/>
       <Header />
       <ToastContainer />
-      <Routes>
-        <Route path="/" exact element={ <>main</> } />
-        <Route path="/about" element={ <>about</> } />
-
-        <Route path="/cart" element={ <CartWrapper /> }>
-          <Route index element={ <Cart/> } />
-          <Route path="shipping" element={ <>shipping</> } />
-        </Route>
-        
-        <Route path="/myorders" element={ <><Outlet /></> }>
-          <Route index element={ <>myorders</> } />
-          <Route path="order/:id" element={<>order</>} />
-        </Route>
-        
-        <Route path="/contact" element={ <>contact</> } />
-        <Route path="*" element={<>notFound</>} />
-      </Routes>
+      <ScrollFollow>
+        <Routes/>
+      </ScrollFollow>
       <Footer />
-    </Router>
+    </>
   );
+
 }
 
 export default App;

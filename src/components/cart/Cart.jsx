@@ -53,25 +53,25 @@ const Cart = () => {
           
           <article>
             <div>
-              <h4>{ t(`cart.calculation.subTotal`) }</h4>
+              <h3>{ t(`cart.calculation.subTotal`) }</h3>
               <p data-testid="subTotalTest"><bdi>
                 <Counter to={ calculateCheckout?.subtotal || 0 } animationOptions={ { duration: 0.5 } }><span></span></Counter> <CurrencyIcon currency={ currentCurrency } />
               </bdi></p>
             </div>
             <div>
-              <h4>{ t(`cart.calculation.tax`) }</h4>
+              <h3>{ t(`cart.calculation.tax`) }</h3>
               <p data-testid="taxTest"><bdi>
                 <Counter to={ calculateCheckout?.tax || 0 } animationOptions={ { duration: 0.5 } }><span></span></Counter> <CurrencyIcon currency={ currentCurrency } />
               </bdi></p>
             </div>
             <div>
-              <h4>{ t(`cart.calculation.shippingCharges`) }</h4>
+              <h3>{ t(`cart.calculation.shippingCharges`) }</h3>
               <p data-testid="shippingTest"><bdi>
                 <Counter to={ calculateCheckout?.shipping || 0 } animationOptions={ { duration: 0.5 } }><span></span></Counter> <CurrencyIcon currency={ currentCurrency } />
               </bdi></p>
             </div>
             <div>
-              <h4>{ t(`cart.calculation.total`) }</h4>
+              <h3>{ t(`cart.calculation.total`) }</h3>
               <p data-testid="TotalTest"><bdi>
                 <Counter to={ calculateCheckout?.total || 0 } animationOptions={ { duration: 0.5 } }><span></span></Counter> <CurrencyIcon currency={ currentCurrency } />
               </bdi></p>
