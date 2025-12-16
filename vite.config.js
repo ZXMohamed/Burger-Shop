@@ -10,4 +10,20 @@ export default defineConfig({
       },
     }),
   ],
+  optimizeDeps: {
+    include: ['react-helmet-async'],
+  },
+  build: {
+    rollupOptions: {
+      input: '/index.html',
+    },
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: './src/test/setupTests.js',
+    include: ['**/*.test.jsx', '**/*.test.js']
+  },
+  ssr: {
+    noExternal: ['react-helmet-async'],
+  }
 })

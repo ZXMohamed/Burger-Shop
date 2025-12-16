@@ -1,0 +1,28 @@
+@use "colors";
+*{
+    box-sizing: border-box;
+    line-height: 1.6;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    padding-top: 60px;
+    margin: 0;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
+body::selection{
+    background-color: colors.$redDark;
+    color: colors.$white-500;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0 0 .5rem 0;
+    font-weight: 500;
+    line-height: 1.2;
+}
+a,a:link,a:visited,
+a:active,a:hover{
+    text-decoration: none;
+}
