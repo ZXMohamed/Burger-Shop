@@ -39,7 +39,7 @@ const Contact = () => {
 
     useEffect(() => {
         formik.validateForm();
-        // setClientTurnstile(<Turnstile sitekey={ import.meta.env.VITE_TURNSTILE } action="contact" theme="dark" language={ i18n.language } onVerify={ handleOnVerify } />);
+        setClientTurnstile(<Turnstile sitekey={ import.meta.env.VITE_TURNSTILE } action="contact" theme="dark" language={ i18n.language } onVerify={ handleOnVerify } />);
     }, [i18n.language]);
 
     useEffect(() => {
