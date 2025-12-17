@@ -1,4 +1,4 @@
-import React, { StrictMode } from "react";
+import React from "react";
 import { renderToString } from "react-dom/server";
 import MenuProvider from "./menu/menuProvider";
 import { LanguageProvider } from "./language/languageProvider";
@@ -9,7 +9,6 @@ import { isAllInteger } from "./utils/isAllInteger";
 import { StaticRouter } from "react-router";
 import { HelmetProvider } from "react-helmet-async";
 import i18n from "./language/i18n";
-import { detectLanguage } from "./language/utils/detectLanguage";
 
 
 function renderInServer(url, language) {

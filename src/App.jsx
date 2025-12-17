@@ -8,6 +8,8 @@ import ScrollFollow from "./components/scrollFollow/scrollFollow.jsx";
 import Routes from "./routes/routes";
 import { BiSolidFoodMenu } from "react-icons/bi";
 
+import emailjs from "@emailjs/browser";
+
 import "./styles/theme.css";
 import "./styles/page.scss";
 import "./styles/scrollFollow.scss";
@@ -20,6 +22,7 @@ import "./styles/hero.scss";
 import "./styles/menu.scss";
 import "./styles/founder.scss";
 import "./styles/about.scss";
+import "./styles/contact.scss";
 import "./styles/themeToggler.scss";
 
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -29,6 +32,9 @@ import { detectLanguage } from "./language/utils/detectLanguage.js";
 import { useCurrentCurrency } from "./state/currentCurrency.js";
 
 //*them will run when call useTheme() in theme toggler component
+
+//*init emailjs
+emailjs.init(import.meta.env.VITE_email_public_key);
 
 function App() {
 

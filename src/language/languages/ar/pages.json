@@ -26,5 +26,24 @@
             "name":"نيلسون",
             "about":"أنا نيلسون، مؤسس برجر شوب. تابعٌ لمؤسسة جود تيست..."
         }
+    },
+    "contact":{
+        "title":"اتصل بنا",
+        "form":{
+            "inputs":{
+                "name":{
+                    "placeholder":"الأسم"
+                },
+                "email":{
+                    "placeholder":"البريد الإلكتروني"
+                },
+                "message":{
+                    "placeholder":"الرسالة"
+                }
+            },
+            "submit":{
+                "title":"إرسال"
+            }
+        }
     }
 }

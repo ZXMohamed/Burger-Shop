@@ -1,5 +1,6 @@
 import Home from "../components/home/Home";
 import About from "../components/about/About";
+import Contact from "../components/contact/Contact";
 import { Outlet, useRoutes } from "react-router";
 
 const routesArray = [
@@ -21,7 +22,7 @@ const routesArray = [
             { path: 'order/:id', element: <>order</> }
         ]
     },
-    { path: ':language?/contact', element: <>contact</> },
+    { path: ':language?/contact', element: <Contact/> },
     { path: '*', element: <>notFound</> }
 ];
 

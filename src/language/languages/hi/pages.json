@@ -26,5 +26,24 @@
             "name":"नेल्सन",
             "about":"मैं नेल्सन हूं, बर्गर शॉप का फाउंडर। गॉड टेस्ट से जुड़ा हुआ..."
         }
+    },
+    "contact":{
+        "title":"हमसे संपर्क करें",
+        "form":{
+            "inputs":{
+                "name":{
+                    "placeholder":"नाम"
+                },
+                "email":{
+                    "placeholder":"ईमेल"
+                },
+                "message":{
+                    "placeholder":"संदेश"
+                }
+            },
+            "submit":{
+                "title":"भेजना"
+            }
+        }
     }
 }

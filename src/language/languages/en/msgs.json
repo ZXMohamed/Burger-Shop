@@ -6,6 +6,17 @@
         },
         "currency":{
             "convertError":"can't do currency convert operations"
+        },
+        "forms":{
+            "min":"%input% is too short (min %length% characters)",
+            "max":"%input% is too long (max %length% characters)",
+            "required":"%input% is required",
+            "validation":"Invalid %input%",
+            "securityCheck":"Complete the security check"
+        },
+        "contact":{
+            "success":"message sent successfully!",
+            "failed":"can't send message, please try again!"
         }
     }
 }

@@ -26,5 +26,24 @@
             "name":"Nelson",
             "about":"I am Nelson, the founder of Burger Shop. Affiliated to God Taste..."
         }
+    },
+    "contact":{
+        "title":"Contact Us",
+        "form":{
+            "inputs":{
+                "name":{
+                    "placeholder":"name"
+                },
+                "email":{
+                    "placeholder":"email"
+                },
+                "message":{
+                    "placeholder":"message"
+                }
+            },
+            "submit":{
+                "title":"send"
+            }
+        }
     }
 }
