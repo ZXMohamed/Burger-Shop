@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 
 const Shipping = () => {
 
+  const [clientTurnstile, setClientTurnstile] = useState(<></>);
+
   const goto = useNavigate();
 
   const { t, i18n } = useTranslation();
@@ -74,6 +76,7 @@ const Shipping = () => {
 
   useEffect(() => {
     formik.validateForm();
+    setClientTurnstile(<Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme="dark" language={i18n.language} onVerify={handleOnVerify} style={{justifyContent:"center"}}/>)
   }, [i18n.language]);
   
 
@@ -155,7 +158,7 @@ const Shipping = () => {
           <span>{ formik.errors.phoneNumber }</span>
           
           <br />
-          <Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme="dark" language={i18n.language} onVerify={handleOnVerify} style={{justifyContent:"center"}}/>
+          {clientTurnstile}
           <span>{ formik.errors["cf-turnstile-response"] }</span>
         
           <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest"> { formik.isSubmitting ? t(`shipping.form.submit.loadingTitle`) : t(`shipping.form.submit.title`) + currentCurrency } </button>
