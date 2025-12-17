@@ -62,8 +62,6 @@ function SEO() {
             <meta name="author" content={ title } />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://www.google.com https://www.gstatic.com;frame-src https://www.google.com;" />
-
             <meta property="og:title" content={ title } />
             <meta property="og:site_name" content={ title } />
             <meta property="og:description" content={ description } />
