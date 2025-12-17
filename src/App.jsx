@@ -6,6 +6,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import ScrollFollow from "./components/scrollFollow/scrollFollow.jsx";
 import Routes from "./routes/routes";
+import { BiSolidFoodMenu } from "react-icons/bi";
 
 import "./styles/theme.css";
 import "./styles/page.scss";
@@ -45,10 +46,10 @@ function App() {
 
   return (
     <>
-      <SEO/>
+      <SEO />
       <Header />
       <ToastContainer />
-      <ScrollFollow>
+      <ScrollFollow currentPath="/" target={ "#menu" } icon={<BiSolidFoodMenu/>}>
         <Routes/>
       </ScrollFollow>
       <Footer />

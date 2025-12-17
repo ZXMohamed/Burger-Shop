@@ -12,7 +12,7 @@ import AlertError from "../alertError/alertError";
 
 const Menu = () => {
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const { data: currency, isFetching: currencyIsFetching, isSuccess: currencyIsSuccess, isError: currencyIsError } = useCurrency();
     const currentCurrency = useCurrentCurrency((state) => state.current);
@@ -29,7 +29,7 @@ const Menu = () => {
             addItemToCart({ id });
             toast.success(t(`msgs.cart.add`));
         }
-    }, []);
+    }, [i18n.language]);
 
     return (
         <section id="menu" className="menuContainer" data-testid="menuTest">

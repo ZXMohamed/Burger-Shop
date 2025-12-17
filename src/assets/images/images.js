@@ -30,19 +30,25 @@ export {
 //*this function 
 //*{ type:"img | background" }
 export async function loadMainImage(image, ref, options, onError = () => { }) {
-    const mainImage = image.replace(".TEMP", "");
-    const response = await fetch(mainImage);
 
-    if (!response.ok) {
-        onError();
-    }
-
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
+    requestIdleCallback(async () => {
+        
+        const mainImage = image.replace(".TEMP", "");
+        const response = await fetch(mainImage);
     
-    if (options.type == "img") {
-        ref.current.src = blobUrl;
-    } else if (options.type == "background") {
-        ref.current.style.backgroundImage = `url(${blobUrl})`;
-    }
+        if (!response.ok) {
+            onError();
+        }
+    
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        
+        if (options.type == "img") {
+            ref.current.src = blobUrl;
+        } else if (options.type == "background") {
+            ref.current.style.backgroundImage = `url(${blobUrl})`;
+        }
+
+    });
+    
 }
