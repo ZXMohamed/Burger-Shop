@@ -45,5 +45,20 @@
                 "title":"send"
             }
         }
+    },
+    "cart":{
+        "title":"Checkout",
+        "calculation":{
+            "subTotal":"Sub Total",
+            "tax":"Tax",
+            "shippingCharges":"Shipping Charges",
+            "total":"total"
+        },
+        "checkoutButton":{
+            "title":"Checkout"
+        }
+    },
+    "loading":{
+        "title":"Loading..."
     }
 }

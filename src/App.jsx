@@ -23,7 +23,7 @@ import "./styles/menu.scss";
 import "./styles/founder.scss";
 import "./styles/about.scss";
 import "./styles/contact.scss";
-import "./styles/themeToggler.scss";
+import "./styles/cart.scss";
 
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
@@ -63,6 +63,7 @@ function App() {
       <Footer />
     </>
   );
+
 }
 
 export default App;

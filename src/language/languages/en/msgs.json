@@ -2,7 +2,9 @@
     "msgs":{
         "cart":{
             "add":"added to cart successfully!",
-            "exist":"is already in cart!"
+            "exist":"is already in cart!",
+            "empty":"cart is empty!",
+            "zeroQuantity":"quantity is zero please add at lest 1!"
         },
         "currency":{
             "convertError":"can't do currency convert operations"

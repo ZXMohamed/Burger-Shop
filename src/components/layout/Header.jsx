@@ -33,7 +33,7 @@ const Header = () => {
     const isMd = useMediaQuery({ query: '(max-width: 800px)' });
 
     return (
-        <motion.nav variants={ navMenu } initial="collapsed" animate={ openMenu ? "expanded" : "collapsed" } className="navMenuExpand" data-testid="headerTest">
+        <motion.nav variants={ navMenu } initial="collapsed" animate={ isMd ? (openMenu ? "expanded" : "collapsed") : "collapsed" } className="navMenuExpand" data-testid="headerTest">
             <motion.div { ...rightIn(0) }>
                 <IoFastFoodOutline />
             </motion.div>
@@ -42,12 +42,12 @@ const Header = () => {
                 <NavLink to="/contact">{ t(`nav.tabs.contact`) }</NavLink>
                 <NavLink to="/myorders" state={{ from: location.pathname }}>{ t(`nav.tabs.orders`) }</NavLink>
                 <NavLink to="/about">{ t(`nav.tabs.about`) }</NavLink>
-                <NavLink to="/cart" state={{ from: location.pathname }}>
+                { currencyIsSuccess && <NavLink to="/cart" state={ { from: location.pathname } }>
                     <FiShoppingCart />
                     <div className="cartItemsCount" data-testid="cartIconTest">
                         { Object.keys(cartItems).length }
                     </div>
-                </NavLink>
+                </NavLink> }
                 <ThemeToggler/>
                 <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language }>
                     { i18n?.services?.resourceStore?.data && Object.keys(i18n.services.resourceStore.data).map((language, inx) => {

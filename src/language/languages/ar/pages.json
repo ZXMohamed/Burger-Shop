@@ -45,5 +45,20 @@
                 "title":"إرسال"
             }
         }
+    },
+    "cart":{
+        "title":"الدفع",
+        "calculation":{
+            "subTotal":"الحساب",
+            "tax":"ضريبة",
+            "shippingCharges":"رسوم الشحن",
+            "total":"المجموع"
+        },
+        "checkoutButton":{
+            "title":"الدفع"
+        }
+    },
+    "loading":{
+        "title":"تحميل الصفحة ..."
     }
 }

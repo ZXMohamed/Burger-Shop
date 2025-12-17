@@ -1,16 +1,18 @@
+import { Outlet, useRoutes } from "react-router";
 import Home from "../components/home/Home";
 import About from "../components/about/About";
 import Contact from "../components/contact/Contact";
-import { Outlet, useRoutes } from "react-router";
+import Cart from "../components/cart/Cart";
+import CartWrapper from "../components/templates/cartWrapper";
 
 const routesArray = [
     { path: '/:language?', element: <Home /> },
     { path: ':language?/about', element: <About/> },
     {
         path: ':language?/cart',
-        element: <Outlet />,
+        element: <CartWrapper/>,
         children: [
-            { index: true, element: <>cart</> },
+            { index: true, element: <Cart/> },
             { path: 'shipping', element: <>shipping</> }
         ]
     },

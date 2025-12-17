@@ -45,5 +45,20 @@
                 "title":"भेजना"
             }
         }
+    },
+    "cart":{
+        "title":"चेक आउट",
+        "calculation":{
+            "subTotal":"उप-योग",
+            "tax":"कर",
+            "shippingCharges":"शिपिंग शुल्क",
+            "total":"कुल"
+        },
+        "checkoutButton":{
+            "title":"चेक आउट"
+        }
+    },
+    "loading":{
+        "title":"लोड हो रहा है..."
     }
 }

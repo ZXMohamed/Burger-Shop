@@ -27,5 +27,41 @@ export const useCart = create((set) => ({
             })
         }
     }),
-
+    INCQuantity: (payload) => set((state) => {
+        if (state.cart[payload.id].quantity < 10) {
+            return {
+                ...state,
+                ...state.success,
+                cart: {
+                    ...state.cart,
+                    [payload.id]: {
+                        quantity: state.cart[payload.id].quantity + 1
+                    }
+                }
+            }
+        } else {
+            return state;
+        }
+    }),
+    DECQuantity: (payload) => set((state) => {
+        if (state.cart[payload.id].quantity > 0) {
+            return {
+                ...state,
+                ...state.success,
+                cart: {
+                    ...state.cart,
+                    [payload.id]: {
+                        quantity: state.cart[payload.id].quantity - 1
+                    }
+                }
+            }
+        } else {
+            return state;
+        }
+    }),
+    empty: () => set((state) => ({
+            ...state,
+            cart: {}
+        }
+    ))
 }));
