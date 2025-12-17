@@ -19,6 +19,8 @@ import "./styles/alertError.scss";
 import "./styles/hero.scss";
 import "./styles/menu.scss";
 import "./styles/founder.scss";
+import "./styles/about.scss";
+import "./styles/themeToggler.scss";
 
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 

@@ -1,0 +1,134 @@
+@use "colors";
+
+.about {
+  padding: 40px;
+  width: 100%;
+  background-image: url("../assets/images/founderBackground.TEMP.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  transition: 1s all;
+
+  > article {
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.075);
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+
+    > h1 {
+      font: 500 3rem "Roboto";
+      color: colors.$red;
+      padding: 1rem 2rem;
+      text-transform: uppercase;
+      background-color: var(--primary);
+    }
+
+    > article {
+      margin: 2rem 0;
+      color: colors.$pink;
+      
+      > h4 {
+        font: 100 2rem "Roboto";
+        text-transform: uppercase;
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      > p {
+        letter-spacing: 3px;
+        word-spacing: 3px;
+        padding: 2rem;
+        width: 50%;
+        text-align: center;
+        margin: auto;
+      }
+
+      > a {
+        background-color: var(--primary);
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--invert);
+        font-size: 1.5rem;
+        transition: all 0.3s;
+        margin: auto;
+        &:hover {
+          color: colors.$red;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    > div {
+      background-color: var(--primary);
+      padding: 2rem;
+      color: var(--invert);
+      position: relative;
+      z-index: 1100;
+
+      > h2 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      > article {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > div {
+          margin: 2rem;
+          > img {
+            width: 150px;
+            height: 150px;
+            border-radius: 100%;
+          }
+          > h3 {
+            text-align: center;
+            margin: 1rem;
+          }
+        }
+        > p {
+          margin: 0 1rem;
+          width: 50%;
+          letter-spacing: 2px;
+          line-height: 150%;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width:700px) {
+  .about {
+
+    > article {
+      >h1{
+        font-size: 2rem;
+      }
+      > article {
+        >h4{
+          font-size: 1.5rem;
+        }
+        > p {
+          width: 100%;
+          margin: 0;
+        }
+      }
+      >div{
+        >article{
+          flex-direction: column;
+
+          >p{
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}

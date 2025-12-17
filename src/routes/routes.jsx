@@ -1,9 +1,10 @@
-import Home from "../components/home/Home"
+import Home from "../components/home/Home";
+import About from "../components/about/About";
 import { Outlet, useRoutes } from "react-router";
 
 const routesArray = [
     { path: '/:language?', element: <Home /> },
-    { path: ':language?/about', element: <>about</> },
+    { path: ':language?/about', element: <About/> },
     {
         path: ':language?/cart',
         element: <Outlet />,

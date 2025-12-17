@@ -7,7 +7,10 @@ export const downIn = (delay) => ({
         y: 0,
         opacity: 1
     },
-    viewport: { once: true, amount: 0.1 },
+    viewport: {
+        once: true,
+        amount: 0.1
+    },
     transition: {
         delay: delay
     }

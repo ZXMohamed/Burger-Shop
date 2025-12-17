@@ -23,7 +23,7 @@ hydrateRoot(document.getElementById('root'),
     <LanguageProvider>
       <HelmetProvider>
         <ThemeProvider>
-          <QueryClientProvider client={client}>
+          <QueryClientProvider client={ client }>
             <MenuProvider>
               <BrowserRouter>
                 <App />
@@ -34,4 +34,4 @@ hydrateRoot(document.getElementById('root'),
       </HelmetProvider>
     </LanguageProvider>
   </StrictMode>
-)
+);
