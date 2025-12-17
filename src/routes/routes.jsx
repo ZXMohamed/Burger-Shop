@@ -4,6 +4,7 @@ import About from "../components/about/About";
 import Contact from "../components/contact/Contact";
 import Cart from "../components/cart/Cart";
 import CartWrapper from "../components/templates/cartWrapper";
+import Shipping from "../components/cart/Shipping";
 
 const routesArray = [
     { path: '/:language?', element: <Home /> },
@@ -13,7 +14,7 @@ const routesArray = [
         element: <CartWrapper/>,
         children: [
             { index: true, element: <Cart/> },
-            { path: 'shipping', element: <>shipping</> }
+            { path: 'shipping', element: <Shipping/> }
         ]
     },
     {

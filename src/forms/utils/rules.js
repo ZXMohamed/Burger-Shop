@@ -5,3 +5,11 @@ export const name = {
 export const message = {
     min: 10
 };
+export const pinCode = {
+    pattern: /^[0-9]+$/,
+    min: 5
+};
+export const phoneNumber = {
+    pattern: /^[0-9]+$/,
+    min: 10
+};

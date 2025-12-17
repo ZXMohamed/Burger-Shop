@@ -60,5 +60,40 @@
     },
     "loading":{
         "title":"लोड हो रहा है..."
+    },
+    "shipping":{
+        "title":"शिपिंग की जानकारियां",
+        "form":{
+            "inputs":{
+                "homeNumber":{
+                    "label":"मकान नंबर।",
+                    "placeholder":"मकान नंबर डालें"
+                },
+                "city":{
+                    "label":"शहर",
+                    "placeholder":"शहर दर्ज करें"
+                },
+                "country":{
+                    "label":"देश",
+                    "placeholder":"देश"
+                },
+                "state":{
+                    "label":"राज्य",
+                    "placeholder":"राज्य"
+                },
+                "pinCode":{
+                    "label":"पिन कोड",
+                    "placeholder":"पिन कोड डालें"
+                },
+                "phoneNumber":{
+                    "label":"फ़ोन",
+                    "placeholder":"फ़ोन नंबर डालें"
+                }
+            },
+            "submit":{
+                "title":"चेकआउट करें ",
+                "loadingTitle":"ऑर्डर कन्फर्म हो रहा है"
+            }
+        }
     }
 }

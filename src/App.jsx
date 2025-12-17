@@ -24,17 +24,18 @@ import "./styles/founder.scss";
 import "./styles/about.scss";
 import "./styles/contact.scss";
 import "./styles/cart.scss";
+import "./styles/shipping.scss";
 
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+
+//*init emailjs
+emailjs.init(import.meta.env.VITE_email_public_key);
 
 import i18n from "./language/i18n.js";
 import { detectLanguage } from "./language/utils/detectLanguage.js";
 import { useCurrentCurrency } from "./state/currentCurrency.js";
 
 //*them will run when call useTheme() in theme toggler component
-
-//*init emailjs
-emailjs.init(import.meta.env.VITE_email_public_key);
 
 function App() {
 

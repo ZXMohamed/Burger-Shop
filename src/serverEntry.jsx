@@ -9,12 +9,14 @@ import { isAllInteger } from "./utils/isAllInteger";
 import { StaticRouter } from "react-router";
 import { HelmetProvider } from "react-helmet-async";
 import i18n from "./language/i18n";
+import { objectMerge } from "./utils/objectMerge";
 
 
 function renderInServer(url, language) {
 
     i18n.changeLanguage(language);
 
+    objectMerge()
     isAllInteger()
 
     const client = new QueryClient();

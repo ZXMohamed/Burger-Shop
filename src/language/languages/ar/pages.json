@@ -60,5 +60,40 @@
     },
     "loading":{
         "title":"تحميل الصفحة ..."
+    },
+    "shipping":{
+        "title":"تفاصيل الشحن",
+        "form":{
+            "inputs":{
+                "homeNumber":{
+                    "label":"رقم المنزل",
+                    "placeholder":"رقم المنزل"
+                },
+                "city":{
+                    "label":"المدينة",
+                    "placeholder":" المدينة"
+                },
+                "country":{
+                    "label":"الدولة",
+                    "placeholder":"الدولة"
+                },
+                "state":{
+                    "label":"الولاية",
+                    "placeholder":"الولاية"
+                },
+                "pinCode":{
+                    "label":"الرمز البريدي",
+                    "placeholder":"الرمز البريدي"
+                },
+                "phoneNumber":{
+                    "label":"الهاتف",
+                    "placeholder":" رقم الهاتف"
+                }
+            },
+            "submit":{
+                "title":"دفع بـ ",
+                "loadingTitle":"جاري تأكيد الطلب"
+            }
+        }
     }
 }

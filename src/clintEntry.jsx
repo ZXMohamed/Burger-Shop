@@ -9,11 +9,13 @@ import ThemeProvider from "./theme/themeProvider";
 import { isAllInteger } from "./utils/isAllInteger";
 import { HelmetProvider } from "react-helmet-async";
 import i18n from './language/i18n.js';
+import { objectMerge } from "./utils/objectMerge.js";
 
 //*match server language for successful hydration match process 
 const data = JSON.parse(document.getElementById("serverDataJson").textContent);
 i18n.changeLanguage(data.language);
 
+objectMerge()
 isAllInteger()
 
 const client = new QueryClient();
@@ -23,7 +25,7 @@ hydrateRoot(document.getElementById('root'),
     <LanguageProvider>
       <HelmetProvider>
         <ThemeProvider>
-          <QueryClientProvider client={ client }>
+          <QueryClientProvider client={client}>
             <MenuProvider>
               <BrowserRouter>
                 <App />

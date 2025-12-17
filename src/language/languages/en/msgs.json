@@ -19,6 +19,9 @@
         "contact":{
             "success":"message sent successfully!",
             "failed":"can't send message, please try again!"
+        },
+        "payment":{
+            "failed":"payment error!"
         }
     }
 }

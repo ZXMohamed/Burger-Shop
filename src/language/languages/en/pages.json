@@ -60,5 +60,40 @@
     },
     "loading":{
         "title":"Loading..."
+    },
+    "shipping":{
+        "title":"Shipping Details",
+        "form":{
+            "inputs":{
+                "homeNumber":{
+                    "label":"H.No",
+                    "placeholder":"House No."
+                },
+                "city":{
+                    "label":"City",
+                    "placeholder":"City"
+                },
+                "country":{
+                    "label":"Country",
+                    "placeholder":"Country"
+                },
+                "state":{
+                    "label":"State",
+                    "placeholder":"State"
+                },
+                "pinCode":{
+                    "label":"Pin Code",
+                    "placeholder":"Pin code"
+                },
+                "phoneNumber":{
+                    "label":"Phone No.",
+                    "placeholder":"Phone No."
+                }
+            },
+            "submit":{
+                "title":"Checkout in ",
+                "loadingTitle":"Confirming Order"
+            }
+        }
     }
 }
