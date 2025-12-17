@@ -60,8 +60,9 @@ export const useCart = create((set) => ({
         }
     }),
     empty: () => set((state) => ({
-            ...state,
-            cart: {}
-        }
+        ...state,
+        cart: {}
+    }
     ))
+
 }));

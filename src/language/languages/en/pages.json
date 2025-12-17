@@ -54,8 +54,8 @@
             "shippingCharges":"Shipping Charges",
             "total":"total"
         },
-        "checkoutButton":{
-            "title":"Checkout"
+        "confirmButton":{
+            "title":"Confirm"
         }
     },
     "loading":{
@@ -94,6 +94,23 @@
                 "title":"Checkout in ",
                 "loadingTitle":"Confirming Order"
             }
+        }
+    },
+    "myOrders":{
+        "ordersTable":{
+            "header":{
+                "orderId":"Order Id",
+                "status":"Status",
+                "totalPrice":"Total Price",
+                "paymentMethod":"Payment Method",
+                "action":"Action"
+            }
+        },
+        "status":{
+            "processing":"Processing"
+        },
+        "paymentMethods":{
+            "COD":"COD"
         }
     }
 }

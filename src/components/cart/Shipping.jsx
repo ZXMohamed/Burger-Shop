@@ -32,7 +32,7 @@ const Shipping = () => {
 
   const orderInfoTemp = useRef({});
 
-  const { paymentData, status, requestPayment, currency,currentCurrency } = useRequestPayment();
+  const { paymentData, status, requestPayment, currency, currentCurrency } = useRequestPayment();
 
   const homeNumberId = useId();
   const cityId = useId();

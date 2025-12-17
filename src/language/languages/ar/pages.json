@@ -54,8 +54,8 @@
             "shippingCharges":"رسوم الشحن",
             "total":"المجموع"
         },
-        "checkoutButton":{
-            "title":"الدفع"
+        "confirmButton":{
+            "title":"تأكيد"
         }
     },
     "loading":{
@@ -94,6 +94,23 @@
                 "title":"دفع بـ ",
                 "loadingTitle":"جاري تأكيد الطلب"
             }
+        }
+    },
+    "myOrders":{
+        "ordersTable":{
+            "header":{
+                "orderId":"id",
+                "status":"الحالة",
+                "totalPrice":"الإجمالي",
+                "paymentMethod":"طريقة الدفع",
+                "action":"امر"
+            }
+        },
+        "status":{
+            "processing":"جاري التوصيل"
+        },
+        "paymentMethods":{
+            "COD":"الدفع عند الإستلام"
         }
     }
 }

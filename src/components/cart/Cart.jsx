@@ -34,7 +34,7 @@ const Cart = () => {
 
   const calculateCheckout = useMemo(() => currencyIsSuccess ? checkout(menu, cart, currency.rates[currentCurrency]) : {}, [menu, cart, currency, currentCurrency, currencyIsSuccess]);
 
-  const handleCheckout = () => {
+  const handleConfirm = () => {
     goTo("/cart/shipping", { state: { from: location.pathname } });
   }
 
@@ -76,7 +76,7 @@ const Cart = () => {
                 <Counter to={ calculateCheckout?.total || 0 } animationOptions={ { duration: 0.5 } }><span></span></Counter> <CurrencyIcon currency={ currentCurrency } />
               </bdi></p>
             </div>
-            <button onClick={ handleCheckout } data-testid={ "checkoutTest" }>{ t(`cart.checkoutButton.title`) }</button>
+            <button onClick={ handleConfirm } data-testid={ "confirmTest" }>{ t(`cart.confirmButton.title`) }</button>
           </article>
           
         </section>

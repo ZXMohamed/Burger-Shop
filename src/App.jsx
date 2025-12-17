@@ -27,6 +27,9 @@ import "./styles/cart.scss";
 import "./styles/shipping.scss";
 
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "./styles/myorders.scss";
+import "./styles/themeToggler.scss";
+import "./styles/loading.scss";
 
 //*init emailjs
 emailjs.init(import.meta.env.VITE_email_public_key);
@@ -38,11 +41,11 @@ import { useCurrentCurrency } from "./state/currentCurrency.js";
 //*them will run when call useTheme() in theme toggler component
 
 function App() {
-
+  
   //*prepare currency and language
 
   const detectCurrentCurrency = useCurrentCurrency((state) => state.detect);
-  
+
   useEffect(() => {
     //*prevent change language after hydration in SEO (only) so crawlers not confuse
     const isBot = /bot|crawler|spider|crawling|googlebot|bingbot|yandex/i.test(navigator.userAgent);

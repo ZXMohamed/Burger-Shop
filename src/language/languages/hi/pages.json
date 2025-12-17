@@ -54,8 +54,8 @@
             "shippingCharges":"शिपिंग शुल्क",
             "total":"कुल"
         },
-        "checkoutButton":{
-            "title":"चेक आउट"
+        "confirmButton":{
+            "title":"पुष्टि करना"
         }
     },
     "loading":{
@@ -94,6 +94,23 @@
                 "title":"चेकआउट करें ",
                 "loadingTitle":"ऑर्डर कन्फर्म हो रहा है"
             }
+        }
+    },
+    "myOrders":{
+        "ordersTable":{
+            "header":{
+                "orderId":"Id",
+                "status":"स्थिति",
+                "totalPrice":"कुल कीमत",
+                "paymentMethod":"भुगतान विधि",
+                "action":"कार्रवाई"
+            }
+        },
+        "status":{
+            "processing":"प्रसंस्करण"
+        },
+        "paymentMethods":{
+            "COD":"डिलवरी पर नकदी"
         }
     }
 }

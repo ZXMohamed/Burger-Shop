@@ -5,6 +5,8 @@ import Contact from "../components/contact/Contact";
 import Cart from "../components/cart/Cart";
 import CartWrapper from "../components/templates/cartWrapper";
 import Shipping from "../components/cart/Shipping";
+import OrderWrapper from "../components/templates/orderWrapper";
+import MyOrders from "../components/myOrders/MyOrders";
 
 const routesArray = [
     { path: '/:language?', element: <Home /> },
@@ -19,10 +21,10 @@ const routesArray = [
     },
     {
         path: ':language?/myorders',
-        element: <Outlet />,
+        element: <OrderWrapper/>,
         children: [
-            { index: true, element: <>my orders</> },
-            { path: 'order/:id', element: <>order</> }
+            { index: true, element: <MyOrders/> },
+            { path: ':id', element: <>order</> }
         ]
     },
     { path: ':language?/contact', element: <Contact/> },
