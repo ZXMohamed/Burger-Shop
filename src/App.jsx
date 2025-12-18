@@ -15,8 +15,6 @@ import "./styles/page.scss";
 import "./styles/scrollFollow.scss";
 import "./styles/header.scss";
 import "./styles/footer.scss";
-import "./styles/themeToggler.scss";
-import "./styles/loading.scss";
 import "./styles/alertError.scss";
 import "./styles/hero.scss";
 import "./styles/menu.scss";
@@ -25,11 +23,12 @@ import "./styles/about.scss";
 import "./styles/contact.scss";
 import "./styles/cart.scss";
 import "./styles/shipping.scss";
-
-// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "./styles/myorders.scss";
 import "./styles/themeToggler.scss";
 import "./styles/loading.scss";
+import "./styles/orderDetails.scss";
+
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 //*init emailjs
 emailjs.init(import.meta.env.VITE_email_public_key);

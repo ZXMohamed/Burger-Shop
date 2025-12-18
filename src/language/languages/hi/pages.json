@@ -110,7 +110,49 @@
             "processing":"प्रसंस्करण"
         },
         "paymentMethods":{
-            "COD":"डिलवरी पर नकदी"
+            "card":"डिलवरी पर नकदी"
+        }
+    },
+    "orderDetails":{
+        "title":"ऑर्डर का विवरण",
+        "details":{
+            "shipping":{
+                "title":"शिपिंग",
+                "items":{
+                    "address":"पता",
+                    "pinCode":"पिन कोड"
+                }
+            },
+            "contact":{
+                "title":"संपर्क",
+                "items":{
+                    "phone":"फ़ोन"
+                }
+            },
+            "status":{
+                "title":"स्थिति",
+                "items":{
+                    "orderStatus":"आदेश की स्थिति"
+                }
+            },
+            "payment":{
+                "title":"भुगतान",
+                "items":{
+                    "paymentMethod":"भुगतान विधि"
+                }
+            },
+            "amount":{
+                "title":"मात्रा",
+                "items":{
+                    "itemsTotal":"कुल आइटम",
+                    "shippingCharges":"शिपिंग शुल्क",
+                    "tax":"कर",
+                    "total":"कुल"
+                }
+            },
+            "orderedItems":{
+                "title":"ऑर्डर किए गए आइटम"
+            }
         }
     }
 }

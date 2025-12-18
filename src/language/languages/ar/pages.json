@@ -110,7 +110,49 @@
             "processing":"جاري التوصيل"
         },
         "paymentMethods":{
-            "COD":"الدفع عند الإستلام"
+            "card":"بطاقة بنكية"
+        }
+    },
+    "orderDetails":{
+        "title":"تفاصيل الطلب",
+        "details":{
+            "shipping":{
+                "title":"شحن",
+                "items":{
+                    "address":"عنوان",
+                    "pinCode":"رقم بريدي"
+                }
+            },
+            "contact":{
+                "title":"اتصال",
+                "items":{
+                    "phone":"هاتف"
+                }
+            },
+            "status":{
+                "title":"حالة",
+                "items":{
+                    "orderStatus":"حالة الطلب"
+                }
+            },
+            "payment":{
+                "title":"الدفع",
+                "items":{
+                    "paymentMethod":"طريقة الدفع"
+                }
+            },
+            "amount":{
+                "title":"السعر",
+                "items":{
+                    "itemsTotal":"سعر الطلب",
+                    "shippingCharges":"رسوم الشحن",
+                    "tax":"ضريبة",
+                    "total":"الإجمالي"
+                }
+            },
+            "orderedItems":{
+                "title":"الطلب"
+            }
         }
     }
 }

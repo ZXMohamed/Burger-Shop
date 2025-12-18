@@ -7,6 +7,9 @@ import CartWrapper from "../components/templates/cartWrapper";
 import Shipping from "../components/cart/Shipping";
 import OrderWrapper from "../components/templates/orderWrapper";
 import MyOrders from "../components/myOrders/MyOrders";
+import OrderDetails from "../components/myOrders/OrderDetails";
+
+//*language param for SEO only
 
 const routesArray = [
     { path: '/:language?', element: <Home /> },
@@ -24,7 +27,7 @@ const routesArray = [
         element: <OrderWrapper/>,
         children: [
             { index: true, element: <MyOrders/> },
-            { path: ':id', element: <>order</> }
+            { path: ':id', element: <OrderDetails/>}
         ]
     },
     { path: ':language?/contact', element: <Contact/> },

@@ -83,7 +83,7 @@ function OrderWrapper() {
                     handleSetOpen(true)
                 }
             } else {
-                routeValidation(...backValidation) && goto(prevPage, { replace: true });
+                !routeValidation(...backValidation) && goto(prevPage, { replace: true });
             }
         }
 

@@ -110,7 +110,49 @@
             "processing":"Processing"
         },
         "paymentMethods":{
-            "COD":"COD"
+            "card":"card"
+        }
+    },
+    "orderDetails":{
+        "title":"Order Details",
+        "details":{
+            "shipping":{
+                "title":"Shipping",
+                "items":{
+                    "address":"Address",
+                    "pinCode":"Pin Code"
+                }
+            },
+            "contact":{
+                "title":"Contact",
+                "items":{
+                    "phone":"Phone"
+                }
+            },
+            "status":{
+                "title":"Status",
+                "items":{
+                    "orderStatus":"Order Status"
+                }
+            },
+            "payment":{
+                "title":"Payment",
+                "items":{
+                    "paymentMethod":"Payment Method"
+                }
+            },
+            "amount":{
+                "title":"Amount",
+                "items":{
+                    "itemsTotal":"Items Total",
+                    "shippingCharges":"Shipping Charges",
+                    "tax":"Tax",
+                    "total":"Total"
+                }
+            },
+            "orderedItems":{
+                "title":"Ordered Items"
+            }
         }
     }
 }

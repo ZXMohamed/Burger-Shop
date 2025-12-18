@@ -10,6 +10,7 @@ footer {
   align-items: center;
   border-radius: 20px 20px 0 0;
   margin-top: -20px;
+
   >aside.side1{
     display: flex;
     flex-direction: column;
@@ -55,5 +56,18 @@ footer {
   footer {
     grid-template-columns: 1fr;
     text-align: center;
+
+    >aside.side1{
+      align-items: center;
+
+      >h5 {
+        text-align: center;
+      }
+    
+      >p,
+      >strong {
+        margin: 0;
+      }
+    }
   }
 }

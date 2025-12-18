@@ -21,7 +21,7 @@ isAllInteger()
 const client = new QueryClient();
 
 hydrateRoot(document.getElementById('root'),
-  <StrictMode>
+  // <StrictMode>
     <LanguageProvider>
       <HelmetProvider>
         <ThemeProvider>
@@ -35,5 +35,5 @@ hydrateRoot(document.getElementById('root'),
         </ThemeProvider>
       </HelmetProvider>
     </LanguageProvider>
-  </StrictMode>
+  // </StrictMode>
 );

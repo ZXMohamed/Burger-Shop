@@ -41,7 +41,7 @@ const Shipping = () => {
   const pinCodeId = useId();
   const phoneNumberId = useId();
 
-  const onUnmount = useRef(() => { });
+  const onUnmount = useRef(() => { console.log("uuuuuu");});
 
   useEffect(() => {
 
@@ -59,7 +59,7 @@ const Shipping = () => {
 
   }, []);
 
-  useEffect(() => onUnmount.current(), []);
+  useEffect(() => onUnmount.current(), [] );
 
   const turnstile = useTurnstile();
 
@@ -84,7 +84,7 @@ const Shipping = () => {
     if (status.paymentIsSuccess) {
       const order = createOrder(cart, paymentData?.intention_order_id, orderInfoTemp.current);
       addOrder(order);
-      onUnmount.current = () => emptyCart();
+      onUnmount.current = () => { console.log("111111111111111111111111111") };//emptyCart();
       window.open(import.meta.env.VITE_PAYMENT_PAGE_URL + paymentData?.client_secret, '_blank', "width=1200,height=800,resizable=yes,scrollbars=yes,status=yes");
       //*user should go to orders page after pay (successful payment)
       //*but this site is frontend, focus on frontend only (no backend)

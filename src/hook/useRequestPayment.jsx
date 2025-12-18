@@ -24,8 +24,14 @@ function useRequestPayment() {
     const requestPayment = () => { 
         if (currencyIsSuccess) {
             const calculateCheckout = checkout(menu, cart, currency.rates[currentCurrency]);
+
+            const cartClone = { ...cart };
+            for (let i in cartClone) {
+                if (cartClone[i].quantity <= 0)
+                    delete cartClone[i];
+            }
         
-            const itemsArr = Object.merge(cart, menu(t, currency.rates[currentCurrency]));
+            const itemsArr = Object.merge(cartClone, menu(t, currency.rates[currentCurrency]));
           
             const safeItems = replaceAllKeys(itemsArr, ["title", "price"], ["name", "amount"]);
         
