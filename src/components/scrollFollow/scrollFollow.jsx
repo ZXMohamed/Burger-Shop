@@ -1,24 +1,28 @@
 import { motion, useScroll } from "framer-motion"
+import { memo, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router"
 
-export default function ScrollFollow({currentPath="", target="", icon=<></>, children}) {
+const ScrollFollow = memo(({ currentPath = "", target = "", icon = <></>, children }) => {
     const { scrollYProgress } = useScroll()
     const location = useLocation();
 
-    let link = "";
-    let LinkTag = Link; 
+    const link = useRef("");
+    const [linkType, setLinkType] = useState("Link");
 
-    if (location.pathname == currentPath) {
-        link = target;
-        LinkTag = ({ link, children }) => <a href={ link }>{ children }</a>;
-    } else {
-        link = currentPath + target;
-        LinkTag = ({ link, children }) => <Link to={ link }>{ children }</Link>;
-    }
+    
+    useEffect(() => {
+        if (location.pathname == currentPath) {
+            link.current = target;
+            setLinkType("a");
+        } else {
+            link.current = currentPath + target;
+            setLinkType("link");
+        }
+    }, [location.pathname, currentPath, target]);
 
     return (
         <>
-            <LinkTag link={link} title="back to menu">
+            <LinkTag type={ linkType } link={ link.current } title="back to menu">
                 <div className={ "scrollFollow" }>
                     <div className={ "scrollFollowIcon" }>
                         { icon }
@@ -31,4 +35,15 @@ export default function ScrollFollow({currentPath="", target="", icon=<></>, chi
             { children }
         </>
     )
+});
+
+export default ScrollFollow;
+
+
+function LinkTag({ type, link, children }) {
+    if (type == "a") {        
+        return <a href={ link }>{ children }</a>
+    } else if(type == "link") {
+        return <Link to={ link }>{ children }</Link>
+    }
 }
