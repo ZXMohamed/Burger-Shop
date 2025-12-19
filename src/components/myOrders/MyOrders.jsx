@@ -20,7 +20,7 @@ const MyOrders = () => {
 
   return (
     <section className="tableClass">
-      <motion.section {...upIn(0)}>
+      <motion.section {...upIn(0,"animate")}>
         <table>
           <thead>
             <tr>

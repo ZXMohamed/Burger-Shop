@@ -20,16 +20,16 @@ const About = () => {
     },[])
 
     return (
-        <section ref={ownerBackground} className="about">
-            <article>
-                <motion.h1 {...upIn(0)}>{ t(`about.title`) }</motion.h1>
-                <motion.article {...upIn(0)}>
+        <main ref={ownerBackground} className="about">
+            <section className="aboutContent">
+                <motion.h1 {...upIn(0)} className="aboutTitle">{ t(`about.title`) }</motion.h1>
+                <motion.article {...upIn(0)} className="aboutShop">
                     <h4>{ t(`about.shop.title`) }</h4>
                     <p>{ t(`about.shop.description`) }</p>
                     <p>{ t(`about.shop.menuLinkDescription`) }</p>
                     <Link to="/#menu"><RiFindReplaceLine /></Link>
                 </motion.article>
-                <motion.div {...downIn(0)}>
+                <motion.article {...downIn(0)} className="aboutFounder">
                     <h2>{ t(`about.founder.title`) }</h2>
                     <article>
                         <div>
@@ -38,9 +38,9 @@ const About = () => {
                         </div>
                         <p>{ t(`about.founder.about`) }</p>
                     </article>
-                </motion.div>
-            </article>
-        </section>
+                </motion.article>
+            </section>
+        </main>
     );
 };
 export default About;

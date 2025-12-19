@@ -1,9 +1,9 @@
-export const rightIn = (delay = 0) => ({
+export const rightIn = (delay = 0, triggerAt = "whileInView") => ({
     initial: {
         x: "-100%",
         opacity: 0
     },
-    whileInView: {
+    [triggerAt]: {
         x: 0,
         opacity: 1
     },

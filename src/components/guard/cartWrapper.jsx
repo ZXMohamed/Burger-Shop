@@ -32,7 +32,7 @@ function CartWrapper() {
     useEffect(() => {
         if (!open) {
         
-            const prevPage = location.state?.prev || "/";
+            const prevPage = location.state?.from || "/";
 
             //*prevent opening pages unless the cart has at lest 1 item
             //*prevent opening pages unless the currency API success

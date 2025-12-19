@@ -6,12 +6,12 @@ import { matchPath } from 'react-router';
 import 'dotenv/config'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const isProd = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 let vite;
 
-if (!isProd) {
+if (!isProduction) {
   const { createServer } = await import('vite');
   vite = await createServer({
     server: { middlewareMode: true },
@@ -30,7 +30,7 @@ app.use('*all', async (req, res) => {
     let template;
     let render;
 
-    if (!isProd) {
+    if (!isProduction) {
       template = readFileSync(resolve(__dirname, 'index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
       render = (await vite.ssrLoadModule('/src/serverEntry.jsx')).default;

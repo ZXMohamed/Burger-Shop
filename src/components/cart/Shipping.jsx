@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { createOrder } from "../../utils/createOrder";
 import useRequestPayment from "../../hook/useRequestPayment";
 import { toast } from "react-toastify";
+import useTheme from "../../hook/useTheme";
 
 const Shipping = () => {
 
@@ -20,6 +21,8 @@ const Shipping = () => {
   const goto = useNavigate();
 
   const { t, i18n } = useTranslation();
+
+  const { currentTheme } = useTheme();
 
   const { cart } = useOutletContext();
 
@@ -59,8 +62,7 @@ const Shipping = () => {
 
   }, []);
 
-  useEffect(() => onUnmount.current(), [] );
-
+  
   const turnstile = useTurnstile();
 
   const formik = useFormik({
@@ -76,18 +78,19 @@ const Shipping = () => {
 
   useEffect(() => {
     formik.validateForm();
-    setClientTurnstile(<Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme="dark" language={i18n.language} onVerify={handleOnVerify} style={{justifyContent:"center"}}/>)
-  }, [i18n.language]);
+    setClientTurnstile(<Turnstile sitekey={import.meta.env.VITE_TURNSTILE} action="shipping" theme={currentTheme} language={i18n.language} onVerify={handleOnVerify} style={{justifyContent:"center"}}/>)
+  }, [i18n.language, currentTheme]);
   
 
   useEffect(() => {
     if (status.paymentIsSuccess) {
       const order = createOrder(cart, paymentData?.intention_order_id, orderInfoTemp.current);
       addOrder(order);
-      onUnmount.current = () => { console.log("111111111111111111111111111") };//emptyCart();
+      //*when payment page request Success empty cart on (unmount component)
+      onUnmount.current = () => { emptyCart(); };
       window.open(import.meta.env.VITE_PAYMENT_PAGE_URL + paymentData?.client_secret, '_blank', "width=1200,height=800,resizable=yes,scrollbars=yes,status=yes");
       //*user should go to orders page after pay (successful payment)
-      //*but this site is frontend, focus on frontend only (no backend)
+      //*but this site is frontend, focus on frontend only (no backend) (just for SSR only)
       //*and no data base, all data saved on zustand (clint state)
       //*so can't perform real payment process 
       //*(just simulation for a menu + cart + payment + orders)
@@ -96,24 +99,26 @@ const Shipping = () => {
     else if (status.paymentIsError) {
       toast.error(t(`msgs.payment.failed`));
     }
-
+    
     if (status.currencyIsError) {
       toast.error(t(`msgs.currency.convertError`));
     }
 
   }, [paymentData, status]);
-
+  
+  useEffect(() => () => { onUnmount.current() }, [onUnmount.current]); //*when unmount component
+  
   const handleOnVerify = (token) => {
     formik.setFieldValue("cf-turnstile-response", token);
     if (formik.errors["cf-turnstile-response"]) {
       formik.setFieldError("cf-turnstile-response", '');
     }
   }
-
+  
   return (
-    <section className="shipping">
-      <motion.section {...upIn(0)}>
-        <h1>{ t(`shipping.title`) }</h1>
+    <main className="shipping">
+      <motion.section {...upIn(0,"animate")} className="shippingContainer">
+        <h1 className="shippingTitle">{ t(`shipping.title`) }</h1>
         <form onSubmit={formik.handleSubmit}>
           <div>
             <label htmlFor={ homeNumberId }>{ t(`shipping.form.inputs.homeNumber.label`) }</label>
@@ -174,7 +179,7 @@ const Shipping = () => {
         </div>
       { /* FOR DEVELOPER ONLY */}
 
-    </section>
+    </main>
   );
 }
 

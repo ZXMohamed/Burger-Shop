@@ -1,23 +1,23 @@
 @use "colors";
 
-.shipping {
-  background-color: var(--primary);
+main.shipping {
+  background-color: var(--secondary);
   width: 100%;
-  // min-height: 950px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
 
-  > section {
+  > section.shippingContainer {
     filter: drop-shadow(0px 0px 10px #00000013);
-    background-color: var(--secondary);
+    background-color: var(--primary);
     width:clamp(0px,900px, 900px);
     
-    > h1 {
+    > h1.shippingTitle {
       padding: 30px 40px;
       color: colors.$red;
       background-color: var(--primary);
+      border-bottom: 1px solid colors.$red;
       text-transform: uppercase;
       text-align: center;
       font: 100 3rem "Roboto";
@@ -42,11 +42,11 @@
         > input,
         > select {
           color: var(--invert);
-          background-color: var(--primary);
+          background-color: var(--secondary);
           width: 450px;
           padding: 0.5rem 1rem;
           outline: none;
-          border: 1px solid var(--secondary);
+          border: 1px solid var(--primary);
           border-radius: 5px;
           margin: 1rem;
           font-size: 1rem;
@@ -79,37 +79,36 @@
 }
 
 @media screen and (max-width: 700px) {
-  .shipping{
+  main.shipping{
     padding: 30px;
     padding-left: 0;
     padding-right: 0;
-    > section {
-      > h1 {
+    > section.shippingContainer {
+      > h1.shippingTitle {
         padding: 30px 0;
         font: 100 2rem "Roboto";
       }
       > form {
-
-      > div {
-        width: 100%;
-        > label {
-          font-size: 14px;
-        }
-        > input,
-        > select {
-          font-size: 14px;
+        > div {
           width: 100%;
+          > label {
+            font-size: 14px;
+          }
+          > input,
+          > select {
+            font-size: 14px;
+            width: 100%;
+          }
         }
-      }
-      >span{
-        font-size: 14px;
-      }
+        >span{
+          font-size: 14px;
+        }
 
-      > button {
-        width: 100%;
-        margin: 10px 0px;
+        > button {
+          width: 100%;
+          margin: 10px 0px;
+        }
       }
     }
-  }
   }
 }

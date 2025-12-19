@@ -3,9 +3,9 @@ import Home from "../components/home/Home";
 import About from "../components/about/About";
 import Contact from "../components/contact/Contact";
 import Cart from "../components/cart/Cart";
-import CartWrapper from "../components/templates/cartWrapper";
+import CartWrapper from "../components/guard/cartWrapper";
 import Shipping from "../components/cart/Shipping";
-import OrderWrapper from "../components/templates/orderWrapper";
+import OrderWrapper from "../components/guard/orderWrapper";
 import MyOrders from "../components/myOrders/MyOrders";
 import OrderDetails from "../components/myOrders/OrderDetails";
 

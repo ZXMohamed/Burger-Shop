@@ -5,6 +5,7 @@ import { checkout } from "../../utils/checkout";
 import { useTranslation } from "react-i18next";
 import CurrencyIcon from "../currencyIcon/currencyIcon";
 import Counter from "../counter/counter";
+import { GrPrint } from "react-icons/gr";
 
 
 const OrderDetails = () => {
@@ -22,9 +23,11 @@ const OrderDetails = () => {
     const calculateCheckout = useMemo(() => currencyIsSuccess ? checkout(menu, order.order, currency.rates[currentCurrency]) : {}, [currentCurrency, currency, menu, currencyIsSuccess, order.order]);
 
     return (
-        <section className="orderDetails">
-            <section>
-                <h1>{ t(`orderDetails.title`) }</h1>
+        <main className="orderDetails">
+
+            <section className="orderDetailsContainer">
+                <span className="printButton" onClick={()=>{window.print()}}><GrPrint/></span>
+                <h1 className="orderDetailsTitle">{ t(`orderDetails.title`) }</h1>
                 <div>
                     <h2>{ t(`orderDetails.details.shipping.title`) }</h2>
                     <p>
@@ -91,7 +94,7 @@ const OrderDetails = () => {
                     }) }
                 </article>
             </section>
-        </section>
+        </main>
     );
 };
 export default OrderDetails;

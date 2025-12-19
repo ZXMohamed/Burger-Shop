@@ -1,18 +1,30 @@
 @use "colors";
 
-.orderDetails {
+main.orderDetails {
   background-color: var(--secondary);
   width: 100%;
   padding: 40px;
 
-  > section {
+  > section.orderDetailsContainer {
+    position: relative;
     background-color: var(--primary);
     max-width: 900px;
     margin: auto;
     padding: 2rem;
     overflow-x: auto;
 
-    > h1 {
+    .printButton{
+      color: var(--invert);
+      font-size: 30px;
+      position: absolute;
+      right: 40px;
+
+      :hover{
+        color:colors.$red;
+      }
+    }
+
+    > h1.orderDetailsTitle {
       text-transform: uppercase;
       text-align: center;
       font: 3rem "Roboto";
@@ -90,14 +102,14 @@
 }
 
 @media screen and (max-width: 700px) {
-  .orderDetails{
+  main.orderDetails{
     padding-left: 10px;
     padding-right: 10px;
 
-    > section {
+    > section.orderDetailsContainer {
       padding: 2rem 1rem;
       
-      > h1 {
+      > h1.orderDetailsTitle {
         font-size: 1.8rem;
         margin: 1rem 0rem 2rem 0rem;
       }
@@ -135,6 +147,9 @@
     > section {
       padding: 0;
 
+      .printButton{
+        display: none;
+      }
       >h1{
         margin: 30px;
         font: 2rem "Roboto";

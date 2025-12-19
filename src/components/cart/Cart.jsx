@@ -40,9 +40,9 @@ const Cart = () => {
 
   return (
     <main className="cart">
-      <motion.article { ...upIn(0) }>
-        <h1>{ t(`cart.title`) }</h1>
-        <section>
+      <motion.section { ...upIn(0,"animate") } className="cartContainer">
+        <h1 className="cartTitle">{ t(`cart.title`) }</h1>
+        <section className="cartContent">
           
           {
             currencyIsSuccess && Object.keys(cart).map((id, inx) => {
@@ -51,7 +51,7 @@ const Cart = () => {
             })
           }
           
-          <article>
+          <article className="cartCalculation">
             <div>
               <h3>{ t(`cart.calculation.subTotal`) }</h3>
               <p data-testid="subTotalTest"><bdi>
@@ -80,7 +80,7 @@ const Cart = () => {
           </article>
           
         </section>
-      </motion.article>
+      </motion.section>
     </main>
   );
 };

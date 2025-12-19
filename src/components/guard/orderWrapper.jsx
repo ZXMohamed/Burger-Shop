@@ -33,7 +33,7 @@ function OrderWrapper() {
     useEffect(() => {
         if (!open) {
         
-            const prevPage = location.state?.prev || "/";
+            const prevPage = location.state?.from || "/";
 
             //*prevent open pages unless the order has at lest 1 item
             //*prevent open order details page with unKnown id
