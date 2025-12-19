@@ -41,9 +41,9 @@ export default ScrollFollow;
 
 
 function LinkTag({ type, link, children }) {
-    if (type === "a") {        
+    if (type == "a") {        
         return <a href={ link }>{ children }</a>
-    } else if(type === "link") {
+    } else if(type == "link") {
         return <Link to={ link }>{ children }</Link>
     }
 }

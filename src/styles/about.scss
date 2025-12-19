@@ -1,6 +1,6 @@
 @use "colors";
 
-.about {
+main.about {
   padding: 40px;
   width: 100%;
   background-image: url("../assets/images/founderBackground.TEMP.webp");
@@ -9,14 +9,14 @@
   background-attachment: fixed;
   transition: 1s all;
 
-  > article {
+  > section.aboutContent {
     backdrop-filter: blur(3px);
     background-color: rgba(255, 255, 255, 0.075);
     max-width: 900px;
     height: 100%;
     margin: auto;
 
-    > h1 {
+    > h1.aboutTitle {
       font: 500 3rem "Roboto";
       color: colors.$red;
       padding: 1rem 2rem;
@@ -24,7 +24,7 @@
       background-color: var(--primary);
     }
 
-    > article {
+    > article.aboutShop {
       margin: 2rem 0;
       color: colors.$pink;
       
@@ -63,7 +63,7 @@
       }
     }
 
-    > div {
+    > article.aboutFounder {
       background-color: var(--primary);
       padding: 2rem;
       color: var(--invert);
@@ -105,13 +105,15 @@
 
 
 @media screen and (max-width:700px) {
-  .about {
+  main.about {
+    padding-left: 10px;
+    padding-right: 10px;
 
-    > article {
-      >h1{
+    > section.aboutContent {
+      >h1.aboutTitle{
         font-size: 2rem;
       }
-      > article {
+      > article.aboutShop {
         >h4{
           font-size: 1.5rem;
         }
@@ -120,7 +122,7 @@
           margin: 0;
         }
       }
-      >div{
+      >article.aboutFounder{
         >article{
           flex-direction: column;
 
