@@ -9,6 +9,7 @@ import Turnstile, { useTurnstile } from "react-turnstile";
 import { useTranslation } from "react-i18next";
 import useEmail from "../../hook/useEmail";
 import { toast } from "react-toastify";
+import useTheme from "../../hook/useTheme";
 
 const Contact = () => {
 
@@ -19,7 +20,9 @@ const Contact = () => {
 
     const { t, i18n } = useTranslation();
 
-    // const turnstile = useTurnstile();
+    const { currentTheme } = useTheme();
+
+    const turnstile = useTurnstile();
 
     const email = useEmail();
     
@@ -33,14 +36,14 @@ const Contact = () => {
             resetForm();
         },
         onReset: () => {
-            // turnstile.reset();
+            turnstile.reset();
         }
     });
 
     useEffect(() => {
         formik.validateForm();
-        setClientTurnstile(<Turnstile sitekey={ import.meta.env.VITE_TURNSTILE } action="contact" theme="dark" language={ i18n.language } onVerify={ handleOnVerify } />);
-    }, [i18n.language]);
+        setClientTurnstile(<Turnstile sitekey={ import.meta.env.VITE_TURNSTILE } action="contact" theme={currentTheme} language={ i18n.language } onVerify={ handleOnVerify } />);
+    }, [i18n.language, currentTheme]);
 
     useEffect(() => {
         loadMainImage(burger2,sideImg,{type:"img"});

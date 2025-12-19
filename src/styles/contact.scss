@@ -83,7 +83,7 @@ main.contact {
 }
 
 @media screen and (max-width: 768px) {
-  .contact {
+  main.contact {
     flex-direction: column-reverse;
     > form {
       width: 100%;
