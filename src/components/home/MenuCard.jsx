@@ -19,9 +19,9 @@ const MenuCard = memo(({ id, photo, price, name, currency, delay = 0, inCart = f
   }, []);
 
   return (
-    <motion.section { ...upIn(delay) } className="menuCard" role="menuItem">
+    <motion.section { ...upIn(delay) } className="menuCard" role="menuItemTest">
       <img ref={MenuCardImg} src={ photo } alt={ name } loading="lazy"/>
-      <h3><bdi><Counter from={ 0 } to={ price }><span></span></Counter> <CurrencyIcon currency={ currency } /></bdi></h3>
+      <h3><bdi><Counter from={ 0 } to={ price } data-testid="jj"><span></span></Counter> <CurrencyIcon currency={ currency } /></bdi></h3>
       <p>{ name }</p>
       <button className={ inCart ? "menuCardinCartButton" : "" } onClick={ () => onClick(id, name, inCart) } data-testid={ `menuItemBtnTest${id}` }>
         { inCart ? <BsFillCartCheckFill size={20}/> : t(`home.menu.buyNow`) }
