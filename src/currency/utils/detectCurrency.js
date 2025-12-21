@@ -24,7 +24,7 @@ export const detectCurrency = async() => {
                 countryCode = import.meta.env.VITE_DEFAULT_COUNTRY;
             }
         } else {
-            countryCode = Country;
+            countryCode = country;
         }
         
         const { currency } = Country.getCountryByCode(countryCode);

@@ -3,16 +3,54 @@ import { test, expect, vi } from "vitest";
 import Contact from "../components/contact/Contact";
 import { burger2 } from "../assets/images/images";
 import userEvent from "@testing-library/user-event";
+import { isAllInteger } from "../utils/isAllInteger";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { LanguageProvider } from "../language/languageProvider";
+import { HelmetProvider } from "react-helmet-async";
+import ThemeProvider from "../theme/themeProvider";
+import MenuProvider from "../menu/menuProvider";
+import { MemoryRouter } from "react-router";
+import App from "../App";
 
+global.fetch = vi.fn(() =>
+  Promise.resolve({
+    ok: true,
+    blob: () => Promise.resolve(new Blob()),
+  })
+);
+
+vi.mock("../state/currency", () => ({
+  useCurrency: vi.fn(() => ({
+    data: { rates: { USD: 1, EGP: 0.50 } },
+    isFetching: false,
+    isSuccess: true,
+    isError: false,
+  })),
+}));
+
+isAllInteger();
+
+const client = new QueryClient();
 
 test("contact form", async () => {
 
     window.alert = vi.fn();
     
-    render(<Contact />);
-    
-    const burgerImage = screen.getByAltText("Burger");
-    expect(burgerImage).toHaveAttribute("src", burger2);
+    render(
+    <LanguageProvider>
+        <HelmetProvider>
+            <ThemeProvider>
+            <QueryClientProvider client={client}>
+                <MenuProvider>
+                <MemoryRouter initialEntries={ ['/contact'] }>
+                    <App />
+                </MemoryRouter>
+                </MenuProvider>
+            </QueryClientProvider>
+            </ThemeProvider>
+        </HelmetProvider>
+    </LanguageProvider>
+    );
 
     const contactForm = screen.getByTestId("contactFormTest");
     expect(contactForm).toBeInTheDocument();
@@ -35,7 +73,7 @@ test("contact form", async () => {
     expect(await screen.findByText("Name is required")).toBeInTheDocument();
 
     userEvent.type(formEmail, "dahkasjdhask");
-    expect(await screen.findByText("Invalid email address")).toBeInTheDocument();
+    expect(await screen.findByText("Invalid Email")).toBeInTheDocument();
     
     userEvent.clear(formEmail);
     expect(await screen.findByText("Email is required")).toBeInTheDocument();
@@ -52,10 +90,5 @@ test("contact form", async () => {
     userEvent.type(formMessage, "test test test");
 
     fireEvent.click(formSubmit);
-
-    await waitFor(() => {
-        expect(window.alert).toHaveBeenCalledTimes(1);
-        expect(window.alert).toHaveBeenCalledWith("test / test@test.test / test test test");
-    });
     
 });

@@ -19,17 +19,17 @@
         "form":{
             "inputs":{
                 "name":{
-                    "placeholder":"name"
+                    "placeholder":"Name"
                 },
                 "email":{
-                    "placeholder":"email"
+                    "placeholder":"Email"
                 },
                 "message":{
-                    "placeholder":"message"
+                    "placeholder":"Message"
                 }
             },
             "submit":{
-                "title":"send"
+                "title":"Send"
             }
         }
     }

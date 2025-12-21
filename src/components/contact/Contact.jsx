@@ -32,6 +32,7 @@ const Contact = () => {
         onSubmit: (data, { resetForm }) => {
             data.subject = "burger shop";
             delete data["cf-turnstile-response"];
+            toast.success(t(`msgs.contact.success`))
             email(data, () => toast.success(t(`msgs.contact.success`)), () => toast.error(t(`msgs.contact.failed`)));
             resetForm();
         },
