@@ -1,6 +1,8 @@
 //*images load in small size low quality at first time for best performance
 //*then loadImage() function load the main image in full size and best quality
 
+import axios from "axios";
+
 import homeBackground from "./homeBackground.TEMP.jpg";
 import gradientBackground from "./gradientBackground.TEMP.png";
 import founderBackground from "./founderBackground.TEMP.webp";
@@ -30,19 +32,29 @@ export {
 //*this function 
 //*{ type:"img | background" }
 export async function loadMainImage(image, ref, options, onError = () => { }) {
-    const mainImage = image.replace(".TEMP", "");
-    const response = await fetch(mainImage);
 
-    if (!response.ok) {
-        onError();
+    if (window.requestIdleCallback) {
+        requestIdleCallback(async () => {
+            await load(image, ref, options, onError);
+        });
+    } else {
+        await load(image, ref, options, onError);
     }
 
-    const blob = await response.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    
-    if (options.type == "img") {
-        ref.current.src = blobUrl;
-    } else if (options.type == "background") {
-        ref.current.style.backgroundImage = `url(${blobUrl})`;
+    async function load(image, ref, options, onError = () => { }) {
+        const mainImage = image.replace(".TEMP", "");
+        try {
+            const response = await axios.get(mainImage, { responseType: "blob" });
+            const blob = response.data;
+            const blobUrl = URL.createObjectURL(blob);
+
+            if (options.type === "img") {
+                ref.current?.src && (ref.current.src = blobUrl);
+            } else if (options.type === "background") {
+                ref.current?.style && (ref.current.style.backgroundImage = `url(${blobUrl})`);
+            }
+        } catch (error) {
+            onError();
+        }
     }
 }
