@@ -7,7 +7,11 @@ export const useCart = create((set) => ({
 
     add: (payload) => set((state) => {
 
-        if (!state.cart[payload.id]) {
+        if (state.cart[payload.id]) {
+
+            return state;
+
+        } else {
 
             return ({
                 ...state,
