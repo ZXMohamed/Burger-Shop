@@ -2,7 +2,8 @@
     "msgs":{
         "cart":{
             "add":"added to cart successfully!",
-            "exist":"is already in cart!"
+            "exist":"is already in cart!",
+            "empty":"cart is empty!"
         },
         "forms":{
             "min":"%input% is too short (min %length% characters)",
