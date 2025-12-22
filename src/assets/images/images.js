@@ -51,9 +51,9 @@ export async function loadMainImage(image, ref, options, onError = () => { }) {
         const blobUrl = URL.createObjectURL(blob);
         
         if (options.type == "img") {
-            ref.current.src = blobUrl;
+            ref.current?.src && (ref.current.src = blobUrl);
         } else if (options.type == "background") {
-            ref.current.style.backgroundImage = `url(${blobUrl})`;
+            ref.current?.style && (ref.current.style.backgroundImage = `url(${blobUrl})`);
         }
     }
     
