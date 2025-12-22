@@ -1,5 +1,4 @@
 import { memo, useEffect, useRef } from "react";
-import { MdCurrencyRupee } from "react-icons/md";
 import CurrencyIcon from "../currencyIcon/currencyIcon";
 import Counter from "../counter/counter";
 import { loadMainImage } from "../../assets/images/images";
@@ -9,14 +8,14 @@ const CartItem = memo(({ id, title, price, currency, quantity, photo, increment,
   const itemImg = useRef();
 
   useEffect(() => {
-    loadMainImage(photo, itemImg, {type:"img"})
+    loadMainImage(photo, itemImg, { type: "img" });
   },[]);
 
   return (
     <div className="cartItem">
       <div>
         <h3 data-testId={`cardItemNameTest${id}`}>{ title }</h3>
-        <img ref={itemImg} src={ photo } alt={ title } data-testId={ `cardItemPhotoTest${id}` } />
+        <img ref={itemImg} src={ photo } alt={ title }/>
       </div>
       <div>
         <h4 data-testId={ `cardItemPriceTest${id}` }><bdi>
