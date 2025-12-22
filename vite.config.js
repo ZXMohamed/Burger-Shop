@@ -14,6 +14,8 @@ export default defineConfig({
     include: ['react-helmet-async'],
   },
   build: {
+    ssr: 'src/serverEntry.jsx',
+    outDir: 'dist',
     rollupOptions: {
       input: '/index.html',
     },

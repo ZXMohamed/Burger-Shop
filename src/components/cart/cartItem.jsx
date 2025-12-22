@@ -15,12 +15,12 @@ const CartItem = memo(({ id, title, price, currency, quantity, photo, increment,
   return (
     <div className="cartItem">
       <div className="itemInfo">
-        <h3 data-testId={`cardItemNameTest${id}`}>{ title }</h3>
+        <h3 data-testid={`cardItemNameTest${id}`}>{ title }</h3>
         <img ref={itemImg} src={ photo } alt={ title } data-testid={ `cardItemPhotoTest${id}` } />
       </div>
       <div className="orderInfo">
         <div>
-          <h4 data-testId={ `cardItemPriceTest${id}` }><bdi>
+          <h4 data-testid={ `cardItemPriceTest${id}` }><bdi>
             <Counter to={ price }><span></span></Counter> <CurrencyIcon currency={ currency } />
           </bdi></h4>
           <button onClick={ () => { decrement(id) } } data-testid={ `cardItemDECTest${id}` }>-</button>
