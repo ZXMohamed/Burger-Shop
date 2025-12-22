@@ -1,5 +1,5 @@
 export function routeValidation() {
-    return Array.from(arguments).every((state) => {console.log(state);
+    return Array.from(arguments).every((state) => {
         if (!state.value && state?.message) {
             state.message();
         }

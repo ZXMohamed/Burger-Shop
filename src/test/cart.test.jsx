@@ -171,17 +171,19 @@ test("cart checkout test with full cart", { timeout: 10000 }, async () => {
         add({ id: 2 });
     });
 
+    await user.click(cartItemsCount);
+
     //*test if cart has 2 items but quantity = 3 for first one
     //*and quantity = 2 for second one
 
-    const subTotalTest = screen.getByTestId("subTotalTest");
-    const taxTest = screen.getByTestId("taxTest");
-    const shippingTest = screen.getByTestId("shippingTest");
-    const TotalTest = screen.getByTestId("TotalTest");
+    const subTotalTest = await screen.findByTestId("subTotalTest");
+    const taxTest = await screen.findByTestId("taxTest");
+    const shippingTest = await screen.findByTestId("shippingTest");
+    const TotalTest = await screen.findByTestId("TotalTest");
 
-    await user.click(screen.getByTestId(`cardItemINCTest1`));
-    await user.click(screen.getByTestId(`cardItemINCTest1`));
-    await user.click(screen.getByTestId(`cardItemINCTest2`));
+    await user.click(await screen.findByTestId(`cardItemINCTest1`));
+    await user.click(await screen.findByTestId(`cardItemINCTest1`));
+    await user.click(await screen.findByTestId(`cardItemINCTest2`));
 
     const price1 = parseFloat(menuData(i18n.t)[1].price);
     const price2 = parseFloat(menuData(i18n.t)[2].price);

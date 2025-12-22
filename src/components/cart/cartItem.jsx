@@ -16,7 +16,7 @@ const CartItem = memo(({ id, title, price, currency, quantity, photo, increment,
     <div className="cartItem">
       <div className="itemInfo">
         <h3 data-testId={`cardItemNameTest${id}`}>{ title }</h3>
-        <img ref={itemImg} src={ photo } alt={ title } data-testId={ `cardItemPhotoTest${id}` } />
+        <img ref={itemImg} src={ photo } alt={ title } data-testid={ `cardItemPhotoTest${id}` } />
       </div>
       <div className="orderInfo">
         <div>
