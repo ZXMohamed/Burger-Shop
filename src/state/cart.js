@@ -4,7 +4,6 @@ import { create } from "zustand";
 export const useCart = create((set) => ({
 
     cart: {},
-    success: { state: null, item: {} },
 
     add: (payload) => set((state) => {
 
