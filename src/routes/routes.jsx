@@ -1,4 +1,4 @@
-import CartWrapper from "../components/templates/cartWrapper";
+import CartWrapper from "../components/guard/cartWrapper";
 import Shipping from "../components/cart/Shipping";
 import { Outlet, useRoutes } from "react-router";
 

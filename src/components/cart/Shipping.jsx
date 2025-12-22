@@ -112,7 +112,7 @@ const Shipping = () => {
 
   return (
     <section className="shipping">
-      <motion.section {...upIn(0)}>
+      <motion.section {...upIn(0, "animate")}>
         <h1>{ t(`shipping.title`) }</h1>
         <form onSubmit={formik.handleSubmit}>
           <div>

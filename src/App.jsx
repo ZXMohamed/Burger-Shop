@@ -4,8 +4,6 @@ import { ToastContainer } from "react-toastify";
 import SEO from "./components/SEO/SEO.jsx";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import CartWrapper from "./components/templates/cartWrapper";
-import Shipping from "./components/cart/Shipping";
 import ScrollFollow from "./components/scrollFollow/scrollFollow.jsx";
 import Routes from "./routes/routes";
 
