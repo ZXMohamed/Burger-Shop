@@ -87,7 +87,7 @@ function OrderWrapper() {
             }
         }
 
-    }, [goto, orderDetails, orderId, order, currency, currentCurrency, t]);
+    }, [myOrders, orderDetails, orderId, order]);
     
     return (
         open ?

@@ -27,7 +27,7 @@ function CartWrapper() {
 
     useLayoutEffect(() => {
         setOpen(false);
-    },[cartPage,shippingPage])
+    }, [cartPage, shippingPage]);
     
     useEffect(() => {
         if (!open) {
@@ -82,11 +82,12 @@ function CartWrapper() {
                     handleSetOpen(true)
                 }
             } else {
-                !routeValidation(...backValidation) && goto(prevPage, { replace: true });
+                routeValidation(...backValidation) && goto(prevPage, { replace: true });
             }
 
         }
-    }, [t, cartPage, shippingPage, cart, goto, currency, currentCurrency]);
+        console.log(currency);
+    }, [cartPage, shippingPage, cart]);
     
     return (
         open ?
