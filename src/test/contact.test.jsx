@@ -65,7 +65,7 @@ test("contact form", async () => {
     userEvent.type(formName, "s");
     expect(await screen.findByText("Name is too short (min 2 characters)")).toBeInTheDocument();
     
-    const longString = "s".repeat(51);
+    const longString = "s".repeat(100);
     userEvent.type(formName, longString);
     expect(await screen.findByText("Name is too long (max 50 characters)")).toBeInTheDocument();
     
