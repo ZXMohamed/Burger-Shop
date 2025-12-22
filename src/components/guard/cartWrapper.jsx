@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useMatch, useNavigate } from "react-router";
 import { useCart } from "../../state/cart";
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ function CartWrapper() {
 
     const goto = useNavigate();
     const location = useLocation();
+    const prevPage = location.state?.from || "/";
     const cartPage = useMatch("/cart");
     const shippingPage = useMatch("/cart/shipping");
 
@@ -23,28 +24,29 @@ function CartWrapper() {
 
     const cart = useCart((state) => state.cart);
 
-    const [open, setOpen] = useState(false);
-
-    useLayoutEffect(() => {
-        setOpen(false);
-    },[cartPage,shippingPage])
+    const [validationState, setValidationState] = useState("loading"); //* "loading" | "valid" | "invalid"
     
     useEffect(() => {
-        if (!open) {
-        
-            const prevPage = location.state?.prev || "/";
 
+        if (currency.isLoading) { //* add all synchronous actions loading condition _split by OR_ (to show loading while there are pending actions)
+            setValidationState("loading");
+        } else if (currency.isError) { //* add all synchronous actions error condition _split by OR_ (to prevent opening page while there are error)
+            toast.error(t(`msgs.currency.convertError`));
+            setValidationState("invalid");
+        } else if (currency.isSuccess) { //* add all synchronous actions success condition _split by OR_ (to prevent opening page while there are pending actions)
+        
             //*prevent opening pages unless the cart has at lest 1 item
-            //*prevent opening pages unless the currency not success
+            //*prevent opening pages unless the currency API success
             const mainValidation = [
                 {
                     value: Object.keys(cart).length > 0,
                     message: () => toast.error(t(`msgs.cart.empty`))
-                },
-                {
-                    value: currency.isSuccess || currency.isLoading, //*if there is an error both of isSuccess and isLoading will be false
-                    message: () => toast.error(t(`msgs.currency.convertError`))
-                },
+                }
+            ];
+
+            //*prevent opening cart page unless :
+            const cartPageValidation = [
+
             ];
 
             //*prevent opening shipping page unless quantity > 0
@@ -55,47 +57,35 @@ function CartWrapper() {
                 }
             ];
 
-            //*prevent open page(s) unless synchronous actions finish
-            const openValidation = [
-                {
-                    value: !currency.isLoading && !currency.isError
-                }
-            ];
-
-            //*prevent back to prev page unless synchronous actions finish
-            const backValidation = [
-                {
-                    value: currency.isError && !currency.isLoading
-                }
-            ];
-
-            const handleSetOpen = (state) => { routeValidation(...openValidation) && setOpen(state)};
-
             if (routeValidation(...mainValidation)) {
-                if (shippingPage) {
+                if (cartPage) {
+                    if (routeValidation(...cartPageValidation)) {
+                        setValidationState("valid");
+                    } else {
+                        setValidationState("invalid");
+                    }
+                } else if (shippingPage) {
                     if (routeValidation(...shippingPageValidation)) {
-                        handleSetOpen(true)
+                        setValidationState("valid");
                     } else {
                         goto("/cart", { replace: true });
                     }
-                } else {
-                    handleSetOpen(true)
                 }
             } else {
-                routeValidation(...backValidation) && goto(prevPage, { replace: true });
+                setValidationState("invalid");
             }
-
         }
-    }, [t, cartPage, shippingPage, cart, goto, currency, currentCurrency]);
+
+    }, [cartPage, shippingPage, cart, currency.isLoading, currency.isError, currency.isSuccess]);
     
-    return (
-        open ?
-            <Outlet context={ { cart, currentCurrency, currency } } />
-            :
-            <Loading />
-    )
+    if (validationState == "loading") {
+        return <Loading />;
+    } else if (validationState == "valid") {
+        return <Outlet context={ { cart, currentCurrency, currency } } />;
+    } else if(validationState == "invalid"){
+        goto(prevPage, { replace: true });
+    }
     
 }
 
 export default CartWrapper;
-
