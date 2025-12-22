@@ -86,8 +86,8 @@ function CartWrapper() {
             }
 
         }
-        console.log(currency);
-    }, [cartPage, shippingPage, cart]);
+
+    }, [cartPage, shippingPage, cart,currency]);
     
     return (
         open ?

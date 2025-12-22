@@ -83,11 +83,11 @@ function OrderWrapper() {
                     handleSetOpen(true)
                 }
             } else {
-                !routeValidation(...backValidation) && goto(prevPage, { replace: true });
+                routeValidation(...backValidation) && goto(prevPage, { replace: true });
             }
         }
 
-    }, [myOrders, orderDetails, orderId, order]);
+    }, [myOrders, orderDetails, orderId, order, currency]);
     
     return (
         open ?

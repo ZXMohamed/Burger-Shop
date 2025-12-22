@@ -15,7 +15,7 @@ function ThemeToggler() {
       }
     }
   return (
-    <CgDarkMode className='themeToggler' onClick={()=>toggleTheme()}/>
+    <CgDarkMode className='themeToggler' onClick={()=>toggleTheme()} data-testid="themeToggleTest"/>
   )
 }
 

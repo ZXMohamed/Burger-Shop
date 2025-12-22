@@ -49,12 +49,12 @@ const Header = () => {
                     </div>
                 </NavLink> }
                 <ThemeToggler/>
-                <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language }>
+                <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language } data-testid="languageSelectTest">
                     { i18n?.services?.resourceStore?.data && Object.keys(i18n.services.resourceStore.data).map((language, inx) => {
                         return <option key={ inx } value={ language }>{ i18n.services.resourceStore.data[language].alias }</option>
                     }) }
                 </select>
-                { currencyIsSuccess && <select name="currency" onChange={ (e) => { setCurrentCurrency(e.target.value) } } value={ currentCurrency }>
+                { currencyIsSuccess && <select name="currency" onChange={ (e) => { setCurrentCurrency(e.target.value) } } value={ currentCurrency } data-testid="currencySelectTest">
                     { Object.keys(currency.rates).map((currency, inx) => {
                         return <option key={ inx } value={ currency }>{ currency }</option>
                     }) }

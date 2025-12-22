@@ -44,7 +44,7 @@ const Shipping = () => {
   const pinCodeId = useId();
   const phoneNumberId = useId();
 
-  const onUnmount = useRef(() => { console.log("uuuuuu");});
+  const onUnmount = useRef(() => { });
 
   useEffect(() => {
 
@@ -166,7 +166,7 @@ const Shipping = () => {
           {clientTurnstile}
           <span>{ formik.errors["cf-turnstile-response"] }</span>
         
-          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="confirmTest"> { formik.isSubmitting ? t(`shipping.form.submit.loadingTitle`) : t(`shipping.form.submit.title`) + currentCurrency } </button>
+          <button type="submit" disabled={formik.isSubmitting} className="link" style={ { outLine: "none", border: "none" } } data-testid="checkoutTest"> { formik.isSubmitting ? t(`shipping.form.submit.loadingTitle`) : t(`shipping.form.submit.title`) + currentCurrency } </button>
            
         </form>
       </motion.section>
