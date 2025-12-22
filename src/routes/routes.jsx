@@ -1,5 +1,5 @@
 import { Outlet, useRoutes } from "react-router";
-import OrderWrapper from "../components/templates/orderWrapper";
+import OrderWrapper from "../components/guard/orderWrapper";
 import OrderDetails from "../components/myOrders/OrderDetails";
 
 const routesArray = [
