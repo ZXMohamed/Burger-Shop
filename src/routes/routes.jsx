@@ -1,4 +1,4 @@
-import OrderWrapper from "../components/templates/orderWrapper";
+import OrderWrapper from "../components/guard/orderWrapper";
 import MyOrders from "../components/myOrders/MyOrders";
 import { Outlet, useRoutes } from "react-router";
 

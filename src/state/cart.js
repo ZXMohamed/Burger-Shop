@@ -10,10 +10,7 @@ export const useCart = create((set) => ({
 
         if (state.cart[payload.id]) {
         
-            return ({
-                ...state,
-                success: { state: false, item: payload }
-            })
+            return state;
             
         } else {
             
