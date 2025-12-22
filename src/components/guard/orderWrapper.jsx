@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation, useMatch, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
 import { useOrder } from "../../state/order";
@@ -13,6 +13,7 @@ function OrderWrapper() {
 
     const goto = useNavigate();
     const location = useLocation();
+    const prevPage = location.state?.from || "/";
     const { id: orderId } = useParams();
     const myOrders = useMatch("/myorders");
     const orderDetails = useMatch("/myorders/:id");
@@ -24,28 +25,28 @@ function OrderWrapper() {
 
     const order = useOrder((state) => state.order);
 
-    const [open, setOpen] = useState(false);
-
-    useLayoutEffect(() => {
-        setOpen(false);
-    }, [myOrders, orderDetails]);
+    const [validationState, setValidationState] = useState("loading"); //* "loading" | "valid" | "invalid"
 
     useEffect(() => {
-        if (!open) {
+        if (currency.isLoading) {//* add all synchronous actions loading condition _split by OR_ (to show loading while there are pending actions)
+            setValidationState("loading");
+        } else if (currency.isError) { //* add all synchronous actions error condition _split by OR_ (to prevent opening page while there are error)
+            toast.error(t(`msgs.currency.convertError`));
+            setValidationState("invalid");
+        } else if (currency.isSuccess) {//* add all synchronous actions success condition _split by OR_ (to prevent opening page while there are pending actions)
         
-            const prevPage = location.state?.from || "/";
-
             //*prevent open pages unless the order has at lest 1 item
             //*prevent open order details page with unKnown id
             const mainValidation = [
                 {
                     value: Object.keys(order).length > 0,
                     message: () => toast.error(t(`msgs.orders.empty`))
-                },
-                {
-                    value: currency.isSuccess || currency.isLoading, //*if there is an error both of isSuccess and isLoading will be false
-                    message: () => toast.error(t(`msgs.currency.convertError`))
-                },
+                }
+            ];
+
+            //*prevent opening myOrders page unless :
+            const myOrdersPageValidation = [
+
             ];
 
             //*prevent opening order details page unless id is exist
@@ -56,45 +57,34 @@ function OrderWrapper() {
                 }
             ];
 
-            //*prevent open page(s) unless synchronous actions finish
-            const openValidation = [
-                {
-                    value: !currency.isLoading && !currency.isError
-                }
-            ];
-
-            //*prevent back to prev page unless synchronous actions finish
-            const backValidation = [
-                {
-                    value: currency.isError && !currency.isLoading
-                }
-            ];
-
-            const handleSetOpen = (state) => { routeValidation(...openValidation) && setOpen(state) };
-
             if (routeValidation(...mainValidation)) {
-                if (orderDetails) {
+                if (myOrders) {
+                    if (routeValidation(...myOrdersPageValidation)) {
+                        setValidationState("valid");
+                    } else {
+                        setValidationState("invalid");
+                    }
+                }else if (orderDetails) {
                     if (routeValidation(...orderDetailsPageValidation)) {
-                        handleSetOpen(true)
+                        setValidationState("valid");
                     } else {
                         goto("/myorders", { replace: true });
                     }
-                } else {
-                    handleSetOpen(true)
                 }
             } else {
-                routeValidation(...backValidation) && goto(prevPage, { replace: true });
+                setValidationState("invalid");
             }
         }
 
-    }, [myOrders, orderDetails, orderId, order, currency]);
-    
-    return (
-        open ?
-            <Outlet context={ { order, currentCurrency, currency } } />
-            :
-            <Loading />
-    )
+    }, [myOrders, orderDetails, orderId, order, currency.isError, currency.isLoading, currency.isSuccess]);
+
+    if (validationState == "loading") {
+        return <Loading />;
+    } else if (validationState == "valid") {
+        return <Outlet context={ { order, currentCurrency, currency } } />;
+    } else if(validationState == "invalid"){
+        goto(prevPage, { replace: true });
+    }
     
 }
 
