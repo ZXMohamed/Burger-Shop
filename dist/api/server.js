@@ -9,9 +9,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
-app.use('/assets', express.static(resolve(__dirname, './client/assets')));
+app.use('/assets', express.static(resolve(__dirname, '../client/assets')));
 
-app.use(express.static('/client/assets'));
+app.use(express.static('../client/assets'));
 
 app.use('*all', async (req, res) => {
 
@@ -20,16 +20,16 @@ app.use('*all', async (req, res) => {
     const url = req.originalUrl;
 
     if (url == "/robots.txt") {
-      res.status(200).end(readFileSync(resolve(__dirname, './robots.txt'), 'utf-8'));
+      res.status(200).end(readFileSync(resolve(__dirname, '../robots.txt'), 'utf-8'));
     }
     else if (url == "/sitemap.xml") {
-      res.status(200).end(readFileSync(resolve(__dirname, './sitemap.xml'), 'utf-8'));
+      res.status(200).end(readFileSync(resolve(__dirname, '../sitemap.xml'), 'utf-8'));
     } else {
 
       let template;
       let render;
   
-      template = readFileSync(resolve(__dirname, './client/index.html'), 'utf-8');
+      template = readFileSync(resolve(__dirname, '../client/index.html'), 'utf-8');
       render = (await import('./server/serverEntry.js')).default;
       
       //*get url language for SEO & SSR
@@ -37,7 +37,7 @@ app.use('*all', async (req, res) => {
   
       const { html, helmet } = render(url,language);
   
-      const cssTags = `<link rel="stylesheet" href="./client/assets/index-Y3g2U8_F.css">`;
+      const cssTags = `<link rel="stylesheet" href="../client/assets/index-Y3g2U8_F.css">`;
   
       //*send server language for client (for successful hydration match)
       const passServerData = `<script id="serverDataJson" type="application/json" > {"language" : "${language}"}</script >`;
@@ -63,6 +63,8 @@ app.use('*all', async (req, res) => {
 
 });
 
-app.listen(5173, () => {
-  console.log('SSR server running at http://localhost:5173');
-});
+export default app;
+
+// app.listen(5173, () => {
+//   console.log('SSR server running at http://localhost:5173');
+// });
