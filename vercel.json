@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "echo 'skip build'",
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
+  "buildCommand": "echo skip",
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -13,7 +8,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/api/server.js"
+      "dest": "/api/index.js"
     }
   ]
 }
