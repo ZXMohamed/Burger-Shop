@@ -141,16 +141,16 @@ main.orderDetails {
   footer{
     display: none;
   }
-  .orderDetails {
-    padding: 0;
-
-    > section {
+  .printButton{
+    display: none;
+  }
+  main.orderDetails {
+    padding: 10px;
+    
+    > section.orderDetailsContainer {
       padding: 0;
-
-      .printButton{
-        display: none;
-      }
-      >h1{
+      
+      >h1.orderDetailsTitle{
         margin: 30px;
         font: 2rem "Roboto";
       }

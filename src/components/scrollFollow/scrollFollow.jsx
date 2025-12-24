@@ -22,7 +22,8 @@ const ScrollFollow = memo(({ currentPath = "", target = "", icon = <></>, childr
 
     return (
         <>
-            <LinkTag type={ linkType } link={ link.current } title="back to menu">
+            <LinkTag type={ linkType } link={ link.current } title="back to menu" aria-label="go to section">
+                <span>{ target.replace("#","").replaceAll("/"," ") }</span>
                 <div className={ "scrollFollow" }>
                     <div className={ "scrollFollowIcon" }>
                         { icon }

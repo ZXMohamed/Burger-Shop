@@ -41,4 +41,4 @@ Disallow: /hi/myorders
 Disallow: /hi/myorders/order
 
 # Sitemap location
-Sitemap: /sitemap.xml
+Sitemap: http://localhost:5173/sitemap.xml

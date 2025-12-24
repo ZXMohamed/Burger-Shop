@@ -6,11 +6,11 @@ import Hero from "./Hero";
 const Home = () => {
     
     return (
-        <Fragment>
+        <main>
             <Hero />
             <Menu />
             <Founder />
-        </Fragment>
+        </main>
     );
 }
 

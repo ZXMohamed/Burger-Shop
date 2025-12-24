@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { NavLink, useLocation } from "react-router";
 import { FiShoppingCart } from "react-icons/fi";
@@ -32,6 +32,9 @@ const Header = () => {
     const [openMenu, setOpenMenu] = useState(false);
     const isMd = useMediaQuery({ query: '(max-width: 800px)' });
 
+    const selectLanguageId = useId();
+    const selectCurrencyId = useId();
+
     return (
         <motion.nav variants={ navMenu } initial="collapsed" animate={ isMd ? (openMenu ? "expanded" : "collapsed") : "collapsed" } className="navMenuExpand" data-testid="headerTest">
             <motion.div { ...rightIn(0) }>
@@ -42,19 +45,22 @@ const Header = () => {
                 <NavLink to="/contact">{ t(`nav.tabs.contact`) }</NavLink>
                 <NavLink to="/myorders" state={{ from: location.pathname }}>{ t(`nav.tabs.orders`) }</NavLink>
                 <NavLink to="/about">{ t(`nav.tabs.about`) }</NavLink>
-                { currencyIsSuccess && <NavLink to="/cart" state={ { from: location.pathname } }>
-                    <FiShoppingCart />
+                { currencyIsSuccess && <NavLink to="/cart" state={ { from: location.pathname } } className={"cartLink"} aria-label="View cart">
+                    <FiShoppingCart /> 
                     <div className="cartItemsCount" data-testid="cartIconTest">
                         { Object.keys(cartItems).length }
                     </div>
+                    <span>cart</span>
                 </NavLink> }
-                <ThemeToggler/>
-                <select name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language } data-testid="languageSelectTest">
+                <ThemeToggler />
+                <label htmlFor={selectLanguageId} className="LanguageLabel">Language</label>
+                <select id={selectLanguageId} name="language" onChange={ (e) => { changeLanguage(e.currentTarget.value) } } value={ i18n.language } data-testid="languageSelectTest">
                     { i18n?.services?.resourceStore?.data && Object.keys(i18n.services.resourceStore.data).map((language, inx) => {
                         return <option key={ inx } value={ language }>{ i18n.services.resourceStore.data[language].alias }</option>
                     }) }
                 </select>
-                { currencyIsSuccess && <select name="currency" onChange={ (e) => { setCurrentCurrency(e.target.value) } } value={ currentCurrency } data-testid="currencySelectTest">
+                <label htmlFor={selectCurrencyId} className="CurrencyLabel">Currency</label>
+                { currencyIsSuccess && <select id={selectCurrencyId} name="currency" onChange={ (e) => { setCurrentCurrency(e.target.value) } } value={ currentCurrency } data-testid="currencySelectTest">
                     { Object.keys(currency.rates).map((currency, inx) => {
                         return <option key={ inx } value={ currency }>{ currency }</option>
                     }) }

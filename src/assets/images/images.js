@@ -3,17 +3,17 @@
 
 import axios from "axios";
 
-import homeBackground from "./homeBackground.TEMP.jpg";
-import gradientBackground from "./gradientBackground.TEMP.png";
+import homeBackground from "./homeBackground.TEMP.webp";
+import gradientBackground from "./gradientBackground.TEMP.webp";
 import founderBackground from "./founderBackground.TEMP.webp";
 
-import burger1 from "./burger1.TEMP.png";
-import burger2 from "./burger2.TEMP.png";
-import burger3 from "./burger3.TEMP.png";
+import burger1 from "./burger1.TEMP.webp";
+import burger2 from "./burger2.TEMP.webp";
+import burger3 from "./burger3.TEMP.webp";
 
-import owner from "./owner.TEMP.jpg";
+import owner from "./owner.TEMP.webp";
 
-import loading from "./loading.gif";
+import loading from "./loading.webp";
 
 import logo from "./logo.svg";
 

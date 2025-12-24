@@ -14,8 +14,9 @@ export default defineConfig({
     include: ['react-helmet-async'],
   },
   build: {
-    ssr: 'src/serverEntry.jsx',
-    outDir: 'dist',
+    assetsInlineLimit: 0,
+    sourcemap: 'hidden', //*more secure even if light house show Best Practices error
+    ssr: 'src/serverEntry.jsx', //*use when build ssr
     rollupOptions: {
       input: '/index.html',
     },
@@ -26,6 +27,6 @@ export default defineConfig({
     include: ['**/*.test.jsx', '**/*.test.js']
   },
   ssr: {
-    noExternal: ['react-helmet-async'],
+    noExternal: ['react-helmet-async', 'react-icons']
   }
 })

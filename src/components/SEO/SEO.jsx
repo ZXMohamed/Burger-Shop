@@ -5,11 +5,14 @@ import { useCurrentCurrency } from '../../state/currentCurrency';
 import { useCurrency } from '../../state/currency';
 import { useTranslation } from 'react-i18next';
 import {Helmet} from 'react-helmet-async';
+import { useLocation } from 'react-router';
 
 
 function SEO() {
 
     const { t, i18n } = useTranslation();
+
+    const location = useLocation();
 
     const { title, description, image, icon, type, language, keywords, LD_Json } = pageInfo(t, i18n);
     const pageTitle = pageInfo(t,i18n).title;
@@ -80,7 +83,7 @@ function SEO() {
             <meta name="twitter:image:alt" content={ title } />
 
             {/* <!-- link --> */ }
-            <link rel="canonical" href={ import.meta.env.VITE_CURRENT_URL } />
+            <link rel="canonical" href={ import.meta.env.VITE_CURRENT_URL + location.pathname } />
             <link rel="author" href={import.meta.env.VITE_CURRENT_URL} />
 
             <link rel="alternate" href={ import.meta.env.VITE_CURRENT_URL + "en/" } hreflang="en" />

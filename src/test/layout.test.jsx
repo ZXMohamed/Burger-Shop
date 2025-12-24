@@ -99,7 +99,7 @@ test("test page layout", async() => {
 //     </LanguageProvider>
 //   );
   
-// console.log(screen.getAllByRole("menuItemTest")[0].innerHTML);
+// console.log(screen.getAllByRole("menuItem")[0].innerHTML);
   
 //   const menuItem_1_Price_USD = Object.values(menuData(i18n.t))[0].price;
 //   // expect(await screen.findByText(menuItem_1_Price_USD)).toBeInTheDocument();

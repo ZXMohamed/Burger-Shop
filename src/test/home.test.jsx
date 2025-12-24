@@ -56,7 +56,7 @@ test("test home page", async() => {
     const menu = screen.getByTestId("menuTest");
     expect(menu).toBeInTheDocument();
 
-    const menuItems = await screen.findAllByRole("menuItemTest");
+    const menuItems = await screen.findAllByRole("menuItem");
     expect(menuItems).toHaveLength(Object.values(menuData(i18n.t)).length);
 
     Object.values(menuData).forEach(item => {

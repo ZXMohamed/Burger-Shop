@@ -27,6 +27,13 @@ app.use('*all', async (req, res) => {
   try {
     const url = req.originalUrl;
 
+    if (url == "/robots.txt") {
+      res.status(200).end(readFileSync(resolve(__dirname, './robots.txt'), 'utf-8'));
+    }
+    if (url == "/sitemap.xml") {
+      res.status(200).end(readFileSync(resolve(__dirname, './sitemap.xml'), 'utf-8'));
+    }
+
     let template;
     let render;
 
@@ -35,8 +42,8 @@ app.use('*all', async (req, res) => {
       template = await vite.transformIndexHtml(url, template);
       render = (await vite.ssrLoadModule('/src/serverEntry.jsx')).default;
     } else {
-      template = readFileSync(resolve(__dirname, 'dist/index.html'), 'utf-8');
-      render = (await import('./dist/serverEntry.js')).default;
+      template = readFileSync(resolve(__dirname, './dist/client/index.html'), 'utf-8');
+      render = (await import('./dist/server/serverEntry.js')).default;
     }
     
     //*get url language for SEO & SSR
@@ -57,6 +64,7 @@ app.use('*all', async (req, res) => {
       .replace(`<!--app-css-->`, cssTags)
       .replace(`<!--helmet-title-->`, helmet.title.toString())
       .replace(`<!--helmet-meta-->`, helmet.meta.toString())
+      .replace(`<!--helmet-link-canonical-->`, `<link rel="canonical" href=${process.env.VITE_CURRENT_URL}${url}/>`)
       .replace(`<!--helmet-link-->`, helmet.link.toString())
       .replace(`<!--helmet-script-->`, helmet.script.toString())
       .replace(`<!--app-server-data-->`, passServerData)

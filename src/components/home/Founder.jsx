@@ -29,8 +29,8 @@ const Founder = () => {
     <motion.section ref={ownerBackground} data-testid="founderTest" className="founder" style={ { backgroundSize: bgSizeValue } }>
       <div>
         <motion.article style={ { scale: scaleValue } }>
-          <motion.img ref={ownerImg} src={ owner } alt="Nelson" height={ 200 } width={ 200 } loading="lazy" {...rightIn(0.4)}/>
-          <motion.h3  { ...upIn(0.2) }>{ t(`home.founder.name`) }</motion.h3>
+          <motion.img ref={ownerImg} src={ owner } alt="Nelson" height={ "200px" } width={ "200px" } loading="lazy" {...rightIn(0.4)}/>
+          <motion.h2  { ...upIn(0.2) }>{ t(`home.founder.name`) }</motion.h2>
           <motion.p  { ...upIn(0.6) }>{ t(`home.founder.about`) }</motion.p>
         </motion.article>
       </div>

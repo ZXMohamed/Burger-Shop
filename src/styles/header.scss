@@ -30,8 +30,14 @@ nav {
     
     .active{
       color: colors.$red;
+      text-shadow: 0 0 10px colors.$red;
     }
 
+    >a.cartLink{
+      >span{
+        display: none;
+      }
+    }
     > a {
       display: flex;
       align-items: center;
@@ -63,6 +69,15 @@ nav {
       height: 25px;
       color: maroon;
       border-radius: 50%;
+    }
+
+    .LanguageLabel,
+    .CurrencyLabel{
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
     }
 
     > select{
