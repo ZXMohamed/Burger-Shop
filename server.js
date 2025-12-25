@@ -64,7 +64,6 @@ app.use('*all', async (req, res) => {
       .replace(`<!--app-css-->`, cssTags)
       .replace(`<!--helmet-title-->`, helmet.title.toString())
       .replace(`<!--helmet-meta-->`, helmet.meta.toString())
-      // .replace(`<!--helmet-link-canonical-->`, `<link rel="canonical" href=${process.env.VITE_CURRENT_URL}${url}/>`)
       .replace(`<!--helmet-link-->`, helmet.link.toString())
       .replace(`<!--helmet-script-->`, helmet.script.toString())
       .replace(`<!--app-server-data-->`, passServerData)

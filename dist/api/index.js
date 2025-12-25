@@ -48,7 +48,6 @@ app.use('*all', async (req, res) => {
         .replace(`<!--app-css-->`, cssTags)
         .replace(`<!--helmet-title-->`, helmet.title.toString())
         .replace(`<!--helmet-meta-->`, helmet.meta.toString())
-        // .replace(`<!--helmet-link-canonical-->`, `<link data-rh="true" rel="canonical" href=${process.env.VITE_CURRENT_URL}${url}/>`)
         .replace(`<!--helmet-link-->`, helmet.link.toString())
         .replace(`<!--helmet-script-->`, helmet.script.toString())
         .replace(`<!--app-server-data-->`, passServerData)
@@ -58,7 +57,7 @@ app.use('*all', async (req, res) => {
 
   } catch (e) {
     console.error(e);
-    res.status(500).end(e.message);//"internal server error"
+    res.status(500).end("internal server error");//
   }
 
 });
