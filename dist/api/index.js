@@ -30,7 +30,7 @@ app.use('*all', async (req, res) => {
       let render;
   
       template = readFileSync(resolve(__dirname, '../client/index.html'), 'utf-8');
-      render = (await import('./server/serverEntry.js')).default;
+      render = (await import('../server/serverEntry.js')).default;
       
       //*get url language for SEO & SSR
       const language = matchPath({ path: "/:language/*" }, url)?.params?.language || process.env.VITE_DEFAULT_LANGUAGE;
@@ -48,7 +48,7 @@ app.use('*all', async (req, res) => {
         .replace(`<!--app-css-->`, cssTags)
         .replace(`<!--helmet-title-->`, helmet.title.toString())
         .replace(`<!--helmet-meta-->`, helmet.meta.toString())
-        .replace(`<!--helmet-link-canonical-->`, `<link data-rh="true" rel="canonical" href=${process.env.VITE_CURRENT_URL}${url}/>`)
+        // .replace(`<!--helmet-link-canonical-->`, `<link data-rh="true" rel="canonical" href=${process.env.VITE_CURRENT_URL}${url}/>`)
         .replace(`<!--helmet-link-->`, helmet.link.toString())
         .replace(`<!--helmet-script-->`, helmet.script.toString())
         .replace(`<!--app-server-data-->`, passServerData)
@@ -58,13 +58,13 @@ app.use('*all', async (req, res) => {
 
   } catch (e) {
     console.error(e);
-    res.status(500).end("internal server error");
+    res.status(500).end(e.message);//"internal server error"
   }
 
 });
 
 export default app;
 
-// app.listen(5173, () => {
-//   console.log('SSR server running at http://localhost:5173');
-// });
+ app.listen(process.env.PORT, () => {
+   console.log('SSR server running at http://localhost:5173');
+ });

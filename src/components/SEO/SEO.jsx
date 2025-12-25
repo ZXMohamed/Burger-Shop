@@ -83,7 +83,7 @@ function SEO() {
             <meta name="twitter:image:alt" content={ title } />
 
             {/* <!-- link --> */ }
-            <link rel="canonical" href={ import.meta.env.VITE_CURRENT_URL + location.pathname } />
+            <link rel="canonical" href={ import.meta.env.VITE_CURRENT_URL + location.pathname.replace("/","") } />
             <link rel="author" href={import.meta.env.VITE_CURRENT_URL} />
 
             <link rel="alternate" href={ import.meta.env.VITE_CURRENT_URL + "en/" } hreflang="en" />

@@ -24,10 +24,10 @@ const gradientBackground = "/assets/gradientBackground.TEMP-elDjG_EF.webp";
 const founderBackground = "/assets/founderBackground.TEMP-BdcWrVTX.webp";
 const burger1 = "/assets/burger1.TEMP-BcTxd3-I.webp";
 const burger2 = "/assets/burger2.TEMP-DmdCebjq.webp";
-const burger3 = "/assets/burger3.TEMP-iCqbbz06.webp";
+const burger3 = "/assets/burger3.TEMP-CSgNLRXi.webp";
 const owner = "/assets/owner.TEMP-B4QBmM-t.webp";
-const loading$3 = "/assets/loading-sWLCSsqG.webp";
-const logo = "assets/logo-BepfS2qk.svg";
+const loading$3 = "/assets/loading-BX1MGabc.webp";
+const logo = "/assets/logo-BepfS2qk.svg";
 async function loadMainImage(image, ref, options, onError = () => {
 }) {
   if (window.requestIdleCallback) {
@@ -1241,7 +1241,7 @@ function SEO() {
       lineNumber: 83,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ jsxDEV("link", { rel: "canonical", href: "http://localhost:5173/" + location.pathname }, void 0, false, {
+    /* @__PURE__ */ jsxDEV("link", { rel: "canonical", href: "http://localhost:5173/" + location.pathname.replace("/", "") }, void 0, false, {
       fileName: "I:/Mohamed/19--web/CV projects/Burger-Shop/Burger-Shop - Copy/FrontEnd/src/components/SEO/SEO.jsx",
       lineNumber: 86,
       columnNumber: 13
