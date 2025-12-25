@@ -1,16 +1,6 @@
 {
   "version": 2,
   "buildCommand": "echo skip",
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/dist/client/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.js"
-    }
-  ],
   "rewrites": [
     {
       "source": "/(.*)",

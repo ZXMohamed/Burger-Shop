@@ -11,8 +11,8 @@ import { HelmetProvider } from "react-helmet-async";
 import i18n from './language/i18n.js';
 import { objectMerge } from "./utils/objectMerge.js";
 
-//*match server language for successful hydration match process 
-const data = JSON.parse(document.getElementById("serverDataJson").textContent);
+//*match server language for successful hydration match process
+const data = JSON.parse(document.getElementById("serverDataJson")?.textContent || '{}');
 i18n.changeLanguage(data.language);
 
 objectMerge()
